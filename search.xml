@@ -5,8 +5,8 @@
     
     <entry>
       <title>wireshark使用手册</title>
-      <link href="/superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/"/>
-      <url>/superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/</url>
+      <link href="superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/"/>
+      <url>superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/</url>
       
         <content type="html"><![CDATA[<p>这个抓包工具介绍,具体袭击我如下所示</p><p>这是概览，期间能遇到各种报错，只需复制报错信息到网上查找即可。</p><p>1.注册git账号（zhangsan），创建以账号名加.github.io为名的仓库（zhangsan.github.io即为博客地址，输入浏览器即可浏览）</p><p>2.在windows中安装gitbash，安装Nodejs，Nodejs要设置环境变量</p><p>3.下载hexo，将git仓库的ssh地址写入配置文件</p><p>4.windows中生成git的rsa密钥，将id_rsa.pub添加都git账号的ssh key中，一个系统中可以支持多个git密钥的生成，都生成在~&#x2F;.ssh&#x2F;目录下，命名不同即可</p><p>5.hexo常用命令</p><p>hexo new “titename” (生成文章，默认在source&#x2F;_post&#x2F;下，内容以markdown编辑)</p><p>hexo clean(清理旧的生成)</p><p>hexo generation（重新生成页面）</p><p>hexo deploy（部署到git上，部署前，如果</p>]]></content>
       
@@ -30,8 +30,8 @@
     
     <entry>
       <title>如何搭建个人博客</title>
-      <link href="/superzqbo.github.io/2022/05/06/ru-he-da-jian-ge-ren-bo-ke/"/>
-      <url>/superzqbo.github.io/2022/05/06/ru-he-da-jian-ge-ren-bo-ke/</url>
+      <link href="superzqbo.github.io/2022/05/06/ru-he-da-jian-ge-ren-bo-ke/"/>
+      <url>superzqbo.github.io/2022/05/06/ru-he-da-jian-ge-ren-bo-ke/</url>
       
         <content type="html"><![CDATA[<p>Welcome come to my blog</p><p>这是概览，期间能遇到各种报错，只需复制报错信息到网上查找即可。</p><p>1.注册git账号（zhangsan），创建以账号名加.github.io为名的仓库（zhangsan.github.io即为博客地址，输入浏览器即可浏览）</p><p>2.在windows中安装gitbash，安装Nodejs，Nodejs要设置环境变量</p><p>3.下载hexo，将git仓库的ssh地址写入配置文件</p><p>4.windows中生成git的rsa密钥，将id_rsa.pub添加都git账号的ssh key中，一个系统中可以支持多个git密钥的生成，都生成在~&#x2F;.ssh&#x2F;目录下，命名不同即可</p><p>5.hexo常用命令</p><p>hexo new “titename” (生成文章，默认在source&#x2F;_post&#x2F;下，内容以markdown编辑)</p><p>hexo clean(清理旧的生成)</p><p>hexo generation（重新生成页面）</p><p>hexo deploy（部署到git上，部署前，如果</p>]]></content>
       
@@ -55,8 +55,8 @@
     
     <entry>
       <title>Hello World</title>
-      <link href="/superzqbo.github.io/2022/05/05/hello-world/"/>
-      <url>/superzqbo.github.io/2022/05/05/hello-world/</url>
+      <link href="superzqbo.github.io/2022/05/05/hello-world/"/>
+      <url>superzqbo.github.io/2022/05/05/hello-world/</url>
       
         <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
       
