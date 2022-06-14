@@ -3,11 +3,11 @@
   <title>朝歌</title>
   
   <subtitle>朝歌</subtitle>
-  <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
+  <link href="https://superzqbo.github.io/superzqbo.github.io/atom.xml" rel="self"/>
   
-  <link href="https://superzqbo.github.io/"/>
+  <link href="https://superzqbo.github.io/superzqbo.github.io/"/>
   <updated>2022-06-12T09:38:34.939Z</updated>
-  <id>https://superzqbo.github.io/</id>
+  <id>https://superzqbo.github.io/superzqbo.github.io/</id>
   
   <author>
     <name>superzqbo</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>wireshark使用手册</title>
-    <link href="https://superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/"/>
-    <id>https://superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/</id>
+    <link href="https://superzqbo.github.io/superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/"/>
+    <id>https://superzqbo.github.io/superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/</id>
     <published>2022-05-10T16:10:41.000Z</published>
     <updated>2022-06-12T09:38:34.939Z</updated>
     
@@ -36,17 +36,17 @@
     
     
     
-    <category term="网络工具" scheme="https://superzqbo.github.io/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/"/>
+    <category term="网络工具" scheme="https://superzqbo.github.io/superzqbo.github.io/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="Makrdown" scheme="https://superzqbo.github.io/tags/Makrdown/"/>
+    <category term="Makrdown" scheme="https://superzqbo.github.io/superzqbo.github.io/tags/Makrdown/"/>
     
   </entry>
   
   <entry>
     <title>如何搭建个人博客</title>
-    <link href="https://superzqbo.github.io/2022/05/06/ru-he-da-jian-ge-ren-bo-ke/"/>
-    <id>https://superzqbo.github.io/2022/05/06/ru-he-da-jian-ge-ren-bo-ke/</id>
+    <link href="https://superzqbo.github.io/superzqbo.github.io/2022/05/06/ru-he-da-jian-ge-ren-bo-ke/"/>
+    <id>https://superzqbo.github.io/superzqbo.github.io/2022/05/06/ru-he-da-jian-ge-ren-bo-ke/</id>
     <published>2022-05-05T16:00:22.000Z</published>
     <updated>2022-06-12T09:41:22.932Z</updated>
     
@@ -61,17 +61,17 @@
     
     
     
-    <category term="工具" scheme="https://superzqbo.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具" scheme="https://superzqbo.github.io/superzqbo.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="Typora" scheme="https://superzqbo.github.io/tags/Typora/"/>
+    <category term="Typora" scheme="https://superzqbo.github.io/superzqbo.github.io/tags/Typora/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://superzqbo.github.io/2022/05/05/hello-world/"/>
-    <id>https://superzqbo.github.io/2022/05/05/hello-world/</id>
+    <link href="https://superzqbo.github.io/superzqbo.github.io/2022/05/05/hello-world/"/>
+    <id>https://superzqbo.github.io/superzqbo.github.io/2022/05/05/hello-world/</id>
     <published>2022-05-04T16:13:13.052Z</published>
     <updated>2022-05-05T16:10:08.311Z</updated>
     
@@ -87,7 +87,7 @@
     
     
     
-    <category term="Markdown" scheme="https://superzqbo.github.io/tags/Markdown/"/>
+    <category term="Markdown" scheme="https://superzqbo.github.io/superzqbo.github.io/tags/Markdown/"/>
     
   </entry>
   
