@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-07-02T16:50:35.239Z</updated>
+  <updated>2022-07-02T16:54:09.481Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://superzqbo.github.io/2022/07/03/docker-xue-xi-bi-ji/"/>
     <id>https://superzqbo.github.io/2022/07/03/docker-xue-xi-bi-ji/</id>
     <published>2022-07-02T16:46:46.000Z</published>
-    <updated>2022-07-02T16:50:35.239Z</updated>
+    <updated>2022-07-02T16:54:09.481Z</updated>
     
     
       
@@ -39,6 +39,8 @@
     
     <category term="Docker基础" scheme="https://superzqbo.github.io/categories/Docker/Docker%E5%9F%BA%E7%A1%80/"/>
     
+    
+    <category term="Docker" scheme="https://superzqbo.github.io/tags/Docker/"/>
     
   </entry>
   
