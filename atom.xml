@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-06-12T09:38:34.939Z</updated>
+  <updated>2022-07-02T16:50:35.239Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker学习笔记</title>
+    <link href="https://superzqbo.github.io/2022/07/03/docker-xue-xi-bi-ji/"/>
+    <id>https://superzqbo.github.io/2022/07/03/docker-xue-xi-bi-ji/</id>
+    <published>2022-07-02T16:46:46.000Z</published>
+    <updated>2022-07-02T16:50:35.239Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Docker是基于go开发的&lt;/p&gt;
+&lt;h3 id=&quot;一、为什么使用docker&quot;&gt;&lt;a href=&quot;#一、为什么使用docker&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Docker" scheme="https://superzqbo.github.io/categories/Docker/"/>
+    
+    <category term="Docker基础" scheme="https://superzqbo.github.io/categories/Docker/Docker%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>wireshark使用手册</title>
