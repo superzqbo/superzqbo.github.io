@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-07-05T13:44:00.775Z</updated>
+  <updated>2022-07-06T16:04:13.690Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Socket通信</title>
+    <link href="https://superzqbo.github.io/2022/07/06/socket-tong-xin/"/>
+    <id>https://superzqbo.github.io/2022/07/06/socket-tong-xin/</id>
+    <published>2022-07-06T15:53:23.000Z</published>
+    <updated>2022-07-06T16:04:13.690Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;一、数据通信过程&quot;&gt;&lt;a href=&quot;#一、数据通信过程&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Mina" scheme="https://superzqbo.github.io/categories/Mina/"/>
+    
+    
+    <category term="网络通信" scheme="https://superzqbo.github.io/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker学习笔记</title>
