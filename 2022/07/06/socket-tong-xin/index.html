@@ -609,7 +609,7 @@
                 <h3 id="一、数据通信过程"><a href="#一、数据通信过程" class="headerlink" title="一、数据通信过程"></a>一、数据通信过程</h3><p><strong>一个数据包经由应用程序产生，进入到协议栈中进行各种报文头的包装，然后操作系统调用网卡驱动程序指挥硬件，把数据发送到对端主机</strong>。整个过程的大体的图示如下。</p>
 <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220706142933670.png" alt="image-20220706142933670"></p>
 <p>协议栈其实是位于操作系统中的一些协议的堆叠，这些协议包括 TCP、UDP、ARP、ICMP、IP等。</p>
-<pre><code>通常某个协议的设计都是为了解决某些问题，比如
+<pre class=" language-java"><code class="language-java">通常某个协议的设计都是为了解决某些问题，比如
 TCP 的设计就负责安全可靠的传输数据，
 
 UDP 设计就是报文小，传输效率高，
@@ -624,9 +624,9 @@ IP 设计的目的是为了实现大规模主机的互联互通。
 <p><strong>一般处于协议上层的是TCP、UDP协议，IP协议处于下层，这个从TCP&#x2F;IP四层协议当也可以看得到，IP协议是不可靠的，需要为上层的TCP协议提供通信支持，TCP协议是可靠的，因为有三次握手四次挥手。</strong></p>
 <p>应用程序比如浏览器、电子邮件、文件传输服务器等产生的数据，会通过传输层协议进行传输，而应用程序是不会和传输层直接建立联系的，而是有一个能够连接应用层和传输层之间的套件，这个套件就是 <code>Socket</code>。</p>
 <p>应用程序的下面就是操作系统内部，操作系统内部包括协议栈，协议栈是一系列协议的堆叠。操作系统下面就是网卡驱动程序，网卡驱动程序负责控制网卡硬件，驱动程序驱动网卡硬件完成收发工作.</p>
-<h3 id="二、通过netstat-命令来展示套接字"><a href="#二、通过netstat-命令来展示套接字" class="headerlink" title="二、通过netstat 命令来展示套接字"></a>二、通过netstat 命令来展示套接字</h3><pre><code> netstat -ano
+<h3 id="二、通过netstat-命令来展示套接字"><a href="#二、通过netstat-命令来展示套接字" class="headerlink" title="二、通过netstat 命令来展示套接字"></a>二、通过netstat 命令来展示套接字</h3><pre class=" language-java"><code class="language-java"> netstat <span class="token operator">-</span>ano
  
- # netstat 用于显示套接字内容 , -ano 是可选选项
+ # netstat 用于显示套接字内容 <span class="token punctuation">,</span> <span class="token operator">-</span>ano 是可选选项
  # a 不仅显示正在通信的套接字，还显示包括尚未开始通信等状态的所有套接字
  # n 显示 IP 地址和端口号
  # o 显示套接字的程序 PID
@@ -634,7 +634,7 @@ IP 设计的目的是为了实现大规模主机的互联互通。
 <p><img src="https://pic3.zhimg.com/v2-a5b445147b1f4a683500901d35704662_r.jpg" alt="preview"></p>
 <p>图中的每一行都相当于一个套接字，每一列也被称为一个元组，所以一个套接字就是五元组（协议、本地地址、外部地址、状态、PID）。有的时候也被叫做四元组，四元组不包括协议。</p>
 <p>比如图中的第一行，它的协议就是 TCP，本地地址和远程地址都是 0.0.0.0，这表示通信还没有开始，IP 地址暂时还未确定，而本地端口已知是 135，但是远程端口还未知，此时的状态是 <code>LISTENING</code>，LISTENING 表示应用程序已经打开，正在等待与远程主机建立连接最后一个元组是 PID，即进程标识符，PID 就像我们的身份证号码，能够精确定位唯一的进程。</p>
-<h3 id="三、OSI七层协议模型-open-system-interconnection"><a href="#三、OSI七层协议模型-open-system-interconnection" class="headerlink" title="三、OSI七层协议模型 (open system interconnection)"></a>三、OSI七层协议模型 (open system interconnection)</h3><pre><code>应用层：TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet 等等
+<h3 id="三、OSI七层协议模型-open-system-interconnection"><a href="#三、OSI七层协议模型-open-system-interconnection" class="headerlink" title="三、OSI七层协议模型 (open system interconnection)"></a>三、OSI七层协议模型 (open system interconnection)</h3><pre class=" language-java"><code class="language-java">应用层：TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet 等等
 
 表示层：处理数据格式，数据加密等
 
@@ -653,38 +653,38 @@ IP 设计的目的是为了实现大规模主机的互联互通。
 <p>通过上面的图形，由于底一层的需要向高一层的提供服务，我们大致的理解<strong>应用程序需要传输层的tcp和网络层的ip协议提供服务</strong>，可以说，TPC&#x2F;IP协议是传输层协议，主要解决数据如何在网络中传输，而HTTP是应用层协议，主要解决如何包装数据。</p>
 <h3 id="四、Socket"><a href="#四、Socket" class="headerlink" title="四、Socket"></a>四、Socket</h3><p><strong>Socket是应用层与TCP&#x2F;IP协议族通信的中间软件抽象层，它是一组接口，Socket是对TCP&#x2F;IP协议的封装，Socket本身并不是协议，而是一个调用接口（API），通过Socket，我们才能使用TCP&#x2F;IP协议。</strong></p>
 <h4 id="3-1-Socket创建"><a href="#3-1-Socket创建" class="headerlink" title="3.1 Socket创建"></a>3.1 Socket创建</h4><p>Socket 是和应用程序一起创建的。</p>
-<pre><code>1、应用程序中有一个 socket 组件，在应用程序启动时，会调用 socket 申请创建套接字，协议栈会根据应用程序的申请创建套接字：
+<pre class=" language-java"><code class="language-java"><span class="token number">1</span>、应用程序中有一个 socket 组件，在应用程序启动时，会调用 socket 申请创建套接字，协议栈会根据应用程序的申请创建套接字：
 
-2、首先分配一个套接字所需的内存空间，这一步相当于是为控制信息准备一个容器，但只有容器并没有实际作用，所以你还需要向容器中放入控制信息；
+<span class="token number">2</span>、首先分配一个套接字所需的内存空间，这一步相当于是为控制信息准备一个容器，但只有容器并没有实际作用，所以你还需要向容器中放入控制信息；
 
-3、如果你不申请创建套接字所需要的内存空间，你创建的控制信息也没有地方存放，所以分配内存空间，放入控制信息缺一不可。至此套接字的创建就已经完成了。
+<span class="token number">3</span>、如果你不申请创建套接字所需要的内存空间，你创建的控制信息也没有地方存放，所以分配内存空间，放入控制信息缺一不可。至此套接字的创建就已经完成了。
 
-4、套接字创建完成后，会返回一个套接字描述符给应用程序，这个描述符相当于是区分不同套接字的号码牌。根据这个描述符，应用程序在委托协议栈收发数据时就需要提供这个描述符。
+<span class="token number">4</span>、套接字创建完成后，会返回一个套接字描述符给应用程序，这个描述符相当于是区分不同套接字的号码牌。根据这个描述符，应用程序在委托协议栈收发数据时就需要提供这个描述符。
 </code></pre>
 <h4 id="3-2-套接字连接"><a href="#3-2-套接字连接" class="headerlink" title="3.2 套接字连接"></a>3.2 套接字连接</h4><p>套接字创建完成后，最终还是为数据收发服务的，在数据收发之前，还需要进行一步 <code>connect</code>，也就是建立连接的过程。应用程序通过 TCP&#x2F;IP 协议标准从一个主机通过网络介质传输到另一个主机的过程。</p>
-<pre><code>1、套接字刚刚创建完成后，还没有数据，也不知道通信对象。在这种状态下，即使你让客户端应用程序委托协议栈发送数据，它也不知道发送到哪里。
+<pre class=" language-java"><code class="language-java"><span class="token number">1</span>、套接字刚刚创建完成后，还没有数据，也不知道通信对象。在这种状态下，即使你让客户端应用程序委托协议栈发送数据，它也不知道发送到哪里。
     
-2、所以浏览器需要根据网址来查询服务器的 IP 地址，做这项工作的协议是 DNS，查询到目标主机后，再把目标主机的 IP 告诉协议栈，至此，客户端这边就准备好了
+<span class="token number">2</span>、所以浏览器需要根据网址来查询服务器的 IP 地址，做这项工作的协议是 DNS，查询到目标主机后，再把目标主机的 IP 告诉协议栈，至此，客户端这边就准备好了
     
-3、在服务器上，与客户端一样也需要创建套接字，但是同样的它也不知道通信对象是谁，所以我们需要让客户端向服务器告知客户端的必要信息：IP 地址和端口号。
+<span class="token number">3</span>、在服务器上，与客户端一样也需要创建套接字，但是同样的它也不知道通信对象是谁，所以我们需要让客户端向服务器告知客户端的必要信息：IP 地址和端口号。
     
-4、通信双方收到数据之后，还需要一块位置来存放，这个位置就是缓冲区，它是内存的一部分，有了缓冲区，就能够进行数据的收发操作了。
+<span class="token number">4</span>、通信双方收到数据之后，还需要一块位置来存放，这个位置就是缓冲区，它是内存的一部分，有了缓冲区，就能够进行数据的收发操作了。
 </code></pre>
 <p>具体实现</p>
 <p>客户端应用程序需要调用 <code>Socket</code> 库中的 connect 方法，提供 socket 描述符和服务器 IP 地址、端口号。</p>
 <p>这些信息会传递给协议栈中的 TCP 模块，TCP 模块会对请求报文进行封装，再传递给 IP 模块，进行 IP 报文头的封装，然后传递给物理层，进行帧头封装，之后通过网络介质传递给服务器，服务器上会对帧头、IP 模块、TCP 模块的报文头进行解析，从而找到对应的套接字，套接字收到请求后，会写入相应的信息，并且把状态改为正在连接。请求过程完成后，服务器的 TCP 模块会返回响应，这个过程和客户端是一样的。</p>
 <h3 id="四、TCP-x2F-IP、Socket、Http的区别"><a href="#四、TCP-x2F-IP、Socket、Http的区别" class="headerlink" title="四、TCP&#x2F;IP、Socket、Http的区别"></a>四、TCP&#x2F;IP、Socket、Http的区别</h3><p>http是要基于TCP连接基础上的，简单的说，TCP就是单纯建立连接，不涉及任何我们需要请求的实际数据，简单的传输。http是用来收发数据，即实际应用上来的。客户端和应用服务器建立TCP连接之后，就需要用http协议来传送数据了，HTTP协议简单来说，还是请求，确认，连接。 总体就是C发送一个HTTP请求给S，S收到了这个http请求，然后返回给Chttp响应，然后C的中间件或者说浏览器把这些数据渲染成为了网页，展示在用户面前。</p>
-<pre><code>1.socket是通信的基石，是TCP/IP的基本操作单元（最小单位），可以理解为TCP/IP的封装，调用接口,(所有的程序都是默认调用吗？)
+<pre class=" language-java"><code class="language-java"><span class="token number">1</span><span class="token punctuation">.</span>socket是通信的基石，是TCP<span class="token operator">/</span>IP的基本操作单元（最小单位），可以理解为TCP<span class="token operator">/</span>IP的封装，调用接口<span class="token punctuation">,</span><span class="token punctuation">(</span>所有的程序都是默认调用吗？<span class="token punctuation">)</span>
     
-2.应用层可以和传输层通过Socket接口，区分来自不同应用程序进程或网络连接的通信，实现数据传输的并发服务(所有应用层都一样？)
+<span class="token number">2</span><span class="token punctuation">.</span>应用层可以和传输层通过Socket接口，区分来自不同应用程序进程或网络连接的通信，实现数据传输的并发服务<span class="token punctuation">(</span>所有应用层都一样？<span class="token punctuation">)</span>
     
-3.HTTP等应用层协议，格式的统一（像串口协议一样，格式和速度）
+<span class="token number">3</span><span class="token punctuation">.</span>HTTP等应用层协议，格式的统一（像串口协议一样，格式和速度）
     
-4.Http是基于TCP协议的，tcp计算机通信传数据，但是无法解析数据，解析需要http协议
+<span class="token number">4</span><span class="token punctuation">.</span>Http是基于TCP协议的，tcp计算机通信传数据，但是无法解析数据，解析需要http协议
 </code></pre>
 <p>http是网络上层协议。底层还是socket短连接是发送数据时进行联接。发送完关闭(http基于短连接的tcp协议)；可以认为不论应用层协议使用的是什么，都是通过调用Socket(对传输层的封装)去进行数据传输的。</p>
 <p>具体应用层使用什么协议，需要按照实际需求去进行操作，比如短连接则可以通过http请求实现；长链接可以使用调用Socket去实现。</p>
-<pre><code>    长连接：通信双方长期的保持一个连接状态不断开，一旦建立连接后，就不断开，除非发生异常，比较消耗IO资源。
+<pre class=" language-java"><code class="language-java">    长连接：通信双方长期的保持一个连接状态不断开，一旦建立连接后，就不断开，除非发生异常，比较消耗IO资源。
 
     短连接：通信双方不是保持一个长期的连接状态，比如Http协议，当客户端发起http请求，服务器处理http请求，当服务器处理完成后，返回客户端数据后就断开链接。
 </code></pre>
