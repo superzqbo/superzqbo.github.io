@@ -576,7 +576,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-07-05
+                    2022-07-08
                 </div>
                 
 
@@ -735,16 +735,16 @@ docker exec <span class="token operator">-</span>it 容器ID  <span class="token
 docker attach 容器ID 
 </code></pre>
 <p>从镜像的角度看，可以把容器看成是简易版本的Linux环境，</p>
-<pre><code># 将容器内的内容拷贝到宿主机上
+<pre class=" language-java"><code class="language-java"># 将容器内的内容拷贝到宿主机上
 $ docker cp 容器ID：容器内路径  宿主机路径
 
-# 将容器拷贝到宿主机上,归档成一个tar包
-$ docker export 容器ID  &gt;  文件名.tar
-eg: docker export efewtwe1231  &gt;  ubunto.tar
+# 将容器拷贝到宿主机上<span class="token punctuation">,</span>归档成一个tar包
+$ docker export 容器ID  <span class="token operator">></span>  文件名<span class="token punctuation">.</span>tar
+eg<span class="token operator">:</span> docker export efewtwe1231  <span class="token operator">></span>  ubunto<span class="token punctuation">.</span>tar
 
-# 根据tar包的内容创建一个新的系统并导入成镜像(即新建一个镜像)
-$ cat  文件名.tar | docker import - 镜像用户/镜像名：版本号
-eg: cat  ubunto.tar | docker import - techen/ubanto：3.7
+# 根据tar包的内容创建一个新的系统并导入成镜像<span class="token punctuation">(</span>即新建一个镜像<span class="token punctuation">)</span>
+$ cat  文件名<span class="token punctuation">.</span>tar <span class="token operator">|</span> docker <span class="token keyword">import</span> <span class="token operator">-</span> 镜像用户<span class="token operator">/</span>镜像名：版本号
+eg<span class="token operator">:</span> cat  ubunto<span class="token punctuation">.</span>tar <span class="token operator">|</span> docker <span class="token keyword">import</span> <span class="token operator">-</span> techen<span class="token operator">/</span>ubanto：<span class="token number">3.7</span>
 </code></pre>
 <h3 id="四、Docker仓库"><a href="#四、Docker仓库" class="headerlink" title="四、Docker仓库"></a>四、Docker仓库</h3><p>镜像是只读的，容器是可写的，一般在容器当中新增功能，然后使用commit指令生成新的镜像</p>
 <pre class=" language-java"><code class="language-java"># 提交镜像<span class="token operator">:</span>提交之后成为了一个新的镜像

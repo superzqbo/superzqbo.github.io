@@ -572,7 +572,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-07-07
+                    2022-07-08
                 </div>
                 
 
@@ -624,12 +624,12 @@ IP 设计的目的是为了实现大规模主机的互联互通。
 <p><strong>一般处于协议上层的是TCP、UDP协议，IP协议处于下层，这个从TCP&#x2F;IP四层协议当也可以看得到，IP协议是不可靠的，需要为上层的TCP协议提供通信支持，TCP协议是可靠的，因为有三次握手四次挥手。</strong></p>
 <p>应用程序比如浏览器、电子邮件、文件传输服务器等产生的数据，会通过传输层协议进行传输，而应用程序是不会和传输层直接建立联系的，而是有一个能够连接应用层和传输层之间的套件，这个套件就是 <code>Socket</code>。</p>
 <p>应用程序的下面就是操作系统内部，操作系统内部包括协议栈，协议栈是一系列协议的堆叠。操作系统下面就是网卡驱动程序，网卡驱动程序负责控制网卡硬件，驱动程序驱动网卡硬件完成收发工作.</p>
-<h3 id="二、通过netstat-命令来展示套接字"><a href="#二、通过netstat-命令来展示套接字" class="headerlink" title="二、通过netstat 命令来展示套接字"></a>二、通过netstat 命令来展示套接字</h3><pre class=" language-java"><code class="language-java"> netstat <span class="token operator">-</span>ano
+<h3 id="二、通过netstat-命令来展示套接字"><a href="#二、通过netstat-命令来展示套接字" class="headerlink" title="二、通过netstat 命令来展示套接字"></a>二、通过netstat 命令来展示套接字</h3><pre class=" language-java"><code class="language-java">netstat <span class="token operator">-</span>ano
  
- # netstat 用于显示套接字内容 <span class="token punctuation">,</span> <span class="token operator">-</span>ano 是可选选项
- # a 不仅显示正在通信的套接字，还显示包括尚未开始通信等状态的所有套接字
- # n 显示 IP 地址和端口号
- # o 显示套接字的程序 PID
+# netstat 用于显示套接字内容 <span class="token punctuation">,</span> <span class="token operator">-</span>ano 是可选选项
+# a 不仅显示正在通信的套接字，还显示包括尚未开始通信等状态的所有套接字
+# n 显示 IP 地址和端口号
+# o 显示套接字的程序 PID
 </code></pre>
 <p><img src="https://pic3.zhimg.com/v2-a5b445147b1f4a683500901d35704662_r.jpg" alt="preview"></p>
 <p>图中的每一行都相当于一个套接字，每一列也被称为一个元组，所以一个套接字就是五元组（协议、本地地址、外部地址、状态、PID）。有的时候也被叫做四元组，四元组不包括协议。</p>
@@ -684,9 +684,9 @@ IP 设计的目的是为了实现大规模主机的互联互通。
 </code></pre>
 <p>http是网络上层协议。底层还是socket短连接是发送数据时进行联接。发送完关闭(http基于短连接的tcp协议)；可以认为不论应用层协议使用的是什么，都是通过调用Socket(对传输层的封装)去进行数据传输的。</p>
 <p>具体应用层使用什么协议，需要按照实际需求去进行操作，比如短连接则可以通过http请求实现；长链接可以使用调用Socket去实现。</p>
-<pre class=" language-java"><code class="language-java">    长连接：通信双方长期的保持一个连接状态不断开，一旦建立连接后，就不断开，除非发生异常，比较消耗IO资源。
+<pre class=" language-java"><code class="language-java">长连接：通信双方长期的保持一个连接状态不断开，一旦建立连接后，就不断开，除非发生异常，比较消耗IO资源。
 
-    短连接：通信双方不是保持一个长期的连接状态，比如Http协议，当客户端发起http请求，服务器处理http请求，当服务器处理完成后，返回客户端数据后就断开链接。
+短连接：通信双方不是保持一个长期的连接状态，比如Http协议，当客户端发起http请求，服务器处理http请求，当服务器处理完成后，返回客户端数据后就断开链接。
 </code></pre>
 
                 
