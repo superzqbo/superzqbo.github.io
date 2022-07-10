@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-07-08T13:40:35.398Z</updated>
+  <updated>2022-07-10T12:35:55.452Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo部署到服务器</title>
+    <link href="https://superzqbo.github.io/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/"/>
+    <id>https://superzqbo.github.io/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/</id>
+    <published>2022-07-10T12:26:16.000Z</published>
+    <updated>2022-07-10T12:35:55.452Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、服务器配置&quot;&gt;&lt;a href=&quot;#一、服务器配置&quot; class=&quot;headerlink&quot; title=&quot;一、服务器配置&quot;&gt;&lt;/a&gt;一、服务器配置&lt;/h2&gt;&lt;h3 id=&quot;1-1-新建用户作为git登陆用户&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Hexo" scheme="https://superzqbo.github.io/categories/Hexo/"/>
+    
+    
+    <category term="Hexo" scheme="https://superzqbo.github.io/tags/Hexo/"/>
+    
+    <category term="Nginx" scheme="https://superzqbo.github.io/tags/Nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>Socket通信</title>
@@ -74,7 +101,7 @@
     <link href="https://superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/"/>
     <id>https://superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/</id>
     <published>2022-05-10T16:10:41.000Z</published>
-    <updated>2022-06-12T09:38:34.939Z</updated>
+    <updated>2022-07-10T12:29:58.915Z</updated>
     
     
       
@@ -92,7 +119,7 @@
     <category term="网络工具" scheme="https://superzqbo.github.io/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="Makrdown" scheme="https://superzqbo.github.io/tags/Makrdown/"/>
+    <category term="Markdown" scheme="https://superzqbo.github.io/tags/Markdown/"/>
     
   </entry>
   

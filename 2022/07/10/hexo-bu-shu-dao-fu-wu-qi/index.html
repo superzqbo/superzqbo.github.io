@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="如何搭建个人博客, 牧羊人">
-    <meta name="description" content="Welcome come to my blog
-这是概览，期间能遇到各种报错，只需复制报错信息到网上查找即可。
-1.注册git账号（zhangsan），创建以账号名加.github.io为名的仓库（zhangsan.github.io即为博">
+    <meta name="keywords" content="Hexo部署到服务器, 牧羊人">
+    <meta name="description" content="一、服务器配置1.1 新建用户作为git登陆用户[root@VM-12-10-centos superzqbo]# sudo adduser git
+[root@VM-12-10-centos superzqbo]# sudo passwd">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +20,7 @@
 
     
 
-    <title>如何搭建个人博客 | 牧羊人</title>
+    <title>Hexo部署到服务器 | 牧羊人</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -419,12 +418,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/source/images/xxx.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">如何搭建个人博客</h1>
+                    <h1 class="description center-align post-title">Hexo部署到服务器</h1>
                 </div>
             </div>
         </div>
@@ -434,10 +433,104 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -446,8 +539,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Typora/">
-                                <span class="chip bg-color">Typora</span>
+                            <a href="/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
+                            </a>
+                        
+                            <a href="/tags/Nginx/">
+                                <span class="chip bg-color">Nginx</span>
                             </a>
                         
                     </div>
@@ -458,8 +555,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                工具
+                            <a href="/categories/Hexo/" class="post-category">
+                                Hexo
                             </a>
                         
                     </div>
@@ -471,28 +568,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-06
+                    2022-07-10
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-06-12
+                    2022-07-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    213
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    7 分
                 </div>
                 
 
@@ -512,17 +609,232 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome come to my blog</p>
-<p>这是概览，期间能遇到各种报错，只需复制报错信息到网上查找即可。</p>
-<p>1.注册git账号（zhangsan），创建以账号名加.github.io为名的仓库（zhangsan.github.io即为博客地址，输入浏览器即可浏览）</p>
-<p>2.在windows中安装gitbash，安装Nodejs，Nodejs要设置环境变量</p>
-<p>3.下载hexo，将git仓库的ssh地址写入配置文件</p>
-<p>4.windows中生成git的rsa密钥，将id_rsa.pub添加都git账号的ssh key中，一个系统中可以支持多个git密钥的生成，都生成在~&#x2F;.ssh&#x2F;目录下，命名不同即可</p>
-<p>5.hexo常用命令</p>
-<p>hexo new “titename” (生成文章，默认在source&#x2F;_post&#x2F;下，内容以markdown编辑)</p>
-<p>hexo clean(清理旧的生成)</p>
-<p>hexo generation（重新生成页面）</p>
-<p>hexo deploy（部署到git上，部署前，如果</p>
+                <h2 id="一、服务器配置"><a href="#一、服务器配置" class="headerlink" title="一、服务器配置"></a>一、服务器配置</h2><h3 id="1-1-新建用户作为git登陆用户"><a href="#1-1-新建用户作为git登陆用户" class="headerlink" title="1.1 新建用户作为git登陆用户"></a>1.1 新建用户作为git登陆用户</h3><pre class=" language-html"><code class="language-html">[root@VM-12-10-centos superzqbo]# sudo adduser git
+[root@VM-12-10-centos superzqbo]# sudo passwd git
+更改用户 git 的密码 。
+新的 密码：
+重新输入新的 密码：
+passwd：所有的身份验证令牌已经成功更新。
+</code></pre>
+<h3 id="1-2-修改新建用户的权限为git权限"><a href="#1-2-修改新建用户的权限为git权限" class="headerlink" title="1.2 修改新建用户的权限为git权限"></a>1.2 修改新建用户的权限为git权限</h3><p>现在这个用户是具备 SSH 权限的，我们需将其切换为仅具有 git 权限。</p>
+<pre class=" language-html"><code class="language-html">$ vi /etc/passwd
+
+# git:x:1001:1001::/home/git:/bin/bash 修改为下面的
+$ git:x:1001:1001::/home/git:/bin/git-shell
+</code></pre>
+<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220707235803442.png" alt="image-20220707235803442"></p>
+<h3 id="1-3-安装git"><a href="#1-3-安装git" class="headerlink" title="1.3 安装git"></a>1.3 安装git</h3><pre class=" language-html"><code class="language-html">[root@VM-12-10-centos superzqbo]# sudo yum install -y git
+</code></pre>
+<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220707210450899.png" alt="image-20220707210450899"></p>
+<h3 id="1-4-生成git密钥"><a href="#1-4-生成git密钥" class="headerlink" title="1.4 生成git密钥"></a>1.4 生成git密钥</h3><p><code>ssh</code>，简单来讲，就是一个秘钥，其中，<code>id_rsa</code>是你这台电脑的私人秘钥，不能给别人看的，<code>id_rsa.pub</code>是公共秘钥，可以随便给别人看。把这个公钥放在<code>git仓库</code>上，这样当你链接<code>git仓库</code>自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过<code>git</code>上传你的文件到<code>git仓库</code>上。</p>
+<p>如果有生成过git密钥，直接去~&#x2F;.ssh&#x2F;目录下查找即可，该目录下有两个文件</p>
+<pre class=" language-html"><code class="language-html">公钥：id_rsa.pub
+私钥：id_rsa
+</code></pre>
+<p>如果之前没有生成过，就需要使用下面指令生成一个</p>
+<pre class=" language-html"><code class="language-html">ssh-keygen -t rsa -C "superzqbo@163.com"
+</code></pre>
+<h3 id="1-5-将密钥保存在服务器"><a href="#1-5-将密钥保存在服务器" class="headerlink" title="1.5 将密钥保存在服务器"></a>1.5 将密钥保存在服务器</h3><pre class=" language-html"><code class="language-html">1、服务器运行下面命令，创建.ssh文件夹
+$ su git
+$ mkdir ~/.ssh
+
+2、创建.ssh/authorized_keys文件，打开authorized_keys文件并将id_rsa.pub的内容复制拷贝其中并保存
+$ vim ~/.ssh/authorized_keys
+
+3、修改权限
+$ chmod 755 ~
+$ chmod 700 ~/.ssh
+$ chmod 600 ~/.ssh/authorized_keys
+
+4、测试本地连接服务器（git bash here）,连接成功表示本地和服务器连接时ok的
+$ ssh -v git@42.194.221.71
+</code></pre>
+<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220707214208446.png" alt="image-20220707214208446"></p>
+<h3 id="1-6-创建git仓库"><a href="#1-6-创建git仓库" class="headerlink" title="1.6 创建git仓库"></a>1.6 创建git仓库</h3><pre class=" language-html"><code class="language-html">1、切换到root用户，创建一个目录用于存储网站的根目录
+$ su root
+
+2、创建网站的根目录
+$ mkdir /home/superzqbo/git/hexo
+$ cd /home/superzqbo/git
+
+3、修改用户所有权和用户权限（将当前目录下，所有文件的拥有者修改为git，用户组改为 git）
+$ chown -R  git:git  hexo
+$ chown -R 755 hexo
+$ cd hexo
+
+4、创建一个git项目（这里有一个细节，就是.git目录必须要有可读写权限，因为当我们在push的时候，是使用git用户推送到服务器上面去，会有一个写入的过程，如果不赋予可写权限，push就会失败。git目录，用于存储记录版本信息）
+$ git init --bare hexo.git
+
+5、新建git 钩子 post-receive，方便博客推送自动部署(相当于拷贝一份到Ngnix的html当中)
+$ vim hexo.git/hooks/post-receive
+# 输入下面的数据
+#!/bin/sh
+git --work-tree=/home/superzqbo/hexo --git-dir=/home/superzqbo/git/hexo/hexo.git checkout -f
+
+6、赋予这个文件可执行权限
+chmod +x /home/superzqbo/git/hexo/hexo.git/hooks/post-receive
+</code></pre>
+<p><strong>钩子函数解析</strong></p>
+<pre class=" language-java"><code class="language-java">git <span class="token operator">--</span>work<span class="token operator">-</span>tree<span class="token operator">=</span><span class="token operator">/</span>home<span class="token operator">/</span>superzqbo<span class="token operator">/</span>hexo <span class="token operator">--</span>git<span class="token operator">-</span>dir<span class="token operator">=</span><span class="token operator">/</span>home<span class="token operator">/</span>superzqbo<span class="token operator">/</span>git<span class="token operator">/</span>hexo<span class="token operator">/</span>hexo<span class="token punctuation">.</span>git checkout <span class="token operator">-</span>f
+# <span class="token operator">--</span>work<span class="token operator">-</span>tree<span class="token operator">=</span><span class="token operator">/</span>home<span class="token operator">/</span>superzqbo<span class="token operator">/</span>hexo 指定hexo文件的位置<span class="token punctuation">(</span>ngnix的根目录<span class="token punctuation">)</span>  
+  
+# <span class="token operator">--</span>git<span class="token operator">-</span>dir<span class="token operator">=</span><span class="token operator">/</span>home<span class="token operator">/</span>superzqbo<span class="token operator">/</span>git<span class="token operator">/</span>hexo<span class="token operator">/</span>hexo<span class="token punctuation">.</span>git git仓库的地址
+</code></pre>
+<p>此时，使用客户端上传代码后，除了在仓库下还会在<code>/home/superzqbo/hexo</code>目录下生成上传的代码，Nginx当中指定地址是这个即可。</p>
+<h2 id="二、客户端配置"><a href="#二、客户端配置" class="headerlink" title="二、客户端配置"></a>二、客户端配置</h2><h3 id="2-1-配置"><a href="#2-1-配置" class="headerlink" title="2.1 配置"></a>2.1 配置</h3><p>博客根目录_config下增加</p>
+<pre class=" language-java"><code class="language-java">root<span class="token operator">:</span> <span class="token operator">/</span>
+deploy<span class="token operator">:</span>
+  type<span class="token operator">:</span> git   
+  # 用户@服务器地址<span class="token operator">:</span>git仓库地址
+  repository<span class="token operator">:</span> git<span class="token annotation punctuation">@42</span><span class="token punctuation">.</span><span class="token number">194.221</span><span class="token punctuation">.</span><span class="token number">71</span><span class="token operator">:</span><span class="token operator">/</span>home<span class="token operator">/</span>superzqbo<span class="token operator">/</span>git<span class="token operator">/</span>hexo<span class="token operator">/</span>hexo<span class="token punctuation">.</span>git
+  branch<span class="token operator">:</span> master
+</code></pre>
+<h3 id="2-2-部署"><a href="#2-2-部署" class="headerlink" title="2.2 部署"></a>2.2 部署</h3><pre class=" language-text"><code class="language-text">hexo clean
+hexo g
+hexo d
+</code></pre>
+<h3 id="2-3-Nginx配置"><a href="#2-3-Nginx配置" class="headerlink" title="2.3 Nginx配置"></a>2.3 Nginx配置</h3><p>参考地址：<a target="_blank" rel="noopener" href="https://www.yyyzyyyz.cn/posts/45dafe31d273/">https://www.yyyzyyyz.cn/posts/45dafe31d273/</a></p>
+<pre class=" language-java"><code class="language-java"># 安装
+$ yum install <span class="token operator">-</span>y nginx
+
+# 查看Nginx配置文件的位置
+$ whereis nginx
+  
+# 设置开机自启
+$ systemctl enable nginx<span class="token punctuation">.</span>service
+  
+# 检查配置文件
+$ nginx <span class="token operator">-</span>t
+</code></pre>
+<p><strong>配置nginx为服务(Systemd服务)</strong></p>
+<pre class=" language-java"><code class="language-java">vim <span class="token operator">/</span>lib<span class="token operator">/</span>systemd<span class="token operator">/</span>system<span class="token operator">/</span>nginx<span class="token punctuation">.</span>service
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
+  
+<span class="token punctuation">[</span>Unit<span class="token punctuation">]</span>
+Description<span class="token operator">=</span>nginx
+After<span class="token operator">=</span>network<span class="token punctuation">.</span>target
+  
+<span class="token punctuation">[</span>Service<span class="token punctuation">]</span>
+Type<span class="token operator">=</span>forking
+ExecStart<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>nginx<span class="token operator">/</span>sbin<span class="token operator">/</span>nginx
+ExecReload<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>nginx<span class="token operator">/</span>sbin<span class="token operator">/</span>nginx <span class="token operator">-</span>s reload
+ExecStop<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>nginx<span class="token operator">/</span>sbin<span class="token operator">/</span>nginx <span class="token operator">-</span>s quit
+PrivateTmp<span class="token operator">=</span> <span class="token boolean">true</span>
+  
+<span class="token punctuation">[</span>Install<span class="token punctuation">]</span>
+WantedBy<span class="token operator">=</span>multi<span class="token operator">-</span>user<span class="token punctuation">.</span>target
+  
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>  
+<span class="token punctuation">[</span>Unit<span class="token punctuation">]</span><span class="token operator">:</span>服务的说明
+Description<span class="token operator">:</span>描述服务
+After<span class="token operator">:</span>描述服务类别
+<span class="token punctuation">[</span>Service<span class="token punctuation">]</span>服务运行参数的设置
+Type<span class="token operator">=</span>forking是后台运行的形式
+ExecStart为服务的具体运行命令
+ExecReload为重启命令
+ExecStop为停止命令
+PrivateTmp<span class="token operator">=</span>True表示给服务分配独立的临时空间
+注意：<span class="token punctuation">[</span>Service<span class="token punctuation">]</span>的启动、重启、停止命令全部要求使用绝对路径
+<span class="token punctuation">[</span>Install<span class="token punctuation">]</span>运行级别下服务安装的相关设置，可设置为多用户，即系统运行级别为<span class="token number">3</span>
+</code></pre>
+<p><strong>配置如下</strong></p>
+<pre class=" language-java"><code class="language-java">    server <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        listen       <span class="token number">80</span> default_server<span class="token punctuation">;</span>
+        listen       <span class="token punctuation">[</span><span class="token operator">:</span><span class="token operator">:</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token number">80</span> default_server<span class="token punctuation">;</span>
+        server_name  <span class="token number">42.194</span><span class="token punctuation">.</span><span class="token number">221.71</span><span class="token punctuation">;</span>
+        root         <span class="token operator">/</span>home<span class="token operator">/</span>superzqbo<span class="token operator">/</span>hexo<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 代码地址</span>
+
+        charset koi8<span class="token operator">-</span>r<span class="token punctuation">;</span>
+
+        # access_log  <span class="token operator">/</span>var<span class="token operator">/</span>log<span class="token operator">/</span>nginx<span class="token operator">/</span>host<span class="token punctuation">.</span>access<span class="token punctuation">.</span>log  main<span class="token punctuation">;</span>
+
+        location <span class="token operator">/</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+        error_page  <span class="token number">404</span>              <span class="token operator">/</span><span class="token number">404</span><span class="token punctuation">.</span>html<span class="token punctuation">;</span>
+        location <span class="token operator">=</span> <span class="token operator">/</span>40x<span class="token punctuation">.</span>html <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+        # redirect server error pages to the <span class="token keyword">static</span> page <span class="token operator">/</span>50x<span class="token punctuation">.</span>html
+        #
+        error_page   <span class="token number">500</span> <span class="token number">502</span> <span class="token number">503</span> <span class="token number">504</span>  <span class="token operator">/</span>50x<span class="token punctuation">.</span>html<span class="token punctuation">;</span>
+        location <span class="token operator">=</span> <span class="token operator">/</span>50x<span class="token punctuation">.</span>html <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+             root   html<span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+        # proxy the PHP scripts to Apache listening on <span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token operator">:</span><span class="token number">80</span>
+        #
+        #location <span class="token operator">~</span> \<span class="token punctuation">.</span>php$ <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        #    proxy_pass   http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token punctuation">;</span>
+        #<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+        # pass the PHP scripts to FastCGI server listening on <span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9000</span>
+        #
+        #location <span class="token operator">~</span> \<span class="token punctuation">.</span>php$ <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        #    root           html<span class="token punctuation">;</span>
+        #    fastcgi_pass   <span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9000</span><span class="token punctuation">;</span>
+        #    fastcgi_index  index<span class="token punctuation">.</span>php<span class="token punctuation">;</span>
+        #    fastcgi_param  SCRIPT_FILENAME  <span class="token operator">/</span>scripts$fastcgi_script_name<span class="token punctuation">;</span>
+        #    include        fastcgi_params<span class="token punctuation">;</span>
+        #<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+        # deny access to <span class="token punctuation">.</span>htaccess files<span class="token punctuation">,</span> <span class="token keyword">if</span> Apache's document root
+        # concurs with nginx's one
+        #
+        #location <span class="token operator">~</span> <span class="token operator">/</span>\<span class="token punctuation">.</span>ht <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        #    deny  all<span class="token punctuation">;</span>
+        #<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="三、Https配置"><a href="#三、Https配置" class="headerlink" title="三、Https配置"></a>三、Https配置</h2><p>参考地址： <a target="_blank" rel="noopener" href="https://www.freesion.com/article/16501347598/">https://www.freesion.com/article/16501347598/</a></p>
+<p>步奏如下</p>
+<pre class=" language-java"><code class="language-java"><span class="token number">1</span>、首先我们要拥有一个域名。本文使用的是腾讯云注册的域名。接着申请免费的SSL域名证书。
+  
+<span class="token number">2</span>、腾讯云首页登录后搜索SSL（其他网站类似），申请SSL证书，一般申请过程会在<span class="token number">4</span>小时以内给出结果
+  
+<span class="token number">3</span>、SSL证书申请成功之后，将其文件点击下载到本地上。这里我们使用的是Nginx证书
+  
+<span class="token number">4</span>、在服务器Nginx配置文件同级目录创建一个conf目录，将Nginx证书上传到该目录下
+  
+<span class="token number">5</span>、修改Nginx配置文件
+</code></pre>
+<pre class=" language-java"><code class="language-java">    # HTTPS server
+    #
+    server <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        #SSL 访问端口号为 <span class="token number">443</span>
+        listen       <span class="token number">443</span> ssl<span class="token punctuation">;</span>
+        #填写绑定证书的域名
+        server_name  www<span class="token punctuation">.</span>superbo<span class="token punctuation">.</span>cloud<span class="token punctuation">;</span>
+        #证书文件名称
+        ssl_certificate      <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>nginx<span class="token operator">/</span>conf<span class="token operator">/</span>conf<span class="token operator">/</span>superbo<span class="token punctuation">.</span>cloud_bundle<span class="token punctuation">.</span>pem<span class="token punctuation">;</span>
+        #私钥文件名称
+        ssl_certificate_key  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>nginx<span class="token operator">/</span>conf<span class="token operator">/</span>conf<span class="token operator">/</span>superbo<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>key<span class="token punctuation">;</span>
+
+        ssl_session_cache    shared<span class="token operator">:</span>SSL<span class="token operator">:</span>1m<span class="token punctuation">;</span>
+        ssl_session_timeout  5m<span class="token punctuation">;</span>
+
+        #请按照以下协议配置
+        ssl_protocols TLSv1 TLSv1<span class="token number">.1</span> TLSv1<span class="token number">.2</span><span class="token punctuation">;</span>
+        #请按照以下套件配置，配置加密套件，写法遵循 openssl 标准。
+        ssl_ciphers ECDHE<span class="token operator">-</span>RSA<span class="token operator">-</span>AES128<span class="token operator">-</span>GCM<span class="token operator">-</span>SHA256<span class="token operator">:</span>HIGH<span class="token operator">:</span><span class="token operator">!</span>aNULL<span class="token operator">:</span><span class="token operator">!</span>MD5<span class="token operator">:</span><span class="token operator">!</span>RC4<span class="token operator">:</span><span class="token operator">!</span>DHE<span class="token punctuation">;</span>
+        ssl_prefer_server_ciphers  on<span class="token punctuation">;</span>
+
+        root         <span class="token operator">/</span>home<span class="token operator">/</span>superzqbo<span class="token operator">/</span>hexo<span class="token punctuation">;</span>
+        location <span class="token operator">/</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    server <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        listen <span class="token number">80</span><span class="token punctuation">;</span>
+
+        #填写绑定证书的域名
+        server_name www<span class="token punctuation">.</span>superbo<span class="token punctuation">.</span>cloud<span class="token punctuation">;</span>
+
+        #把http的域名请求转成https
+        <span class="token keyword">return</span> <span class="token number">301</span> https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>$host$request_uri<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+</code></pre>
+<p>注意，如果网站想要正常访问，还需要进行备案！</p>
 
                 
             </div>
@@ -549,7 +861,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://superzqbo.github.io/2022/05/06/ru-he-da-jian-ge-ren-bo-ke/">https://superzqbo.github.io/2022/05/06/ru-he-da-jian-ge-ren-bo-ke/</a>
+                    <a href="https://superzqbo.github.io/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/">https://superzqbo.github.io/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -587,8 +899,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Typora/">
-                                    <span class="chip bg-color">Typora</span>
+                                <a href="/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
+                                </a>
+                            
+                                <a href="/tags/Nginx/">
+                                    <span class="chip bg-color">Nginx</span>
                                 </a>
                             
                         </div>
@@ -1028,17 +1344,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/05/11/wireshark-shi-yong-shou-ce/">
+                <a href="/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="wireshark使用手册">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Hexo部署到服务器">
                         
-                        <span class="card-title">wireshark使用手册</span>
+                        <span class="card-title">Hexo部署到服务器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1048,26 +1365,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    网络工具
+                            <a href="/categories/Hexo/" class="post-category">
+                                    Hexo
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/Nginx/">
+                        <span class="chip bg-color">Nginx</span>
                     </a>
                     
                 </div>
@@ -1081,13 +1403,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/05/hello-world/">
+                <a href="/2022/07/06/socket-tong-xin/">
                     <div class="card-image">
                         
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220707000317084.png" class="responsive-img" alt="Socket通信">
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Socket通信</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1098,12 +1419,16 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-06
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            superzqbo
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Mina/" class="post-category">
+                                    Mina
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1111,8 +1436,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/">
+                        <span class="chip bg-color">网络通信</span>
                     </a>
                     
                 </div>
@@ -1181,6 +1506,87 @@
 
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
 
     
 
