@@ -738,53 +738,53 @@ PrivateTmp<span class="token operator">=</span>True表示给服务分配独立�
 <span class="token punctuation">[</span>Install<span class="token punctuation">]</span>运行级别下服务安装的相关设置，可设置为多用户，即系统运行级别为<span class="token number">3</span>
 </code></pre>
 <p><strong>配置如下</strong></p>
-<pre class=" language-java"><code class="language-java">    server <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        listen       <span class="token number">80</span> default_server<span class="token punctuation">;</span>
-        listen       <span class="token punctuation">[</span><span class="token operator">:</span><span class="token operator">:</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token number">80</span> default_server<span class="token punctuation">;</span>
-        server_name  <span class="token number">42.194</span><span class="token punctuation">.</span><span class="token number">221.71</span><span class="token punctuation">;</span>
-        root         <span class="token operator">/</span>home<span class="token operator">/</span>superzqbo<span class="token operator">/</span>hexo<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 代码地址</span>
+<pre class=" language-html"><code class="language-html">server <span class="token entity" title="&#123;">&amp;#123;</span>
+  listen       80 default_server;
+  listen       [::]:80 default_server;
+  server_name  42.194.221.71;
+  root         /home/superzqbo/hexo;// 代码地址
 
-        charset koi8<span class="token operator">-</span>r<span class="token punctuation">;</span>
+  charset koi8-r;
 
-        # access_log  <span class="token operator">/</span>var<span class="token operator">/</span>log<span class="token operator">/</span>nginx<span class="token operator">/</span>host<span class="token punctuation">.</span>access<span class="token punctuation">.</span>log  main<span class="token punctuation">;</span>
+  # access_log  /var/log/nginx/host.access.log  main;
 
-        location <span class="token operator">/</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  location / <span class="token entity" title="&#123;">&amp;#123;</span>
+  <span class="token entity" title="&#125;">&amp;#125;</span>
 
-        error_page  <span class="token number">404</span>              <span class="token operator">/</span><span class="token number">404</span><span class="token punctuation">.</span>html<span class="token punctuation">;</span>
-        location <span class="token operator">=</span> <span class="token operator">/</span>40x<span class="token punctuation">.</span>html <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  error_page  404              /404.html;
+  location = /40x.html <span class="token entity" title="&#123;">&amp;#123;</span>
+  <span class="token entity" title="&#125;">&amp;#125;</span>
 
-        # redirect server error pages to the <span class="token keyword">static</span> page <span class="token operator">/</span>50x<span class="token punctuation">.</span>html
-        #
-        error_page   <span class="token number">500</span> <span class="token number">502</span> <span class="token number">503</span> <span class="token number">504</span>  <span class="token operator">/</span>50x<span class="token punctuation">.</span>html<span class="token punctuation">;</span>
-        location <span class="token operator">=</span> <span class="token operator">/</span>50x<span class="token punctuation">.</span>html <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-             root   html<span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+  location = /50x.html <span class="token entity" title="&#123;">&amp;#123;</span>
+    root   html;
+  <span class="token entity" title="&#125;">&amp;#125;</span>
 
-        # proxy the PHP scripts to Apache listening on <span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token operator">:</span><span class="token number">80</span>
-        #
-        #location <span class="token operator">~</span> \<span class="token punctuation">.</span>php$ <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        #    proxy_pass   http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token punctuation">;</span>
-        #<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ <span class="token entity" title="&#123;">&amp;#123;</span>
+    #    proxy_pass   http://127.0.0.1;
+    #<span class="token entity" title="&#125;">&amp;#125;</span>
 
-        # pass the PHP scripts to FastCGI server listening on <span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9000</span>
-        #
-        #location <span class="token operator">~</span> \<span class="token punctuation">.</span>php$ <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        #    root           html<span class="token punctuation">;</span>
-        #    fastcgi_pass   <span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9000</span><span class="token punctuation">;</span>
-        #    fastcgi_index  index<span class="token punctuation">.</span>php<span class="token punctuation">;</span>
-        #    fastcgi_param  SCRIPT_FILENAME  <span class="token operator">/</span>scripts$fastcgi_script_name<span class="token punctuation">;</span>
-        #    include        fastcgi_params<span class="token punctuation">;</span>
-        #<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    #location ~ \.php$ <span class="token entity" title="&#123;">&amp;#123;</span>
+    #    root           html;
+    #    fastcgi_pass   127.0.0.1:9000;
+    #    fastcgi_index  index.php;
+    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    #    include        fastcgi_params;
+    #<span class="token entity" title="&#125;">&amp;#125;</span>
 
-        # deny access to <span class="token punctuation">.</span>htaccess files<span class="token punctuation">,</span> <span class="token keyword">if</span> Apache's document root
-        # concurs with nginx's one
-        #
-        #location <span class="token operator">~</span> <span class="token operator">/</span>\<span class="token punctuation">.</span>ht <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        #    deny  all<span class="token punctuation">;</span>
-        #<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht <span class="token entity" title="&#123;">&amp;#123;</span>
+    #    deny  all;
+    #<span class="token entity" title="&#125;">&amp;#125;</span>
+<span class="token entity" title="&#125;">&amp;#125;</span>
 </code></pre>
 <h2 id="三、Https配置"><a href="#三、Https配置" class="headerlink" title="三、Https配置"></a>三、Https配置</h2><p>参考地址： <a target="_blank" rel="noopener" href="https://www.freesion.com/article/16501347598/">https://www.freesion.com/article/16501347598/</a></p>
 <p>步奏如下</p>
@@ -798,41 +798,41 @@ PrivateTmp<span class="token operator">=</span>True表示给服务分配独立�
   
 <span class="token number">5</span>、修改Nginx配置文件
 </code></pre>
-<pre class=" language-java"><code class="language-java">    # HTTPS server
+<pre class=" language-html"><code class="language-html">    # HTTPS server
     #
-    server <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        #SSL 访问端口号为 <span class="token number">443</span>
-        listen       <span class="token number">443</span> ssl<span class="token punctuation">;</span>
+    server <span class="token entity" title="&#123;">&amp;#123;</span>
+        #SSL 访问端口号为 443
+        listen       443 ssl;
         #填写绑定证书的域名
-        server_name  www<span class="token punctuation">.</span>superbo<span class="token punctuation">.</span>cloud<span class="token punctuation">;</span>
+        server_name  www.superbo.cloud;
         #证书文件名称
-        ssl_certificate      <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>nginx<span class="token operator">/</span>conf<span class="token operator">/</span>conf<span class="token operator">/</span>superbo<span class="token punctuation">.</span>cloud_bundle<span class="token punctuation">.</span>pem<span class="token punctuation">;</span>
+        ssl_certificate      /usr/local/nginx/conf/conf/superbo.cloud_bundle.pem;
         #私钥文件名称
-        ssl_certificate_key  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>nginx<span class="token operator">/</span>conf<span class="token operator">/</span>conf<span class="token operator">/</span>superbo<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>key<span class="token punctuation">;</span>
+        ssl_certificate_key  /usr/local/nginx/conf/conf/superbo.cloud.key;
 
-        ssl_session_cache    shared<span class="token operator">:</span>SSL<span class="token operator">:</span>1m<span class="token punctuation">;</span>
-        ssl_session_timeout  5m<span class="token punctuation">;</span>
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
 
         #请按照以下协议配置
-        ssl_protocols TLSv1 TLSv1<span class="token number">.1</span> TLSv1<span class="token number">.2</span><span class="token punctuation">;</span>
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
         #请按照以下套件配置，配置加密套件，写法遵循 openssl 标准。
-        ssl_ciphers ECDHE<span class="token operator">-</span>RSA<span class="token operator">-</span>AES128<span class="token operator">-</span>GCM<span class="token operator">-</span>SHA256<span class="token operator">:</span>HIGH<span class="token operator">:</span><span class="token operator">!</span>aNULL<span class="token operator">:</span><span class="token operator">!</span>MD5<span class="token operator">:</span><span class="token operator">!</span>RC4<span class="token operator">:</span><span class="token operator">!</span>DHE<span class="token punctuation">;</span>
-        ssl_prefer_server_ciphers  on<span class="token punctuation">;</span>
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+        ssl_prefer_server_ciphers  on;
 
-        root         <span class="token operator">/</span>home<span class="token operator">/</span>superzqbo<span class="token operator">/</span>hexo<span class="token punctuation">;</span>
-        location <span class="token operator">/</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        root         /home/superzqbo/hexo;
+        location / <span class="token entity" title="&#123;">&amp;#123;</span>
 
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    server <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        listen <span class="token number">80</span><span class="token punctuation">;</span>
+        <span class="token entity" title="&#125;">&amp;#125;</span>
+    <span class="token entity" title="&#125;">&amp;#125;</span>
+    server <span class="token entity" title="&#123;">&amp;#123;</span>
+        listen 80;
 
         #填写绑定证书的域名
-        server_name www<span class="token punctuation">.</span>superbo<span class="token punctuation">.</span>cloud<span class="token punctuation">;</span>
+        server_name www.superbo.cloud;
 
         #把http的域名请求转成https
-        <span class="token keyword">return</span> <span class="token number">301</span> https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>$host$request_uri<span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        return 301 https://$host$request_uri;
+    <span class="token entity" title="&#125;">&amp;#125;</span>
 </code></pre>
 <p>注意，如果网站想要正常访问，还需要进行备案！</p>
 
