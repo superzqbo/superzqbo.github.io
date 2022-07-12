@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-07-11T13:09:06.896Z</updated>
+  <updated>2022-07-12T13:53:37.844Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSql数组及JSON类型数据在Mybatis项目中的使用</title>
+    <link href="https://superzqbo.github.io/2022/07/12/postgresql-shu-zu-ji-json-lei-xing-shu-ju-zai-mybatis-xiang-mu-zhong-de-shi-yong/"/>
+    <id>https://superzqbo.github.io/2022/07/12/postgresql-shu-zu-ji-json-lei-xing-shu-ju-zai-mybatis-xiang-mu-zhong-de-shi-yong/</id>
+    <published>2022-07-12T13:46:37.000Z</published>
+    <updated>2022-07-12T13:53:37.844Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;postgresql提供了很多数据类型，某些特殊的类型无法同java数据类型映射。Mybatis提供了一些默认的TypeHandler，但不包含诸如数组、json这些类型在内。为了使用pgsql的这些类型，我们可以自己添加一些特定的typehandler，注册后就可以标注使</summary>
+        
+      
+    
+    
+    
+    <category term="PostgreSQL" scheme="https://superzqbo.github.io/categories/PostgreSQL/"/>
+    
+    <category term="JSON" scheme="https://superzqbo.github.io/categories/PostgreSQL/JSON/"/>
+    
+    
+    <category term="随笔" scheme="https://superzqbo.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="PostgreSQL" scheme="https://superzqbo.github.io/tags/PostgreSQL/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo部署到服务器</title>

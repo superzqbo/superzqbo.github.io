@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>PostgreSql数组及JSON类型数据在Mybatis项目中的使用</title>
+      <link href="/2022/07/12/postgresql-shu-zu-ji-json-lei-xing-shu-ju-zai-mybatis-xiang-mu-zhong-de-shi-yong/"/>
+      <url>/2022/07/12/postgresql-shu-zu-ji-json-lei-xing-shu-ju-zai-mybatis-xiang-mu-zhong-de-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<p>postgresql提供了很多数据类型，某些特殊的类型无法同java数据类型映射。Mybatis提供了一些默认的TypeHandler，但不包含诸如数组、json这些类型在内。为了使用pgsql的这些类型，我们可以自己添加一些特定的typehandler，注册后就可以标注使用了。</p><p><strong>基本操作流程如下：</strong></p><pre class="language-java" data-language="java"><code class="language-java">1、定义实体类，继承BaseTypeHandler  2、在映射文件当中指明typeHandler是这个实体类  3、字符赋值为JSONObject类型</code></pre><p><strong>实体类代码块：</strong></p><pre class="language-java" data-language="java"><code class="language-java">package com.techen.ami.hes.jobserver.entity;import java.sql.CallableStatement;import java.sql.PreparedStatement;import java.sql.ResultSet;import java.sql.SQLException;import com.alibaba.fastjson.JSON;import org.apache.ibatis.type.BaseTypeHandler;import org.apache.ibatis.type.JdbcType;import org.postgresql.util.PGobject;&#x2F;** * @description: postgresql提供了很多数据类型，某些特殊的类型无法同java数据类型映射。Mybatis提供了一些默认的TypeHandler，但不包含诸如数组、json这些类型在内。为了使用pgsql的这些类型，我们可以自己添加一些特定的typehandler，注册后就可以标注使用了。 * @author: bozhiqiang * @updateTime: 2022&#x2F;7&#x2F;12 17:07 * @Param:  * @return:  * @throw: *&#x2F;public class JsonTypeHandler extends BaseTypeHandler&lt;Object&gt; &#123;    private static final PGobject pgObject &#x3D; new PGobject();    @Override    public Object getNullableResult(ResultSet resultSet, String columnLabel) throws SQLException &#123;        return resultSet.getString(columnLabel);    &#125;    @Override    public Object getNullableResult(ResultSet resultSet, int columnIndex) throws SQLException &#123;        return resultSet.getString(columnIndex);    &#125;    @Override    public Object getNullableResult(CallableStatement callableStatement, int parameterIndex) throws SQLException &#123;        return callableStatement.getString(parameterIndex);    &#125;    @Override    public void setNonNullParameter(PreparedStatement preparedStatement, int i, Object object, JdbcType jdbcType) throws SQLException &#123;        pgObject.setType(&quot;json&quot;);        pgObject.setValue(JSON.toJSONString(object));        preparedStatement.setObject(i, pgObject);    &#125;&#125;</code></pre><p><strong>JSONObject类型数据</strong></p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220712214436903.png" alt="image-20220712214436903"></p><p><strong>映射文件</strong></p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220712214502296.png" alt="image-20220712214502296"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> PostgreSQL </category>
+          
+          <category> JSON </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+            <tag> PostgreSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo部署到服务器</title>
       <link href="/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/"/>
       <url>/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/</url>
