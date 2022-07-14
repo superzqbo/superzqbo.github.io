@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-07-12T13:53:37.844Z</updated>
+  <updated>2022-07-14T13:18:52.520Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mybatis分页</title>
+    <link href="https://superzqbo.github.io/2022/07/14/mybatis-fen-ye/"/>
+    <id>https://superzqbo.github.io/2022/07/14/mybatis-fen-ye/</id>
+    <published>2022-07-14T13:13:46.000Z</published>
+    <updated>2022-07-14T13:18:52.520Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;mybatis分页查询&lt;/p&gt;
+&lt;pre class=&quot;language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;1、分页类定义
+    package com.techen.tap.vo;
+
+import</summary>
+        
+      
+    
+    
+    
+    <category term="Mybatis" scheme="https://superzqbo.github.io/categories/Mybatis/"/>
+    
+    
+    <category term="分页" scheme="https://superzqbo.github.io/tags/%E5%88%86%E9%A1%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>windows下查找java应用内存情况分析</title>
+    <link href="https://superzqbo.github.io/2022/07/14/windows-xia-cha-zhao-java-ying-yong-nei-cun-qing-kuang-fen-xi/"/>
+    <id>https://superzqbo.github.io/2022/07/14/windows-xia-cha-zhao-java-ying-yong-nei-cun-qing-kuang-fen-xi/</id>
+    <published>2022-07-14T13:12:46.000Z</published>
+    <updated>2022-07-14T13:21:00.775Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="内存分析" scheme="https://superzqbo.github.io/categories/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/"/>
+    
+    
+    <category term="内存分析" scheme="https://superzqbo.github.io/tags/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/"/>
+    
+    <category term="Windows" scheme="https://superzqbo.github.io/tags/Windows/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSql数组及JSON类型数据在Mybatis项目中的使用</title>
@@ -130,16 +186,14 @@
     <link href="https://superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/"/>
     <id>https://superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/</id>
     <published>2022-05-10T16:10:41.000Z</published>
-    <updated>2022-07-10T12:29:58.915Z</updated>
+    <updated>2022-07-14T13:11:35.626Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;这个抓包工具介绍,具体袭击我如下所示&lt;/p&gt;
-&lt;p&gt;这是概览，期间能遇到各种报错，只需复制报错信息到网上查找即可。&lt;/p&gt;
-&lt;p&gt;1.注册git账号（zhangsan），创建以账号名加.github.io为名的仓库（zhangsan.github.io即为博客地址，输入浏览</summary>
+    <summary type="html">&lt;h2 id=&quot;一、Wireshark-介绍&quot;&gt;&lt;a href=&quot;#一、Wireshark-介绍&quot; class=&quot;headerlink&quot; title=&quot;一、Wireshark 介绍&quot;&gt;&lt;/a&gt;一、Wireshark</summary>
         
       
     
@@ -148,7 +202,9 @@
     <category term="网络工具" scheme="https://superzqbo.github.io/categories/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="Markdown" scheme="https://superzqbo.github.io/tags/Markdown/"/>
+    <category term="网络" scheme="https://superzqbo.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="WireShark" scheme="https://superzqbo.github.io/tags/WireShark/"/>
     
   </entry>
   

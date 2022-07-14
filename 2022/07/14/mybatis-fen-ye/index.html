@@ -4,8 +4,15 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="friends, 牧羊人">
-    <meta name="description" content="牧羊人">
+    <meta name="keywords" content="mybatis分页, 牧羊人">
+    <meta name="description" content="mybatis分页查询
+1、分页类定义
+    package com.techen.tap.vo;
+
+import java.io.Serializable;
+import java.util.Map;
+
+import lombok.Ge">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +26,7 @@
 
     
 
-    <title>friends | 牧羊人</title>
+    <title>mybatis分页 | 牧羊人</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -413,337 +420,500 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
-    <div class="container">
-    <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                牧羊人
-                
-            </div>
+    
 
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "从来没有真正的绝境, 只有心灵的迷途",
-                            
-                                "Never really desperate, only the lost of the soul",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://superzqbo.oss-cn-hangzhou.aliyuncs.com/10997370f29ae7a5b6174ce532762a52f75cd670458ac-UKV8r3_fw1200.jpeg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">mybatis分页</h1>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
 
 
-    </div>
-</div>
-<style>
-    .friends-container {
-        margin-top: -100px;
-        margin-bottom: 30px;
-    }
+<main class="container content">
 
-    .friends-container .tag-title {
-        margin-bottom: 10px;
-        color: #3C4858;
-        font-size: 1.75rem;
-        font-weight: 400;
-    }
-
-    .frind-ship img {
-        border-radius: 50%;
-    }
-
-    /* 一下是按钮样式 */
-
-    .frind-ship {
-        padding: 10px 20px;
-    }
-
-    .frind-ship .title {
-        display: flex;
-        align-items: center;
-    }
-
-    .frind-ship .title div {
-        color: #fff;
-        padding-left: 10px;
-    }
-
-    .frind-ship .title img {
-        width: 100px;
-        height: 100px;
-        flex-shrink: 0;
-    }
-
-    .frind-ship .title h1 {
-        padding-bottom: 5px;
-        border-bottom: 2px solid #fff;
-        position: relative;
-        top:-15px;
-        left: 3px;
-    }
-
-    .friend-button {
-        display: flex;
-        justify-content: center;
-        margin-bottom: -27px;
-    }
-
-    .friend-button a {
-        border-radius: 40px;
-    }
-
-    .friend-all .tag-post {
-        margin-bottom: 30px;
-    }
-
-    .button-caution {
-        background-color: #FF4351;
-        border-color: #FF4351;
-        color: #FFF;
-    }
-
-    .button {
-        font-weight: 300;
-        font-size: 16px;
-        font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        text-decoration: none;
-        text-align: center;
-        line-height: 40px;
-        height: 40px;
-        padding: 0 40px;
-        margin: 0;
-        display: inline-block;
-        appearance: none;
-        cursor: pointer;
-        border: none;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        -webkit-transition-property: all;
-        transition-property: all;
-        -webkit-transition-duration: .3s;
-        transition-duration: .3s;
-    }
-
-    .title {
-        margin-bottom: 0rem !important;
-    }
-
-    .card {
-        margin: 3rem 0 1rem 0 !important;
-    }
-
-    .button-glow.button-caution {
-        -webkit-animation-name: glowing-caution;
-        animation-name: glowing-caution;
-    }
-
-    @-webkit-keyframes glowing-caution {
-        from {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-
-        50% {
-            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-        }
-
-        to {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-    }
-
-    @keyframes glowing-caution {
-        from {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-
-        50% {
-            -webkit-box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-            box-shadow: 0 0 20px rgba(255, 67, 81, 0.8);
-        }
-
-        to {
-            -webkit-box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-            box-shadow: 0 0 0 rgba(255, 67, 81, 0.3);
-        }
-    }
-
-    .button-caution:hover {
-        background-color: #ff7680;
-        border-color: #ff7680;
-        color: #FFF;
-        text-decoration: none;
-    }
-
-    .frind-card1 {
-        background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-    }
-
-    .frind-card2 {
-        background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-
-    .frind-card3 {
-        background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
-    }
-
-    .frind-card4 {
-        background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
-    }
-
-    .frind-card5 {
-        background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-    }
-
-    .frind-card6 {
-        background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
-    }
-
-    .frind-card7 {
-        background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
-    }
-
-    .frind-card8 {
-        background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
-    }
-
-    .frind-card9 {
-        background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
-    }
-
-    .frind-card10 {
-        background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);
-    }
-
-    article .card {
-        overflow: visible !important;
-    }
-</style>
-
-<main class="content">
-    <div class="container friends-container">
-        <div class="card">
-            <div class="card-content">
-                <div class="tag-title center-align">
-                    <i class="fas fa-address-book"></i>&nbsp;&nbsp;友情链接
-                </div>
-                <article id="friends-link">
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
                     
-                    
-                    <div class="row tags-posts friend-all">
+                    <div class="article-tag">
                         
-                        
-                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
-                            <div class="card frind-card1">
-                                <div class="frind-ship">
-                                    <div class="title">
-                                        <img src="http://image.luokangyuan.com/1_qq_27922023.jpg" alt="img">
-                                        <div>
-                                            <h1 class="friend-name">码酱</h1>
-                                            <p style="position: relative;top: -35px;">我不是大佬，只是在追寻大佬的脚步</p>
-                                        </div>
-                                    </div>
-                                    <div class="friend-button">
-                                        <a href="http://luokangyuan.com/" target="_blank"
-                                            class="button button-glow button-rounded button-caution">
-                                            前去学习
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
-                            <div class="card frind-card2">
-                                <div class="frind-ship">
-                                    <div class="title">
-                                        <img src="http://image.luokangyuan.com/4027734.jpeg" alt="img">
-                                        <div>
-                                            <h1 class="friend-name">闪烁之狐</h1>
-                                            <p style="position: relative;top: -35px;">编程界大佬，技术牛，人还特别好，不懂的都可以请教大佬</p>
-                                        </div>
-                                    </div>
-                                    <div class="friend-button">
-                                        <a href="https://blinkfox.github.io/" target="_blank"
-                                            class="button button-glow button-rounded button-caution">
-                                            前去学习
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="col s12 m6 l4 friend-div" data-aos="zoom-in-up">
-                            <div class="card frind-card3">
-                                <div class="frind-ship">
-                                    <div class="title">
-                                        <img src="http://image.luokangyuan.com/avatar.jpg" alt="img">
-                                        <div>
-                                            <h1 class="friend-name">ja_rome</h1>
-                                            <p style="position: relative;top: -35px;">平凡的脚步也可以走出伟大的行程</p>
-                                        </div>
-                                    </div>
-                                    <div class="friend-button">
-                                        <a href="ttps://me.csdn.net/jlh912008548" target="_blank"
-                                            class="button button-glow button-rounded button-caution">
-                                            前去学习
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <a href="/tags/%E5%88%86%E9%A1%B5/">
+                                <span class="chip bg-color">分页</span>
+                            </a>
                         
                     </div>
                     
-                </article>
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Mybatis/" class="post-category">
+                                Mybatis
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-07-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-07-14
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    937
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    5 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
-        <div class="card">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>mybatis分页查询</p>
+<pre class="language-none"><code class="language-none">1、分页类定义
+    package com.techen.tap.vo;
+
+import java.io.Serializable;
+import java.util.Map;
+
+import lombok.Getter;
+import lombok.Setter;
+
+&#x2F;**
+ * 分页查询参数
+ * @author sunmingzhi
+ * @date 2019年11月22日 下午7:23:57  
+ * @Modify
+ *&#x2F;
+@Getter
+@Setter
+public class PageQuery implements Serializable &#123;
+    private static final long serialVersionUID &#x3D; 1L;
+    &#x2F;&#x2F; 当前页码
+    private int currentPage;
+    &#x2F;&#x2F; 每页条数
+    private int pageSize;
+    &#x2F;&#x2F; 排序字段
+    private String sidx;
+    &#x2F;&#x2F; 顺序
+    private String sord;
+
+    &#x2F;**
+     * 构造函数
+     * @Title:Query
+     * @Description:
+     * @param params
+     *&#x2F;
+    public PageQuery(Map&lt;String, Object&gt; params) &#123;
+        this.currentPage &#x3D; Integer.parseInt(params.get(&quot;currentPage&quot;).toString());
+        this.pageSize &#x3D; Integer.parseInt(params.get(&quot;pageSize&quot;).toString());
+        this.sidx &#x3D; params.get(&quot;sidx&quot;).toString();
+        this.sord &#x3D; params.get(&quot;sord&quot;).toString();
+    &#125;
+&#125;
+
+2、分页查询结果
+package com.techen.tap.vo;
+
+import java.io.Serializable;
+import java.util.List;
+
+import lombok.Data;
+
+&#x2F;**
+ * @description:分页查询结果
+ * @author: zs
+ * @date: 2019年8月17日上午9:52:48
+ * @modify:
+ *&#x2F;
+@Data
+public class Page implements Serializable &#123;
+    private static final long serialVersionUID &#x3D; 1L;
+    &#x2F;&#x2F; 总记录数
+    private int totalCount;
+    &#x2F;&#x2F; 每页记录数
+    private int pageSize;
+    &#x2F;&#x2F; 总页数
+    private int totalPage;
+    &#x2F;&#x2F; 当前页数
+    private int currentPage;
+    &#x2F;&#x2F; 列表数据
+    private List&lt;?&gt; dataList;
+
+    public Page(List&lt;?&gt; dataList, int totalCount, int pageSize, int currentPage) &#123;
+        this.dataList &#x3D; dataList;
+        this.totalCount &#x3D; totalCount;
+        this.pageSize &#x3D; pageSize;
+        this.currentPage &#x3D; currentPage;
+        this.totalPage &#x3D; (int) Math.ceil((double) totalCount &#x2F; pageSize);
+    &#125;
+&#125;
+
+
+3、分页逻辑
+@GetMapping(value &#x3D; &quot;&#x2F;meterlist&quot;)
+public ResponseResult&lt;Object&gt; meterlist(@RequestParam(required &#x3D; false) Map&lt;String, Object&gt; paraMap) &#123;
+    PageQuery query &#x3D; new PageQuery(paraMap);
+    &#x2F;&#x2F;拼接查询语句---sql语句(拼接前台选择的查询条件)
+    &#x2F;**
+    String sqlWhere &#x3D; this.spellListSql(paraMap);
+    sqlWhere +&#x3D; &quot; and c_meter.run_status_code&lt;&gt;&#39;9&#39;&quot;;
+    **&#x2F;
+    paraMap.put(&quot;whereSql&quot;, sqlWhere);
+    &#x2F;&#x2F;查询符合条件的总数量
+    int totalCount &#x3D; service.count(paraMap);
+    List&lt;Map&lt;String, Object&gt;&gt; tempList &#x3D; new ArrayList&lt;Map&lt;String, Object&gt;&gt;();
+    if (totalCount &gt; 0) &#123;
+       &#x2F;&#x2F;进行分页查询---查询结果是List
+       tempList &#x3D; service.queryMapForPage(sqlWhere, query.getCurrentPage(), query.getPageSize(),                                                                           query.getSidx(),query.getSord());
+       service.setDispFields(tempList);
+    &#125;
+    &#x2F;&#x2F;组装分页查询到的分页类
+    Page page &#x3D; new Page(tempList, totalCount, query.getPageSize(), query.getCurrentPage());
+    &#x2F;&#x2F;返回分页信息
+    return ResponseResult.ok(page);
+&#125;
+
+4、分页sql
+  &lt;select id&#x3D;&quot;queryMapForPage&quot; resultType&#x3D;&quot;com.techen.tap.base.BasicLowerMap&quot; parameterType&#x3D;&quot;map&quot;&gt;
+        &lt;![CDATA[
+            SELECT * FROM file_upload_details 
+            WHERE $&#123;whereSql&#125;
+            order by $&#123;sidx&#125; $&#123;sord&#125;,id asc 
+            &lt;!-- 查询pagesize条语句，从begincount开始 --&gt;
+            limit #&#123;pagesize&#125; offset #&#123;begincount&#125;  
+        ]]&gt; 
+  &lt;&#x2F;select&gt;
+    
+&#x2F;&#x2F;注意  
+public List&lt;Map&lt;String, Object&gt;&gt; queryMapForPage(String whereSql, int curPageIndex, int pageSize, String                                                                                        sidx, String sord) &#123;
+    int beginCount &#x3D; curPageIndex * pageSize - pageSize;
+    Map&lt;String, Object&gt; paraMap &#x3D; new HashMap&lt;String, Object&gt;();
+    paraMap.put(&quot;begincount&quot;, beginCount);
+    paraMap.put(&quot;pagesize&quot;, pageSize);
+    paraMap.put(&quot;whereSql&quot;, whereSql);
+    paraMap.put(&quot;sidx&quot;, sidx);
+    paraMap.put(&quot;sord&quot;, sord);
+    return this.getSqlSessionTemplate().selectList(entityClass.getName() + &quot;.queryMapForPage&quot; , paraMap);
+&#125;
+  
+
+5、拼接sql
+protected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;
+        StringBufferProxy sql &#x3D; new StringBufferProxy();
+        sql.appendSingle(&quot; 1&#x3D;1 &quot;);
+        if (paraMap.containsKey(&quot;file_name&quot;) &amp;&amp; !StringUtils.isEmpty(paraMap.get(&quot;file_name&quot;))) &#123;
+            String value &#x3D; paraMap.get(&quot;file_name&quot;).toString();
+            if (!StringUtil.isEmpty(value)) &#123;
+                sql.appendSingle(&quot; and file_name like &#39;%&#123;0&#125;%&#39; &quot;, value);
+            &#125;
+        &#125;
+        if (paraMap.containsKey(&quot;data_date&quot;) &amp;&amp; !StringUtils.isEmpty(paraMap.get(&quot;data_date&quot;))) &#123;
+            String value &#x3D; paraMap.get(&quot;data_date&quot;).toString();
+            String getLastDayOfMonth&#x3D;DateUtil.getLastDayOfMonth(value);
+            String date1&#x3D;value+&quot; 00:00:00&quot;;
+            String date2&#x3D;getLastDayOfMonth+&quot; 00:00:00&quot;;
+            if (!StringUtil.isEmpty(value)) &#123;
+                sql.appendSingle(&quot; and createon between &#39;&#123;0&#125;&#39; and &#39;&#123;1&#125;&#39;&quot;, date1, date2);
+            &#125;
+        &#125;
+        if (paraMap.containsKey(&quot;createuser&quot;) &amp;&amp; !StringUtils.isEmpty(paraMap.get(&quot;createuser&quot;))) &#123;
+            String createuser &#x3D; paraMap.get(&quot;createuser&quot;).toString();
+            List&lt;CboUser&gt; cboUsers &#x3D; cboUserService.queryByWhere(&quot; cbo_user.name like &#39;%&quot; + createuser + &quot;%&#39;&quot;);
+            Long[] idArray &#x3D; new Long[cboUsers.size()];
+            for (int i &#x3D; 0; i &lt; cboUsers.size(); i++) &#123;
+                idArray[i] &#x3D; cboUsers.get(i).getId();
+            &#125;
+            String substring &#x3D; Arrays.toString(idArray);
+            substring &#x3D; substring.substring(1, substring.length() - 1);
+            sql.appendSingle(&quot; and createuser  in (&quot; + substring + &quot;)&quot;);
+        &#125;
+        if (paraMap.containsKey(&quot;upload_status&quot;)) &#123;
+            String value &#x3D; paraMap.get(&quot;upload_status&quot;).toString();
+            if (!StringUtil.isEmpty(value)) &#123;
+                sql.appendSingle(&quot; and upload_status &#x3D; &#39;&#123;0&#125;&#39;&quot;, value);
+            &#125;
+        &#125;
+        return sql.toString();
+    &#125;</code></pre>
+
+
+                
+            </div>
+            <hr/>
 
             
 
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">superzqbo</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://superzqbo.github.io/2022/07/14/mybatis-fen-ye/">https://superzqbo.github.io/2022/07/14/mybatis-fen-ye/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">superzqbo</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%88%86%E9%A1%B5/">
+                                    <span class="chip bg-color">分页</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
             
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
 
             
+        </div>
+    </div>
 
-            
+    
 
-            
-            <style>
+    
+
+    
+
+    
+
+    
+        <style>
     .valine-card {
         margin: 1.5rem auto;
     }
@@ -1008,23 +1178,188 @@
 <!--酷Q推送-->
 
 
-            
+    
 
-            
+    
 
-            
+    
 
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/07/14/mybatis-fen-ye/">
+                    <div class="card-image">
+                        
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/10997370f29ae7a5b6174ce532762a52f75cd670458ac-UKV8r3_fw1200.jpeg" class="responsive-img" alt="mybatis分页">
+                        
+                        <span class="card-title">mybatis分页</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Mybatis/" class="post-category">
+                                    Mybatis
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%88%86%E9%A1%B5/">
+                        <span class="chip bg-color">分页</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
         </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/07/14/windows-xia-cha-zhao-java-ying-yong-nei-cun-qing-kuang-fen-xi/">
+                    <div class="card-image">
+                        
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/thumb_1680_0_20211208022358414.jpg" class="responsive-img" alt="windows下查找java应用内存情况分析">
+                        
+                        <span class="card-title">windows下查找java应用内存情况分析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/" class="post-category">
+                                    内存分析
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">内存分析</span>
+                    </a>
+                    
+                    <a href="/tags/Windows/">
+                        <span class="chip bg-color">Windows</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
     </div>
-</main>
+</article>
+
+</div>
+
 
 <script>
-    $(function () {
-        $('#friends-link').masonry({
-            itemSelector: '.friend-div'
-        });
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 牧羊人<br />'
+            + '文章作者: superzqbo<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
     });
 </script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    
+
+</main>
+
+
 
 
     <footer class="page-footer bg-color">

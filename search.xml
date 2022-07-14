@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>mybatis分页</title>
+      <link href="/2022/07/14/mybatis-fen-ye/"/>
+      <url>/2022/07/14/mybatis-fen-ye/</url>
+      
+        <content type="html"><![CDATA[<p>mybatis分页查询</p><pre class="language-none"><code class="language-none">1、分页类定义    package com.techen.tap.vo;import java.io.Serializable;import java.util.Map;import lombok.Getter;import lombok.Setter;&#x2F;** * 分页查询参数 * @author sunmingzhi * @date 2019年11月22日 下午7:23:57   * @Modify *&#x2F;@Getter@Setterpublic class PageQuery implements Serializable &#123;    private static final long serialVersionUID &#x3D; 1L;    &#x2F;&#x2F; 当前页码    private int currentPage;    &#x2F;&#x2F; 每页条数    private int pageSize;    &#x2F;&#x2F; 排序字段    private String sidx;    &#x2F;&#x2F; 顺序    private String sord;    &#x2F;**     * 构造函数     * @Title:Query     * @Description:     * @param params     *&#x2F;    public PageQuery(Map&lt;String, Object&gt; params) &#123;        this.currentPage &#x3D; Integer.parseInt(params.get(&quot;currentPage&quot;).toString());        this.pageSize &#x3D; Integer.parseInt(params.get(&quot;pageSize&quot;).toString());        this.sidx &#x3D; params.get(&quot;sidx&quot;).toString();        this.sord &#x3D; params.get(&quot;sord&quot;).toString();    &#125;&#125;2、分页查询结果package com.techen.tap.vo;import java.io.Serializable;import java.util.List;import lombok.Data;&#x2F;** * @description:分页查询结果 * @author: zs * @date: 2019年8月17日上午9:52:48 * @modify: *&#x2F;@Datapublic class Page implements Serializable &#123;    private static final long serialVersionUID &#x3D; 1L;    &#x2F;&#x2F; 总记录数    private int totalCount;    &#x2F;&#x2F; 每页记录数    private int pageSize;    &#x2F;&#x2F; 总页数    private int totalPage;    &#x2F;&#x2F; 当前页数    private int currentPage;    &#x2F;&#x2F; 列表数据    private List&lt;?&gt; dataList;    public Page(List&lt;?&gt; dataList, int totalCount, int pageSize, int currentPage) &#123;        this.dataList &#x3D; dataList;        this.totalCount &#x3D; totalCount;        this.pageSize &#x3D; pageSize;        this.currentPage &#x3D; currentPage;        this.totalPage &#x3D; (int) Math.ceil((double) totalCount &#x2F; pageSize);    &#125;&#125;3、分页逻辑@GetMapping(value &#x3D; &quot;&#x2F;meterlist&quot;)public ResponseResult&lt;Object&gt; meterlist(@RequestParam(required &#x3D; false) Map&lt;String, Object&gt; paraMap) &#123;    PageQuery query &#x3D; new PageQuery(paraMap);    &#x2F;&#x2F;拼接查询语句---sql语句(拼接前台选择的查询条件)    &#x2F;**    String sqlWhere &#x3D; this.spellListSql(paraMap);    sqlWhere +&#x3D; &quot; and c_meter.run_status_code&lt;&gt;&#39;9&#39;&quot;;    **&#x2F;    paraMap.put(&quot;whereSql&quot;, sqlWhere);    &#x2F;&#x2F;查询符合条件的总数量    int totalCount &#x3D; service.count(paraMap);    List&lt;Map&lt;String, Object&gt;&gt; tempList &#x3D; new ArrayList&lt;Map&lt;String, Object&gt;&gt;();    if (totalCount &gt; 0) &#123;       &#x2F;&#x2F;进行分页查询---查询结果是List       tempList &#x3D; service.queryMapForPage(sqlWhere, query.getCurrentPage(), query.getPageSize(),                                                                           query.getSidx(),query.getSord());       service.setDispFields(tempList);    &#125;    &#x2F;&#x2F;组装分页查询到的分页类    Page page &#x3D; new Page(tempList, totalCount, query.getPageSize(), query.getCurrentPage());    &#x2F;&#x2F;返回分页信息    return ResponseResult.ok(page);&#125;4、分页sql  &lt;select id&#x3D;&quot;queryMapForPage&quot; resultType&#x3D;&quot;com.techen.tap.base.BasicLowerMap&quot; parameterType&#x3D;&quot;map&quot;&gt;        &lt;![CDATA[            SELECT * FROM file_upload_details             WHERE $&#123;whereSql&#125;            order by $&#123;sidx&#125; $&#123;sord&#125;,id asc             &lt;!-- 查询pagesize条语句，从begincount开始 --&gt;            limit #&#123;pagesize&#125; offset #&#123;begincount&#125;          ]]&gt;   &lt;&#x2F;select&gt;    &#x2F;&#x2F;注意  public List&lt;Map&lt;String, Object&gt;&gt; queryMapForPage(String whereSql, int curPageIndex, int pageSize, String                                                                                        sidx, String sord) &#123;    int beginCount &#x3D; curPageIndex * pageSize - pageSize;    Map&lt;String, Object&gt; paraMap &#x3D; new HashMap&lt;String, Object&gt;();    paraMap.put(&quot;begincount&quot;, beginCount);    paraMap.put(&quot;pagesize&quot;, pageSize);    paraMap.put(&quot;whereSql&quot;, whereSql);    paraMap.put(&quot;sidx&quot;, sidx);    paraMap.put(&quot;sord&quot;, sord);    return this.getSqlSessionTemplate().selectList(entityClass.getName() + &quot;.queryMapForPage&quot; , paraMap);&#125;  5、拼接sqlprotected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;        StringBufferProxy sql &#x3D; new StringBufferProxy();        sql.appendSingle(&quot; 1&#x3D;1 &quot;);        if (paraMap.containsKey(&quot;file_name&quot;) &amp;&amp; !StringUtils.isEmpty(paraMap.get(&quot;file_name&quot;))) &#123;            String value &#x3D; paraMap.get(&quot;file_name&quot;).toString();            if (!StringUtil.isEmpty(value)) &#123;                sql.appendSingle(&quot; and file_name like &#39;%&#123;0&#125;%&#39; &quot;, value);            &#125;        &#125;        if (paraMap.containsKey(&quot;data_date&quot;) &amp;&amp; !StringUtils.isEmpty(paraMap.get(&quot;data_date&quot;))) &#123;            String value &#x3D; paraMap.get(&quot;data_date&quot;).toString();            String getLastDayOfMonth&#x3D;DateUtil.getLastDayOfMonth(value);            String date1&#x3D;value+&quot; 00:00:00&quot;;            String date2&#x3D;getLastDayOfMonth+&quot; 00:00:00&quot;;            if (!StringUtil.isEmpty(value)) &#123;                sql.appendSingle(&quot; and createon between &#39;&#123;0&#125;&#39; and &#39;&#123;1&#125;&#39;&quot;, date1, date2);            &#125;        &#125;        if (paraMap.containsKey(&quot;createuser&quot;) &amp;&amp; !StringUtils.isEmpty(paraMap.get(&quot;createuser&quot;))) &#123;            String createuser &#x3D; paraMap.get(&quot;createuser&quot;).toString();            List&lt;CboUser&gt; cboUsers &#x3D; cboUserService.queryByWhere(&quot; cbo_user.name like &#39;%&quot; + createuser + &quot;%&#39;&quot;);            Long[] idArray &#x3D; new Long[cboUsers.size()];            for (int i &#x3D; 0; i &lt; cboUsers.size(); i++) &#123;                idArray[i] &#x3D; cboUsers.get(i).getId();            &#125;            String substring &#x3D; Arrays.toString(idArray);            substring &#x3D; substring.substring(1, substring.length() - 1);            sql.appendSingle(&quot; and createuser  in (&quot; + substring + &quot;)&quot;);        &#125;        if (paraMap.containsKey(&quot;upload_status&quot;)) &#123;            String value &#x3D; paraMap.get(&quot;upload_status&quot;).toString();            if (!StringUtil.isEmpty(value)) &#123;                sql.appendSingle(&quot; and upload_status &#x3D; &#39;&#123;0&#125;&#39;&quot;, value);            &#125;        &#125;        return sql.toString();    &#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Mybatis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 分页 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>windows下查找java应用内存情况分析</title>
+      <link href="/2022/07/14/windows-xia-cha-zhao-java-ying-yong-nei-cun-qing-kuang-fen-xi/"/>
+      <url>/2022/07/14/windows-xia-cha-zhao-java-ying-yong-nei-cun-qing-kuang-fen-xi/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/qq_14996421/article/details/115726673?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-115726673-blog-105843937.pc_relevant_paycolumn_v3&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3">https://blog.csdn.net/qq_14996421/article/details/115726673?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-115726673-blog-105843937.pc_relevant_paycolumn_v3&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3</a></p><p>在65服务器上查看各java应用的内存占用情况，大多数应用的CPU占用都在1%-5%之间，但是nb-hes的内存占用长期达到了13%左右，遂开始排查nb-hes占用内存过分高的原因，具体步奏如下。</p><h2 id="一、JConsole"><a href="#一、JConsole" class="headerlink" title="一、JConsole"></a>一、JConsole</h2><p>排查65服务器上个java应用的内存占用情况</p><p>JConsole是JDK自带的一个工具，也是 一个图形界面的工具，只要装了JDK就有这个工具；可以直接在服务器上连接本地的java进程，也可以从本机去跟踪远程服务器上的一个进程，如下图所示：</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220615194250948.png" alt="image-20220615194250948"></p><p>点击连接即可</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220615194903776.png" alt="image-20220615194903776"></p><p>确认连接</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220615195009791.png" alt="image-20220615195009791"></p><p>服务器上面的基本情况如下：</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220615195315959.png" alt="image-20220615195315959"></p><p>可以看到CPU占用比较高</p><h2 id="二、使用任务管理器查询应用所在详情-PID、安装位置"><a href="#二、使用任务管理器查询应用所在详情-PID、安装位置" class="headerlink" title="二、使用任务管理器查询应用所在详情(PID、安装位置)"></a>二、使用任务管理器查询应用所在详情(PID、安装位置)</h2><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220615200142459.png" alt="image-20220615200142459"></p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220615200343473.png" alt="image-20220615200343473"></p><h2 id="三、使用Jstack下载stack信息到某个位置"><a href="#三、使用Jstack下载stack信息到某个位置" class="headerlink" title="三、使用Jstack下载stack信息到某个位置"></a>三、使用Jstack下载stack信息到某个位置</h2><p>使用Jstack将第二步查询到的PID对应的应用的stack信息下载下来</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220615195812485.png" alt="image-20220615195812485"></p><h2 id="四、-Process-Explorer"><a href="#四、-Process-Explorer" class="headerlink" title="四、 Process Explorer"></a>四、 Process Explorer</h2><p>用的是微软提供的 Process Explorer工具，排查上一步查询的进程当中，那个线程所占用的内存最多。</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220615201109069.png" alt="image-20220615201109069"></p><h2 id="五、找到占用内存多的那段代码"><a href="#五、找到占用内存多的那段代码" class="headerlink" title="五、找到占用内存多的那段代码"></a>五、找到占用内存多的那段代码</h2><p>由于stack导出的信息里面线程对应的tid是16进制的，所以要把前面的线程的TID转成16进制的，再在stack导出的文件当中全局搜索该PID(9726—&gt;25FC)</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220615201211363.png" alt="image-20220615201211363"></p><h2 id="六、分析"><a href="#六、分析" class="headerlink" title="六、分析"></a>六、分析</h2><p>在代码当中查找该段代码，发现是由于引入的第三方的这个Jar包里面写了一个死循环，去一直监听设备的上线下</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220615201654127.png" alt="image-20220615201654127"></p><p>为了验证是否是死循环引起的，现在修改代码不做成死循环</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220616093046466.png" alt="image-20220616093046466"></p><p>打包后重新运行程序，再次测试内存占比，情况如下</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220702135156318.png" alt="image-20220702135156318"></p><p>由此确定，确实是由于这段代码引起的！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 内存分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 内存分析 </tag>
+            
+            <tag> Windows </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>PostgreSql数组及JSON类型数据在Mybatis项目中的使用</title>
       <link href="/2022/07/12/postgresql-shu-zu-ji-json-lei-xing-shu-ju-zai-mybatis-xiang-mu-zhong-de-shi-yong/"/>
       <url>/2022/07/12/postgresql-shu-zu-ji-json-lei-xing-shu-ju-zai-mybatis-xiang-mu-zhong-de-shi-yong/</url>
@@ -116,7 +168,7 @@
       <link href="/2022/05/11/wireshark-shi-yong-shou-ce/"/>
       <url>/2022/05/11/wireshark-shi-yong-shou-ce/</url>
       
-        <content type="html"><![CDATA[<p>这个抓包工具介绍,具体袭击我如下所示</p><p>这是概览，期间能遇到各种报错，只需复制报错信息到网上查找即可。</p><p>1.注册git账号（zhangsan），创建以账号名加.github.io为名的仓库（zhangsan.github.io即为博客地址，输入浏览器即可浏览）</p><p>2.在windows中安装gitbash，安装Nodejs，Nodejs要设置环境变量</p><p>3.下载hexo，将git仓库的ssh地址写入配置文件</p><p>4.windows中生成git的rsa密钥，将id_rsa.pub添加都git账号的ssh key中，一个系统中可以支持多个git密钥的生成，都生成在~&#x2F;.ssh&#x2F;目录下，命名不同即可</p><p>5.hexo常用命令</p><p>hexo new “titename” (生成文章，默认在source&#x2F;_post&#x2F;下，内容以markdown编辑)</p><p>hexo clean(清理旧的生成)</p><p>hexo generation（重新生成页面）</p><p>hexo deploy（部署到git上，部署前，如果</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="一、Wireshark-介绍"><a href="#一、Wireshark-介绍" class="headerlink" title="一、Wireshark 介绍"></a>一、Wireshark 介绍</h2><p>Wireshark是网络包分析工具，可以捕获多种网络接口类型的包，甚至包括无线局域网接口网络。包分析工具的主要作用是尝试分析捕获到的数据包，并尝试显示数据包尽可能详细的信息。</p><p>Wireshark是开源软件项目，用GPL（General Public License）协议发行。可以免费在任意数量的机器上使用，不用担心授权和付费问题，所有的源代码在GPL框架下都可以免费使用。因为以上原因，人们可以很容易在Wireshark上添加新的协议，或者将其作为插件整合到自己的程序里，这种应用十分广泛。</p><h2 id="二、Wireshark下载、安装"><a href="#二、Wireshark下载、安装" class="headerlink" title="二、Wireshark下载、安装"></a>二、Wireshark下载、安装</h2><p>官网下载,一路next即可：<a href="https://www.wireshark.org/">https://www.wireshark.org</a></p><h2 id="三、界面介绍"><a href="#三、界面介绍" class="headerlink" title="三、界面介绍"></a>三、界面介绍</h2><h3 id="3-1-打开Wireshark-2-6-5，主界面如下："><a href="#3-1-打开Wireshark-2-6-5，主界面如下：" class="headerlink" title="3.1 打开Wireshark 2.6.5，主界面如下："></a>3.1 打开Wireshark 2.6.5，主界面如下：</h3><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220621192240599.png" alt="image-20220621192240599"></p><h3 id="3-2-选择要捕获的连接，双击打开"><a href="#3-2-选择要捕获的连接，双击打开" class="headerlink" title="3.2 选择要捕获的连接，双击打开"></a>3.2 选择要捕获的连接，双击打开</h3><p>此时会显示所有，需要进行筛选</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220621192325257.png" alt="image-20220621192325257"></p><h3 id="3-3-按照条件刷选包"><a href="#3-3-按照条件刷选包" class="headerlink" title="3.3 按照条件刷选包"></a>3.3 按照条件刷选包</h3><p><a href="https://blog.csdn.net/qq_44275213/article/details/118873256">https://blog.csdn.net/qq_44275213/article/details/118873256</a></p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220621192356639.png" alt="image-20220621192356639"></p><h4 id="3-3-1-列表介绍"><a href="#3-3-1-列表介绍" class="headerlink" title="3.3.1 列表介绍"></a>3.3.1 列表介绍</h4><p>数据包列表窗格，显示捕获的数据包，每个数据包包含编号，时间戳，源地址，目标地址，协议，长度和数据包信息。不同的协议数据包使用不同的颜色区分</p><p>时间格式化：视图—&gt;显示时间格式化—&gt;格式化时间</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220621192419204.png" alt="image-20220621192419204"></p><h2 id="四、重点分析："><a href="#四、重点分析：" class="headerlink" title="四、重点分析："></a>四、重点分析：</h2><p><a href="https://blog.csdn.net/itcodexy/article/details/122593288">https://blog.csdn.net/itcodexy/article/details/122593288</a></p><p>对于我们日常的分析有用的就是前面的五个字段。它们的含义是：SYN表示建立连接，FIN表示关闭连接，ACK表示响应，PSH表示有DATA数据传输，RST表示连接重置。</p>]]></content>
       
       
       <categories>
@@ -128,7 +180,9 @@
       
         <tags>
             
-            <tag> Markdown </tag>
+            <tag> 网络 </tag>
+            
+            <tag> WireShark </tag>
             
         </tags>
       
