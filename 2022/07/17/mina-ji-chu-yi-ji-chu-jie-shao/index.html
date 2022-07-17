@@ -4,15 +4,11 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="mybatis分页, 牧羊人">
-    <meta name="description" content="mybatis分页查询
-1、分页类定义
-    package com.techen.tap.vo;
+    <meta name="keywords" content="Mina基础(一):基础介绍, 牧羊人">
+    <meta name="description" content="1、在应用程序中的地位
+主要屏蔽了网络通信的一些细节，对Socket进行封装，并且是NIO的一个实现架构，可以帮助我们快速的开发网络通信，常用于游戏的开发、中间件服务端的程序中。
 
-import java.io.Serializable;
-import java.util.Map;
-
-import lombok.Ge">
+Mina最主要的工作就是把底层传输的字节码转换为Java对">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -26,7 +22,7 @@ import lombok.Ge">
 
     
 
-    <title>mybatis分页 | 牧羊人</title>
+    <title>Mina基础(一):基础介绍 | 牧羊人</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -424,12 +420,12 @@ import lombok.Ge">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://superzqbo.oss-cn-hangzhou.aliyuncs.com/8e6fab3184614c9b37959ee6c9a5b956907a5fa03fbc5-kMoKf2_fw658.jpeg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">mybatis分页</h1>
+                    <h1 class="description center-align post-title">Mina基础(一):基础介绍</h1>
                 </div>
             </div>
         </div>
@@ -439,35 +435,116 @@ import lombok.Ge">
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E5%88%86%E9%A1%B5/">
-                                <span class="chip bg-color">分页</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Mybatis/" class="post-category">
-                                Mybatis
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -476,7 +553,7 @@ import lombok.Ge">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-14
+                    2022-07-17
                 </div>
                 
 
@@ -490,14 +567,14 @@ import lombok.Ge">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    937
+                    681
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    2 分
                 </div>
                 
 
@@ -520,174 +597,35 @@ import lombok.Ge">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>mybatis分页查询</p>
-<pre class="language-none"><code class="language-none">1、分页类定义
-    package com.techen.tap.vo;
+                <p><strong>1、在应用程序中的地位</strong></p>
+<pre class="language-none"><code class="language-none">主要屏蔽了网络通信的一些细节，对Socket进行封装，并且是NIO的一个实现架构，可以帮助我们快速的开发网络通信，常用于游戏的开发、中间件服务端的程序中。
 
-import java.io.Serializable;
-import java.util.Map;
+Mina最主要的工作就是把底层传输的字节码转换为Java对象，提供给应用程序；或者把应用程序返回的结果转换为字节码，交给底层传输。</code></pre>
 
-import lombok.Getter;
-import lombok.Setter;
+<p><strong>2、长短链接</strong></p>
+<blockquote>
+<p>长链接和短链接<br>长链接：通信双方长期保持一个链接状态不断开，比如QQ，当我们登陆QQ的时候，就会链接腾讯的服务器建立一个链接，链接一旦建立就一会断开，除非发生异常<br>短链接：通信双方不是保持一个长链接状态，比如http协议，请求数据响应完成之后，链接就会断开</p>
+</blockquote>
+<p><strong>3、IOService接口</strong></p>
+<p>*<strong>实现了对网络通信的客户端和服务端之间的抽象，子接口IOConnector用于描述客户端，子接口IOAcceptor用于描述服务端。*</strong></p>
+<p>  <strong>作用：</strong>IOService可以管理我们网络通信的客户端和服务端，并且可以管理连接双方的会话session，同样可以添加过滤器。</p>
+<img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220717174143094.png" alt="image-20220717174143094" style="zoom:50%;" />
 
-&#x2F;**
- * 分页查询参数
- * @author sunmingzhi
- * @date 2019年11月22日 下午7:23:57  
- * @Modify
- *&#x2F;
-@Getter
-@Setter
-public class PageQuery implements Serializable &#123;
-    private static final long serialVersionUID &#x3D; 1L;
-    &#x2F;&#x2F; 当前页码
-    private int currentPage;
-    &#x2F;&#x2F; 每页条数
-    private int pageSize;
-    &#x2F;&#x2F; 排序字段
-    private String sidx;
-    &#x2F;&#x2F; 顺序
-    private String sord;
-
-    &#x2F;**
-     * 构造函数
-     * @Title:Query
-     * @Description:
-     * @param params
-     *&#x2F;
-    public PageQuery(Map&lt;String, Object&gt; params) &#123;
-        this.currentPage &#x3D; Integer.parseInt(params.get(&quot;currentPage&quot;).toString());
-        this.pageSize &#x3D; Integer.parseInt(params.get(&quot;pageSize&quot;).toString());
-        this.sidx &#x3D; params.get(&quot;sidx&quot;).toString();
-        this.sord &#x3D; params.get(&quot;sord&quot;).toString();
-    &#125;
-&#125;
-
-2、分页查询结果
-package com.techen.tap.vo;
-
-import java.io.Serializable;
-import java.util.List;
-
-import lombok.Data;
-
-&#x2F;**
- * @description:分页查询结果
- * @author: zs
- * @date: 2019年8月17日上午9:52:48
- * @modify:
- *&#x2F;
-@Data
-public class Page implements Serializable &#123;
-    private static final long serialVersionUID &#x3D; 1L;
-    &#x2F;&#x2F; 总记录数
-    private int totalCount;
-    &#x2F;&#x2F; 每页记录数
-    private int pageSize;
-    &#x2F;&#x2F; 总页数
-    private int totalPage;
-    &#x2F;&#x2F; 当前页数
-    private int currentPage;
-    &#x2F;&#x2F; 列表数据
-    private List&lt;?&gt; dataList;
-
-    public Page(List&lt;?&gt; dataList, int totalCount, int pageSize, int currentPage) &#123;
-        this.dataList &#x3D; dataList;
-        this.totalCount &#x3D; totalCount;
-        this.pageSize &#x3D; pageSize;
-        this.currentPage &#x3D; currentPage;
-        this.totalPage &#x3D; (int) Math.ceil((double) totalCount &#x2F; pageSize);
-    &#125;
-&#125;
-
-
-3、分页逻辑
-@GetMapping(value &#x3D; &quot;&#x2F;meterlist&quot;)
-public ResponseResult&lt;Object&gt; meterlist(@RequestParam(required &#x3D; false) Map&lt;String, Object&gt; paraMap) &#123;
-    PageQuery query &#x3D; new PageQuery(paraMap);
-    &#x2F;&#x2F;拼接查询语句---sql语句(拼接前台选择的查询条件)
-    &#x2F;**
-    String sqlWhere &#x3D; this.spellListSql(paraMap);
-    sqlWhere +&#x3D; &quot; and c_meter.run_status_code&lt;&gt;&#39;9&#39;&quot;;
-    **&#x2F;
-    paraMap.put(&quot;whereSql&quot;, sqlWhere);
-    &#x2F;&#x2F;查询符合条件的总数量
-    int totalCount &#x3D; service.count(paraMap);
-    List&lt;Map&lt;String, Object&gt;&gt; tempList &#x3D; new ArrayList&lt;Map&lt;String, Object&gt;&gt;();
-    if (totalCount &gt; 0) &#123;
-       &#x2F;&#x2F;进行分页查询---查询结果是List
-       tempList &#x3D; service.queryMapForPage(sqlWhere, query.getCurrentPage(), query.getPageSize(),                                                                           query.getSidx(),query.getSord());
-       service.setDispFields(tempList);
-    &#125;
-    &#x2F;&#x2F;组装分页查询到的分页类
-    Page page &#x3D; new Page(tempList, totalCount, query.getPageSize(), query.getCurrentPage());
-    &#x2F;&#x2F;返回分页信息
-    return ResponseResult.ok(page);
-&#125;
-
-4、分页sql
-  &lt;select id&#x3D;&quot;queryMapForPage&quot; resultType&#x3D;&quot;com.techen.tap.base.BasicLowerMap&quot; parameterType&#x3D;&quot;map&quot;&gt;
-        &lt;![CDATA[
-            SELECT * FROM file_upload_details 
-            WHERE $&#123;whereSql&#125;
-            order by $&#123;sidx&#125; $&#123;sord&#125;,id asc 
-            &lt;!-- 查询pagesize条语句，从begincount开始 --&gt;
-            limit #&#123;pagesize&#125; offset #&#123;begincount&#125;  
-        ]]&gt; 
-  &lt;&#x2F;select&gt;
-    
-&#x2F;&#x2F;注意  
-public List&lt;Map&lt;String, Object&gt;&gt; queryMapForPage(String whereSql, int curPageIndex, int pageSize, String                                                                                        sidx, String sord) &#123;
-    int beginCount &#x3D; curPageIndex * pageSize - pageSize;
-    Map&lt;String, Object&gt; paraMap &#x3D; new HashMap&lt;String, Object&gt;();
-    paraMap.put(&quot;begincount&quot;, beginCount);
-    paraMap.put(&quot;pagesize&quot;, pageSize);
-    paraMap.put(&quot;whereSql&quot;, whereSql);
-    paraMap.put(&quot;sidx&quot;, sidx);
-    paraMap.put(&quot;sord&quot;, sord);
-    return this.getSqlSessionTemplate().selectList(entityClass.getName() + &quot;.queryMapForPage&quot; , paraMap);
-&#125;
-  
-
-5、拼接sql
-protected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;
-        StringBufferProxy sql &#x3D; new StringBufferProxy();
-        sql.appendSingle(&quot; 1&#x3D;1 &quot;);
-        if (paraMap.containsKey(&quot;file_name&quot;) &amp;&amp; !StringUtils.isEmpty(paraMap.get(&quot;file_name&quot;))) &#123;
-            String value &#x3D; paraMap.get(&quot;file_name&quot;).toString();
-            if (!StringUtil.isEmpty(value)) &#123;
-                sql.appendSingle(&quot; and file_name like &#39;%&#123;0&#125;%&#39; &quot;, value);
-            &#125;
-        &#125;
-        if (paraMap.containsKey(&quot;data_date&quot;) &amp;&amp; !StringUtils.isEmpty(paraMap.get(&quot;data_date&quot;))) &#123;
-            String value &#x3D; paraMap.get(&quot;data_date&quot;).toString();
-            String getLastDayOfMonth&#x3D;DateUtil.getLastDayOfMonth(value);
-            String date1&#x3D;value+&quot; 00:00:00&quot;;
-            String date2&#x3D;getLastDayOfMonth+&quot; 00:00:00&quot;;
-            if (!StringUtil.isEmpty(value)) &#123;
-                sql.appendSingle(&quot; and createon between &#39;&#123;0&#125;&#39; and &#39;&#123;1&#125;&#39;&quot;, date1, date2);
-            &#125;
-        &#125;
-        if (paraMap.containsKey(&quot;createuser&quot;) &amp;&amp; !StringUtils.isEmpty(paraMap.get(&quot;createuser&quot;))) &#123;
-            String createuser &#x3D; paraMap.get(&quot;createuser&quot;).toString();
-            List&lt;CboUser&gt; cboUsers &#x3D; cboUserService.queryByWhere(&quot; cbo_user.name like &#39;%&quot; + createuser + &quot;%&#39;&quot;);
-            Long[] idArray &#x3D; new Long[cboUsers.size()];
-            for (int i &#x3D; 0; i &lt; cboUsers.size(); i++) &#123;
-                idArray[i] &#x3D; cboUsers.get(i).getId();
-            &#125;
-            String substring &#x3D; Arrays.toString(idArray);
-            substring &#x3D; substring.substring(1, substring.length() - 1);
-            sql.appendSingle(&quot; and createuser  in (&quot; + substring + &quot;)&quot;);
-        &#125;
-        if (paraMap.containsKey(&quot;upload_status&quot;)) &#123;
-            String value &#x3D; paraMap.get(&quot;upload_status&quot;).toString();
-            if (!StringUtil.isEmpty(value)) &#123;
-                sql.appendSingle(&quot; and upload_status &#x3D; &#39;&#123;0&#125;&#39;&quot;, value);
-            &#125;
-        &#125;
-        return sql.toString();
-    &#125;</code></pre>
-
+<blockquote>
+<p>IoService接口声明了服务端的共有属性和行为；</p>
+<p>IoAcceptor接口继承了IoService接口，并添加了服务端特有的接口属性及方法，比如bind（）方法，成为典型的服务端接口；</p>
+<p>IoConnector接口同样继承了IoService接口，并添加了客户端特有的接口属性及方法，比如connect（）方法，成为典型的客户端接口；</p>
+<p>AbstractIoService实现了IoService中管理服务的方法，比如getFilterChainBuilder方法—获得过滤器链；</p>
+<p>AbstractIoService抽象类继承了AbstractIoService抽象类并实现了IoAcceptor接口，成为了拥有管理服务端实现功能的服务端类；我们常用的NioSocketAcceptor就是它的子类；</p>
+<p>AbstractIoConnector抽象类继承了AbstractIoService抽象类并实现了IoConnector接口，成为了拥有管理客户端实现功能的客户端类；我们常用的NioSocketConnector就是它的子类；</p>
+</blockquote>
+<p><strong>4、编码解码</strong></p>
+<p>前面提到Mina最主要的工作就是把底层传输的字节码转换为Java对象，提供给应用程序；或者把应用程序返回的结果转换为字节码，交给底层传输。</p>
+<blockquote>
+<p>应用程序				        														 网络<br>java对象或者基本数据类型   												二进制</p>
+<p>对象输出到网络———————编码———–&#x3D;—————-&gt;需要编码成二进制</p>
+<p>网络传入的应用程序&lt;—————————解码—————-需要解码成java对象或者基本数据类型</p>
+</blockquote>
 
                 
             </div>
@@ -714,7 +652,7 @@ protected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://superzqbo.github.io/2022/07/14/mybatis-fen-ye/">https://superzqbo.github.io/2022/07/14/mybatis-fen-ye/</a>
+                    <a href="https://superzqbo.github.io/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/">https://superzqbo.github.io/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -751,11 +689,7 @@ protected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E5%88%86%E9%A1%B5/">
-                                    <span class="chip bg-color">分页</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1193,9 +1127,10 @@ protected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/">
                     <div class="card-image">
@@ -1213,9 +1148,9 @@ protected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1224,6 +1159,7 @@ protected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -1234,12 +1170,12 @@ protected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/14/windows-xia-cha-zhao-java-ying-yong-nei-cun-qing-kuang-fen-xi/">
+                <a href="/2022/07/14/mybatis-fen-ye/">
                     <div class="card-image">
                         
-                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/thumb_1680_0_20211208022358414.jpg" class="responsive-img" alt="windows下查找java应用内存情况分析">
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/8e6fab3184614c9b37959ee6c9a5b956907a5fa03fbc5-kMoKf2_fw658.jpeg" class="responsive-img" alt="mybatis分页">
                         
-                        <span class="card-title">windows下查找java应用内存情况分析</span>
+                        <span class="card-title">mybatis分页</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1256,8 +1192,8 @@ protected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/" class="post-category">
-                                    内存分析
+                            <a href="/categories/Mybatis/" class="post-category">
+                                    Mybatis
                                 </a>
                             
                             
@@ -1267,12 +1203,8 @@ protected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/">
-                        <span class="chip bg-color">内存分析</span>
-                    </a>
-                    
-                    <a href="/tags/Windows/">
-                        <span class="chip bg-color">Windows</span>
+                    <a href="/tags/%E5%88%86%E9%A1%B5/">
+                        <span class="chip bg-color">分页</span>
                     </a>
                     
                 </div>
@@ -1341,6 +1273,87 @@ protected String convertSql(Map&lt;String, Object&gt; paraMap) &#123;
 
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
 
     
 

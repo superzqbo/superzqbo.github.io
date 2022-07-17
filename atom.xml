@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-07-14T13:18:52.520Z</updated>
+  <updated>2022-07-17T09:57:35.011Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Mina基础(一):基础介绍</title>
+    <link href="https://superzqbo.github.io/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/"/>
+    <id>https://superzqbo.github.io/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/</id>
+    <published>2022-07-17T09:30:28.000Z</published>
+    <updated>2022-07-17T09:57:35.011Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;1、在应用程序中的地位&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class=&quot;language-none&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>mybatis分页</title>
     <link href="https://superzqbo.github.io/2022/07/14/mybatis-fen-ye/"/>
     <id>https://superzqbo.github.io/2022/07/14/mybatis-fen-ye/</id>
     <published>2022-07-14T13:13:46.000Z</published>
-    <updated>2022-07-14T13:18:52.520Z</updated>
+    <updated>2022-07-17T09:57:21.859Z</updated>
     
     
       
