@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-07-17T09:57:35.011Z</updated>
+  <updated>2022-07-17T10:05:56.807Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://superzqbo.github.io/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/"/>
     <id>https://superzqbo.github.io/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/</id>
     <published>2022-07-17T09:30:28.000Z</published>
-    <updated>2022-07-17T09:57:35.011Z</updated>
+    <updated>2022-07-17T10:05:56.807Z</updated>
     
     
       
@@ -35,6 +35,14 @@
     
     
     
+    <category term="Mina" scheme="https://superzqbo.github.io/categories/Mina/"/>
+    
+    
+    <category term="Socket" scheme="https://superzqbo.github.io/tags/Socket/"/>
+    
+    <category term="网络通信" scheme="https://superzqbo.github.io/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
+    
+    <category term="长链接" scheme="https://superzqbo.github.io/tags/%E9%95%BF%E9%93%BE%E6%8E%A5/"/>
     
   </entry>
   
@@ -43,7 +51,7 @@
     <link href="https://superzqbo.github.io/2022/07/14/mybatis-fen-ye/"/>
     <id>https://superzqbo.github.io/2022/07/14/mybatis-fen-ye/</id>
     <published>2022-07-14T13:13:46.000Z</published>
-    <updated>2022-07-17T09:57:21.859Z</updated>
+    <updated>2022-07-17T10:04:46.478Z</updated>
     
     
       
