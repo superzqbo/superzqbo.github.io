@@ -4,9 +4,12 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Hexo部署到服务器, 牧羊人">
-    <meta name="description" content="一、服务器配置1.1 新建用户作为git登陆用户[root@VM-12-10-centos superzqbo]# sudo adduser git
-[root@VM-12-10-centos superzqbo]# sudo passwd">
+    <meta name="keywords" content="Java调用C动态库, 牧羊人">
+    <meta name="description" content="java调用C++动态库
+由于项目，需要调用明华IC卡读卡器接口，项目使用的语言是java，所以需要用到java的JNA技术，去调用C的DLL动态库
+一、JNI、JNA介绍
+java调用C的方式有两种JNA、JNI
+JNI(Java Nat">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +23,7 @@
 
     
 
-    <title>Hexo部署到服务器 | 牧羊人</title>
+    <title>Java调用C动态库 | 牧羊人</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -418,12 +421,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220711210846425.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://superzqbo.oss-cn-hangzhou.aliyuncs.com/900f02764f84875d5647d78c5c3a25e6225dfefdc7d6d-hMuZm7_fw1200.jpeg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo部署到服务器</h1>
+                    <h1 class="description center-align post-title">Java调用C动态库</h1>
                 </div>
             </div>
         </div>
@@ -537,17 +540,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
-                            </a>
-                        
-                            <a href="/tags/Nginx/">
-                                <span class="chip bg-color">Nginx</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -555,8 +550,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Hexo/" class="post-category">
-                                Hexo
+                            <a href="/categories/JNA/" class="post-category">
+                                JNA
                             </a>
                         
                     </div>
@@ -568,28 +563,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-10
+                    2022-07-18
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-07-11
+                    2022-07-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    8 分
                 </div>
                 
 
@@ -612,244 +607,217 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、服务器配置"><a href="#一、服务器配置" class="headerlink" title="一、服务器配置"></a>一、服务器配置</h2><h3 id="1-1-新建用户作为git登陆用户"><a href="#1-1-新建用户作为git登陆用户" class="headerlink" title="1.1 新建用户作为git登陆用户"></a>1.1 新建用户作为git登陆用户</h3><pre class="language-markup" data-language="markup"><code class="language-markup">[root@VM-12-10-centos superzqbo]# sudo adduser git
-[root@VM-12-10-centos superzqbo]# sudo passwd git
-更改用户 git 的密码 。
-新的 密码：
-重新输入新的 密码：
-passwd：所有的身份验证令牌已经成功更新。</code></pre>
-
-<h3 id="1-2-修改新建用户的权限为git权限"><a href="#1-2-修改新建用户的权限为git权限" class="headerlink" title="1.2 修改新建用户的权限为git权限"></a>1.2 修改新建用户的权限为git权限</h3><p>现在这个用户是具备 SSH 权限的，我们需将其切换为仅具有 git 权限。</p>
-<pre class="language-markup" data-language="markup"><code class="language-markup">$ vi /etc/passwd
-
-# git:x:1001:1001::/home/git:/bin/bash 修改为下面的
-$ git:x:1001:1001::/home/git:/bin/git-shell</code></pre>
-
-
-
-<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220707235803442.png" alt="image-20220707235803442"></p>
-<h3 id="1-3-安装git"><a href="#1-3-安装git" class="headerlink" title="1.3 安装git"></a>1.3 安装git</h3><pre class="language-markup" data-language="markup"><code class="language-markup">[root@VM-12-10-centos superzqbo]# sudo yum install -y git</code></pre>
-
-<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220707210450899.png" alt="image-20220707210450899"></p>
-<h3 id="1-4-生成git密钥"><a href="#1-4-生成git密钥" class="headerlink" title="1.4 生成git密钥"></a>1.4 生成git密钥</h3><p><code>ssh</code>，简单来讲，就是一个秘钥，其中，<code>id_rsa</code>是你这台电脑的私人秘钥，不能给别人看的，<code>id_rsa.pub</code>是公共秘钥，可以随便给别人看。把这个公钥放在<code>git仓库</code>上，这样当你链接<code>git仓库</code>自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过<code>git</code>上传你的文件到<code>git仓库</code>上。</p>
-<p>如果有生成过git密钥，直接去~&#x2F;.ssh&#x2F;目录下查找即可，该目录下有两个文件</p>
-<pre class="language-markup" data-language="markup"><code class="language-markup">公钥：id_rsa.pub
-私钥：id_rsa</code></pre>
-
-<p>如果之前没有生成过，就需要使用下面指令生成一个</p>
-<pre class="language-markup" data-language="markup"><code class="language-markup">ssh-keygen -t rsa -C "superzqbo@163.com"</code></pre>
-
-<h3 id="1-5-将密钥保存在服务器"><a href="#1-5-将密钥保存在服务器" class="headerlink" title="1.5 将密钥保存在服务器"></a>1.5 将密钥保存在服务器</h3><pre class="language-markup" data-language="markup"><code class="language-markup">1、服务器运行下面命令，创建.ssh文件夹
-$ su git
-$ mkdir ~/.ssh
-
-2、创建.ssh/authorized_keys文件，打开authorized_keys文件并将id_rsa.pub的内容复制拷贝其中并保存
-$ vim ~/.ssh/authorized_keys
-
-3、修改权限
-$ chmod 755 ~
-$ chmod 700 ~/.ssh
-$ chmod 600 ~/.ssh/authorized_keys
-
-4、测试本地连接服务器（git bash here）,连接成功表示本地和服务器连接时ok的
-$ ssh -v git@42.194.221.71</code></pre>
-
-<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220707214208446.png" alt="image-20220707214208446"></p>
-<h3 id="1-6-创建git仓库"><a href="#1-6-创建git仓库" class="headerlink" title="1.6 创建git仓库"></a>1.6 创建git仓库</h3><pre class="language-markup" data-language="markup"><code class="language-markup">1、切换到root用户，创建一个目录用于存储网站的根目录
-$ su root
-
-2、创建网站的根目录
-$ mkdir /home/superzqbo/git/hexo
-$ cd /home/superzqbo/git
-
-3、修改用户所有权和用户权限（将当前目录下，所有文件的拥有者修改为git，用户组改为 git）
-$ chown -R  git:git  hexo
-$ chown -R 755 hexo
-$ cd hexo
-
-4、创建一个git项目（这里有一个细节，就是.git目录必须要有可读写权限，因为当我们在push的时候，是使用git用户推送到服务器上面去，会有一个写入的过程，如果不赋予可写权限，push就会失败。git目录，用于存储记录版本信息）
-$ git init --bare hexo.git
-
-5、新建git 钩子 post-receive，方便博客推送自动部署(相当于拷贝一份到Ngnix的html当中)
-$ vim hexo.git/hooks/post-receive
-# 输入下面的数据
-#!/bin/sh
-git --work-tree=/home/superzqbo/hexo --git-dir=/home/superzqbo/git/hexo/hexo.git checkout -f
-
-6、赋予这个文件可执行权限
-chmod +x /home/superzqbo/git/hexo/hexo.git/hooks/post-receive</code></pre>
-
-<p><strong>钩子函数解析</strong></p>
-<pre class="language-java" data-language="java"><code class="language-java">git --work-tree&#x3D;&#x2F;home&#x2F;superzqbo&#x2F;hexo --git-dir&#x3D;&#x2F;home&#x2F;superzqbo&#x2F;git&#x2F;hexo&#x2F;hexo.git checkout -f
-# --work-tree&#x3D;&#x2F;home&#x2F;superzqbo&#x2F;hexo 指定hexo文件的位置(ngnix的根目录)  
-  
-# --git-dir&#x3D;&#x2F;home&#x2F;superzqbo&#x2F;git&#x2F;hexo&#x2F;hexo.git git仓库的地址</code></pre>
+                <p>java调用C++动态库</p>
+<p>由于项目，需要调用明华IC卡读卡器接口，项目使用的语言是java，所以需要用到java的JNA技术，去调用C的DLL动态库</p>
+<h3 id="一、JNI、JNA介绍"><a href="#一、JNI、JNA介绍" class="headerlink" title="一、JNI、JNA介绍"></a>一、JNI、JNA介绍</h3><blockquote>
+<p>java调用C的方式有两种JNA、JNI</p>
+<p>JNI(Java Native Interface):通过使用 Java本地接口书写程序，可以确保代码在不同的平台上方便移植</p>
+<p>JNA（Java Native Access）：提供一组Java工具类用于在运行期间动态访问系统本地库（native library：如Window的dll）而不需要编写任何Native&#x2F;JNI代码。开发人员只要在一个java接口中描述目标native library的函数与结构，JNA将自动实现Java接口到native function的映射。<br>简而言之，就是jna基于jni的方式封装了很多api，在使用上面相对于jni来说简化了很多。</p>
+<p>JNA全称Java  Access，是一个建立在经典的JNI技术之上的Java开源框架。JNA提供一组Java工具类用于在运行期动态访问系统本地库（native library：如Window的dll）而不需要编写任何Native&#x2F;JNI代码。开发人员只要在一个java接口中描述目标native library的函数与结构，JNA将自动实现Java接口到native function的映射。</p>
+<p>需要注意的是：在使用JNI技术调用dll动态链接库时，32位dll只能是32位JDK去调用，64位dll只能是64位JDK去调用。这个必须是这样的，如果发现无法调用或者提示版本错误，首先要检查下JDK的位数和dll的位数是否是对应的。</p>
+</blockquote>
+<h3 id="二、代码演示"><a href="#二、代码演示" class="headerlink" title="二、代码演示"></a>二、代码演示</h3><h4 id="1、引入jar包"><a href="#1、引入jar包" class="headerlink" title="1、引入jar包"></a>1、引入jar包</h4><pre class="language-java" data-language="java"><code class="language-java">&lt;dependency&gt;
+    &lt;groupId&gt;net.java.dev.jna&lt;&#x2F;groupId&gt;
+    &lt;artifactId&gt;jna&lt;&#x2F;artifactId&gt;
+    &lt;version&gt;5.12.1&lt;&#x2F;version&gt;
+&lt;&#x2F;dependency&gt;</code></pre>
 
 
 
-<p>此时，使用客户端上传代码后，除了在仓库下还会在<code>/home/superzqbo/hexo</code>目录下生成上传的代码，Nginx当中指定地址是这个即可。</p>
-<h2 id="二、客户端配置"><a href="#二、客户端配置" class="headerlink" title="二、客户端配置"></a>二、客户端配置</h2><h3 id="2-1-配置"><a href="#2-1-配置" class="headerlink" title="2.1 配置"></a>2.1 配置</h3><p>博客根目录_config下增加</p>
-<pre class="language-java" data-language="java"><code class="language-java">root: &#x2F;
-deploy:
-  type: git   
-  # 用户@服务器地址:git仓库地址
-  repository: git@42.194.221.71:&#x2F;home&#x2F;superzqbo&#x2F;git&#x2F;hexo&#x2F;hexo.git
-  branch: master</code></pre>
+<h4 id="2、定义接口，创建动态库实例和动态库接口"><a href="#2、定义接口，创建动态库实例和动态库接口" class="headerlink" title="2、定义接口，创建动态库实例和动态库接口"></a>2、定义接口，创建动态库实例和动态库接口</h4><blockquote>
+<p>1、接口需要继承Library类</p>
+<p>2、定义动态库接口</p>
+<p>3、定义动态库实例</p>
+</blockquote>
+<pre class="language-java" data-language="java"><code class="language-java">package com.test.jnademo.utils;
 
-<h3 id="2-2-部署"><a href="#2-2-部署" class="headerlink" title="2.2 部署"></a>2.2 部署</h3><pre class="language-text" data-language="text"><code class="language-text">hexo clean
-hexo g
-hexo d</code></pre>
+import com.sun.jna.Library;
+import com.sun.jna.Native;
+import com.sun.jna.ptr.IntByReference;
 
+import java.io.File;
 
+&#x2F;**
+ * @ClassName JnaUtils
+ * @description:
+ * @author: codesheep
+ * @Version 1.0.0
+ * @createTime: 2022-07-18 09:10:47
+ *&#x2F;
+public class JnaInterface &#123;
 
-<h3 id="2-3-Nginx配置"><a href="#2-3-Nginx配置" class="headerlink" title="2.3 Nginx配置"></a>2.3 Nginx配置</h3><p>参考地址：<a target="_blank" rel="noopener" href="https://www.yyyzyyyz.cn/posts/45dafe31d273/">https://www.yyyzyyyz.cn/posts/45dafe31d273/</a></p>
-<pre class="language-java" data-language="java"><code class="language-java"># 安装
-$ yum install -y nginx
+    &#x2F;**
+     * @description:  明华IC卡读卡器接口:IC（Integrated Circuit）卡，也被称作智能卡（Smart Card），具有写入数据和存储数据的功能，IC卡内存储器的内容可以根据需要有条件地供外部读取，完成信息处理和判定。
+     * IC卡是携带应用信息和数据的媒体，空白IC卡是不能立即使用的，必须对IC卡应用系统进行初始化，写入系统IC卡和个人密码，个人专用信息和应用数据,所以需要用到读卡器进行操作
+     * @author: bozhiqiang
+     * @updateTime: 2022&#x2F;7&#x2F;18 10:33
+     *&#x2F;
+    public interface MwIc extends Library &#123;
 
-# 查看Nginx配置文件的位置
-$ whereis nginx
-  
-# 设置开机自启
-$ systemctl enable nginx.service
-  
-# 检查配置文件
-$ nginx -t</code></pre>
-
-<p><strong>配置nginx为服务(Systemd服务)</strong></p>
-<pre class="language-java" data-language="java"><code class="language-java">vim &#x2F;lib&#x2F;systemd&#x2F;system&#x2F;nginx.service
---------------------------------------------------------
-  
-[Unit]
-Description&#x3D;nginx
-After&#x3D;network.target
-  
-[Service]
-Type&#x3D;forking
-ExecStart&#x3D;&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx
-ExecReload&#x3D;&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s reload
-ExecStop&#x3D;&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx -s quit
-PrivateTmp&#x3D; true
-  
-[Install]
-WantedBy&#x3D;multi-user.target
-  
---------------------------------------------------------  
-[Unit]:服务的说明
-Description:描述服务
-After:描述服务类别
-[Service]服务运行参数的设置
-Type&#x3D;forking是后台运行的形式
-ExecStart为服务的具体运行命令
-ExecReload为重启命令
-ExecStop为停止命令
-PrivateTmp&#x3D;True表示给服务分配独立的临时空间
-注意：[Service]的启动、重启、停止命令全部要求使用绝对路径
-[Install]运行级别下服务安装的相关设置，可设置为多用户，即系统运行级别为3</code></pre>
-
-<p><strong>配置如下</strong></p>
-<pre class="language-markup" data-language="markup"><code class="language-markup">server &#123;
-  listen       80 default_server;
-  listen       [::]:80 default_server;
-  server_name  42.194.221.71;
-  root         /home/superzqbo/hexo;// 代码地址
-
-  charset koi8-r;
-
-  # access_log  /var/log/nginx/host.access.log  main;
-
-  location / &#123;
-  &#125;
-
-  error_page  404              /404.html;
-  location = /40x.html &#123;
-  &#125;
-
-  # redirect server error pages to the static page /50x.html
-    #
-    error_page   500 502 503 504  /50x.html;
-  location = /50x.html &#123;
-    root   html;
-  &#125;
-
-  # proxy the PHP scripts to Apache listening on 127.0.0.1:80
-    #
-    #location ~ \.php$ &#123;
-    #    proxy_pass   http://127.0.0.1;
-    #&#125;
-
-  # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-    #
-    #location ~ \.php$ &#123;
-    #    root           html;
-    #    fastcgi_pass   127.0.0.1:9000;
-    #    fastcgi_index  index.php;
-    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-    #    include        fastcgi_params;
-    #&#125;
-
-  # deny access to .htaccess files, if Apache's document root
-    # concurs with nginx's one
-    #
-    #location ~ /\.ht &#123;
-    #    deny  all;
-    #&#125;
-&#125;</code></pre>
+        &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;  动态库实例 &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;
+        &#x2F;&#x2F; load需要指定绝对路径
+        File file &#x3D; new File(&quot;src&#x2F;main&#x2F;resources&#x2F;lib&#x2F;Mwic_32.dll&quot;);
+        MwIc INSTANCE  &#x3D;  Native.load(file.getAbsolutePath(),MwIc.class);
 
 
+        &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;  动态库接口 &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;
+        &#x2F;**
+         * 说明：初始化通讯接口
+         * 调用：Port: 通讯口号 0、1、2、3 分别代表串口 1、2、3、4 ; baud: 通讯口为串口时代表波特率，其值可为 1200-115200
+         * 返回：   &lt;0 错误 ; &gt;0 通讯设备标识符
+         * 举例： icdev&#x3D;ic_init(0,9600);初始化串口 1，波特率为 9600
+         *&#x2F;
+        public int ic_init(int port,long baud);
 
-<h2 id="三、Https配置"><a href="#三、Https配置" class="headerlink" title="三、Https配置"></a>三、Https配置</h2><p>参考地址： <a target="_blank" rel="noopener" href="https://www.freesion.com/article/16501347598/">https://www.freesion.com/article/16501347598/</a></p>
-<p>步奏如下</p>
-<pre class="language-java" data-language="java"><code class="language-java">1、首先我们要拥有一个域名。本文使用的是腾讯云注册的域名。接着申请免费的SSL域名证书。
-  
-2、腾讯云首页登录后搜索SSL（其他网站类似），申请SSL证书，一般申请过程会在4小时以内给出结果
-  
-3、SSL证书申请成功之后，将其文件点击下载到本地上。这里我们使用的是Nginx证书
-  
-4、在服务器Nginx配置文件同级目录创建一个conf目录，将Nginx证书上传到该目录下
-  
-5、修改Nginx配置文件</code></pre>
+        &#x2F;**
+         * 说明： 关闭通讯口,串口、USB 接口都使用这个函数
+         * 调用： icdev: 通讯设备标识符
+         * 返回： &lt;0 错误;&#x3D;0 正确
+         * 举例： st&#x3D;ic_exit(icdev);
+         *&#x2F;
+        public short ic_exit(int icdev);
 
+        &#x2F;**
+         * 说明： 读写器蜂鸣（RD 读写器专用函数）
+         * 调用： icdev: 通讯设备标识符;time: 蜂鸣时间，值范围 0-255（单位 10ms）
+         * 返回： &lt;0 错误;&#x3D;0 正确
+         * 举例： st&#x3D;ic_beep(icdev,100);
+         *&#x2F;
+        public short dv_beep(int icdev,short time);
 
+        &#x2F;**
+         * 说明： 读取设备版本号
+         * 调用： icdev: 通讯设备标识符,len: 版本号字符串长度，其值为 18,databuff: 存放读取的版本号字符串
+         * 返回： &lt;0 错误,&#x3D;0 正确
+         * 举例： unsigned char databuff[18];st&#x3D;srd_ver(icdev,18,databuff);
+         *&#x2F;
+        public short srd_ver(int icdev,short len,byte[] databuff);
 
-<pre class="language-markup" data-language="markup"><code class="language-markup"># HTTPS server
-#
-server &#123;
-    #SSL 访问端口号为 443
-    listen       443 ssl;
-    #填写绑定证书的域名
-    server_name  www.superbo.cloud;
-    #证书文件名称
-    ssl_certificate      /usr/local/nginx/conf/conf/superbo.cloud_bundle.pem;
-    #私钥文件名称
-    ssl_certificate_key  /usr/local/nginx/conf/conf/superbo.cloud.key;
+        &#x2F;**
+         * 说明： 检查卡型是否正确
+         * 调用： icdev: 通讯设备标识符
+         * 返回： &lt;0 错误,&#x3D;0 正确
+         * 举例： st&#x3D;chk_4442(icdev)
+         *&#x2F;
+        public short chk_4442(int icdev);
 
-    ssl_session_cache    shared:SSL:1m;
-    ssl_session_timeout  5m;
+        &#x2F;**
+         * 说明： 返回设备当前状态
+         * 调用： icdev: 通讯设备标识符
+         * state: 插卡状态
+         *          1)有检测脚的卡座，读写器返回 4 种插卡状态：
+         *          00——无卡
+         *          01——有用户卡
+         * 返回： &lt;0 错误;&#x3D;0 正确，
+         * 举例： int status;st&#x3D;get_status(icdev,&amp;status);
+         *&#x2F;
+        public short get_status(int icdev, IntByReference statu);
+        public short srd_4442(int icdev,short offset,short len,byte[] data_buffer);
+        public short swr_4442(int icdev,short offset,short len,byte[] data_buffer);
+        public short prd_4442(int icdev,short len,byte[] data_buffer);
+        public short pwr_4442(int icdev,short offset,short len,byte[] data_buffer);
+        public short csc_4442(int icdev,short len,byte[] data_buffer);
+        public short wsc_4442(int icdev,short len,byte[] data_buffer);
+        public short rsc_4442(int icdev,short len,byte[] data_buffer);
+        public short rsct_4442(int icdev,IntByReference counter);
 
-    #请按照以下协议配置
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    #请按照以下套件配置，配置加密套件，写法遵循 openssl 标准。
-    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-    ssl_prefer_server_ciphers  on;
-
-    root         /home/superzqbo/hexo;
-    location / &#123;
-
+        public short hex_asc(byte[] hex,byte[] asc,short len);
+        public short asc_hex(byte[] asc,byte[] hex,short len);
     &#125;
 &#125;
-server &#123;
-    listen 80;
+</code></pre>
 
-    #填写绑定证书的域名
-    server_name www.superbo.cloud;
 
-    #把http的域名请求转成https
-    return 301 https://$host$request_uri;
+
+<h4 id="3、工具类封装"><a href="#3、工具类封装" class="headerlink" title="3、工具类封装"></a>3、工具类封装</h4><pre class="language-java" data-language="java"><code class="language-java">package com.test.jnademo.utils;
+
+import com.sun.jna.ptr.IntByReference;
+
+&#x2F;**
+ * @ClassName JnaUtils
+ * @description:
+ * @author: bozhiqiang
+ * @Version 1.0.0
+ * @createTime: 2022-07-18 10:38:25
+ *&#x2F;
+public class JnaUtils &#123;
+
+    public static class MwIc&#123;
+        &#x2F;**
+         * @param args
+         *&#x2F;
+        int icdev&#x3D;0;
+        short st&#x3D;1;
+        byte[] ver&#x3D;new byte[20];
+        public void DevConnect(JnaInterface.MwIc epen) &#123;
+            icdev&#x3D;epen.ic_init(0, 9600);
+            st&#x3D;epen.srd_ver(icdev, (short)18, ver);
+            if(st!&#x3D;0) &#123;
+                System.out.println(&quot;ic_init error!&quot;);
+            &#125;
+            else &#123;
+                String str&#x3D;new String(ver,0,18);
+                System.out.println(str);
+            &#125;
+            epen.dv_beep(icdev, (short)30);
+        &#125;
+        public void disconnectDev(JnaInterface.MwIc epen) &#123;
+            epen.ic_exit(icdev);
+            &#x2F;&#x2F;System.out.println(&quot;ceshi&quot;);
+        &#125;
+        public void Card4442(JnaInterface.MwIc epen) &#123;
+            IntByReference ret &#x3D; new IntByReference();
+            st&#x3D;epen.get_status(icdev,  ret);
+            if(st!&#x3D;0) &#123;
+                System.out.println(&quot;get_status error!&quot;);
+            &#125;
+            else &#123;
+                System.out.println(&quot;ret is &quot;+ ret.getValue());
+            &#125;
+
+            st&#x3D;epen.chk_4442(icdev);
+            if(st!&#x3D;0) &#123;
+                System.out.println(&quot;chk_4442 error!&quot;);
+            &#125;
+            IntByReference counter&#x3D;new IntByReference();
+            st&#x3D;epen.rsct_4442(icdev, counter);
+            if(st!&#x3D;0) &#123;
+                System.out.println(&quot;rsct_4442 error!&quot;);
+            &#125;
+            else &#123;
+                System.out.println(counter.getValue());
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+<h4 id="4、调用"><a href="#4、调用" class="headerlink" title="4、调用"></a>4、调用</h4><pre class="language-java" data-language="java"><code class="language-java">package com.test.jnademo;
+
+import com.test.jnademo.utils.JnaInterface;
+import com.test.jnademo.utils.JnaUtils;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class JnaDemoApplicationTests &#123;
+
+    @Test
+    void contextLoads() &#123;
+
+        JnaInterface.MwIc epen &#x3D; JnaInterface.MwIc.INSTANCE;
+        if (epen !&#x3D; null)&#123;
+            System.out.println(&quot;DLL连接成功!&quot;);
+        &#125; else&#123;
+            System.out.println(&quot;DLL连接失败!&quot;);
+        &#125;
+        JnaUtils.MwIc con&#x3D;new JnaUtils.MwIc();
+        con.DevConnect(epen);
+        con.Card4442(epen);
+        con.disconnectDev(epen);
+    &#125;
 &#125;</code></pre>
 
-
-
-<p>注意，如果网站想要正常访问，还需要进行备案！</p>
 
                 
             </div>
@@ -876,7 +844,7 @@ server &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://superzqbo.github.io/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/">https://superzqbo.github.io/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/</a>
+                    <a href="https://superzqbo.github.io/2022/07/18/java-diao-yong-c-dong-tai-ku/">https://superzqbo.github.io/2022/07/18/java-diao-yong-c-dong-tai-ku/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -913,15 +881,7 @@ server &#123;
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
-                                </a>
-                            
-                                <a href="/tags/Nginx/">
-                                    <span class="chip bg-color">Nginx</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1359,72 +1319,17 @@ server &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2022/07/12/postgresql-shu-zu-ji-json-lei-xing-shu-ju-zai-mybatis-xiang-mu-zhong-de-shi-yong/">
-                    <div class="card-image">
-                        
-                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/8b856c9afb5ba6647960358e125fb82c273f5db969868-8UY28B_fw1200.jpeg" class="responsive-img" alt="PostgreSql数组及JSON类型数据在Mybatis项目中的使用">
-                        
-                        <span class="card-title">PostgreSql数组及JSON类型数据在Mybatis项目中的使用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-12
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/PostgreSQL/" class="post-category">
-                                    PostgreSQL
-                                </a>
-                            
-                            <a href="/categories/PostgreSQL/JSON/" class="post-category">
-                                    JSON
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                        <span class="chip bg-color">随笔</span>
-                    </a>
-                    
-                    <a href="/tags/PostgreSQL/">
-                        <span class="chip bg-color">PostgreSQL</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2022/07/06/socket-tong-xin/">
+                <a href="/2022/07/18/java-diao-yong-c-dong-tai-ku/">
                     <div class="card-image">
                         
-                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220707000317084.png" class="responsive-img" alt="Socket通信">
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/900f02764f84875d5647d78c5c3a25e6225dfefdc7d6d-hMuZm7_fw1200.jpeg" class="responsive-img" alt="Java调用C动态库">
                         
-                        <span class="card-title">Socket通信</span>
+                        <span class="card-title">Java调用C动态库</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1435,7 +1340,48 @@ server &#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JNA/" class="post-category">
+                                    JNA
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/">
+                    <div class="card-image">
+                        
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/thumb_1680_0_20211203075609486.jpg" class="responsive-img" alt="Mina基础(一):基础介绍">
+                        
+                        <span class="card-title">Mina基础(一):基础介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-17
                             </span>
                         <span class="publish-author">
                             
@@ -1452,8 +1398,16 @@ server &#123;
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/Socket/">
+                        <span class="chip bg-color">Socket</span>
+                    </a>
+                    
                     <a href="/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/">
                         <span class="chip bg-color">网络通信</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%95%BF%E9%93%BE%E6%8E%A5/">
+                        <span class="chip bg-color">长链接</span>
                     </a>
                     
                 </div>

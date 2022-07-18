@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-07-17T10:05:56.807Z</updated>
+  <updated>2022-07-18T13:42:48.233Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java调用C动态库</title>
+    <link href="https://superzqbo.github.io/2022/07/18/java-diao-yong-c-dong-tai-ku/"/>
+    <id>https://superzqbo.github.io/2022/07/18/java-diao-yong-c-dong-tai-ku/</id>
+    <published>2022-07-18T13:36:42.000Z</published>
+    <updated>2022-07-18T13:42:48.233Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;java调用C++动态库&lt;/p&gt;
+&lt;p&gt;由于项目，需要调用明华IC卡读卡器接口，项目使用的语言是java，所以需要用到java的JNA技术，去调用C的DLL动态库&lt;/p&gt;
+&lt;h3 id=&quot;一、JNI、JNA介绍&quot;&gt;&lt;a href=&quot;#一、JNI、JNA介绍&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JNA" scheme="https://superzqbo.github.io/categories/JNA/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Mina基础(一):基础介绍</title>
     <link href="https://superzqbo.github.io/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/"/>
     <id>https://superzqbo.github.io/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/</id>
     <published>2022-07-17T09:30:28.000Z</published>
-    <updated>2022-07-17T10:05:56.807Z</updated>
+    <updated>2022-07-17T10:07:57.343Z</updated>
     
     
       
