@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-07-19T13:57:35.672Z</updated>
+  <updated>2022-07-20T13:44:51.324Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>内网穿透工具nps-npc</title>
+    <link href="https://superzqbo.github.io/2022/07/20/nei-wang-chuan-tou-gong-ju-nps-npc/"/>
+    <id>https://superzqbo.github.io/2022/07/20/nei-wang-chuan-tou-gong-ju-nps-npc/</id>
+    <published>2022-07-20T13:42:29.000Z</published>
+    <updated>2022-07-20T13:44:51.324Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1、基本概念&quot;&gt;&lt;a href=&quot;#1、基本概念&quot; class=&quot;headerlink&quot; title=&quot;1、基本概念&quot;&gt;&lt;/a&gt;1、基本概念&lt;/h2&gt;&lt;p&gt;内网穿透:内网穿透就是客户端通过访问中转服务器间接性的去访问内网服务器中的东西&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="内网穿透" scheme="https://superzqbo.github.io/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+    
+    <category term="NPS-NPC" scheme="https://superzqbo.github.io/tags/NPS-NPC/"/>
+    
+  </entry>
   
   <entry>
     <title>数据库版本控制工具FlyWay</title>

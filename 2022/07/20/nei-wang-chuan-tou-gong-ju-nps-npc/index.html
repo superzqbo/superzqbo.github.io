@@ -4,11 +4,10 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Mina基础(一):基础介绍, 牧羊人">
-    <meta name="description" content="1、在应用程序中的地位
-主要屏蔽了网络通信的一些细节，对Socket进行封装，并且是NIO的一个实现架构，可以帮助我们快速的开发网络通信，常用于游戏的开发、中间件服务端的程序中。
+    <meta name="keywords" content="内网穿透工具nps-npc, 牧羊人">
+    <meta name="description" content="1、基本概念内网穿透:内网穿透就是客户端通过访问中转服务器间接性的去访问内网服务器中的东西
 
-Mina最主要的工作就是把底层传输的字节码转换为Java对">
+nps是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持tcp、udp流量转发，可支持任何tcp、udp上层协议（访问内网网站、本地支付">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +21,7 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对">
 
     
 
-    <title>Mina基础(一):基础介绍 | 牧羊人</title>
+    <title>内网穿透工具nps-npc | 牧羊人</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -420,12 +419,12 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://superzqbo.oss-cn-hangzhou.aliyuncs.com/thumb_1680_0_20211203075609486.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://gd-hbimg.huaban.com/4e5c3aa4f618a0281fc3e72babda505615c4f2ec9be1e-Y89cED_fw1200')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Mina基础(一):基础介绍</h1>
+                    <h1 class="description center-align post-title">内网穿透工具nps-npc</h1>
                 </div>
             </div>
         </div>
@@ -541,16 +540,8 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Socket/">
-                                <span class="chip bg-color">Socket</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/">
-                                <span class="chip bg-color">网络通信</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%95%BF%E9%93%BE%E6%8E%A5/">
-                                <span class="chip bg-color">长链接</span>
+                            <a href="/tags/NPS-NPC/">
+                                <span class="chip bg-color">NPS-NPC</span>
                             </a>
                         
                     </div>
@@ -561,8 +552,8 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Mina/" class="post-category">
-                                Mina
+                            <a href="/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" class="post-category">
+                                内网穿透
                             </a>
                         
                     </div>
@@ -574,28 +565,28 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-17
+                    2022-07-20
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-07-19
+                    2022-07-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    680
+                    844
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -618,35 +609,83 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>1、在应用程序中的地位</strong></p>
-<pre class="language-none"><code class="language-none">主要屏蔽了网络通信的一些细节，对Socket进行封装，并且是NIO的一个实现架构，可以帮助我们快速的开发网络通信，常用于游戏的开发、中间件服务端的程序中。
+                <h2 id="1、基本概念"><a href="#1、基本概念" class="headerlink" title="1、基本概念"></a>1、基本概念</h2><p>内网穿透:内网穿透就是客户端通过访问中转服务器间接性的去访问内网服务器中的东西</p>
+<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120161858323.png" alt="image-20211120161858323"></p>
+<pre class="language-java" data-language="java"><code class="language-java">nps是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持tcp、udp流量转发，可支持任何tcp、udp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面，内网dns解析等等……），此外还支持内网http代理、内网socks5代理、p2p等，并带有功能强大的web管理端。</code></pre>
 
-Mina最主要的工作就是把底层传输的字节码转换为Java对象，提供给应用程序；或者把应用程序返回的结果转换为字节码，交给底层传输。</code></pre>
+<p><strong>Github地址：</strong><a target="_blank" rel="noopener" href="https://github.com/cnlh/nps">https://github.com/cnlh/nps</a>  </p>
+<blockquote>
+<ul>
+<li>系统为Linux&#x2F;Windows&#x2F;Mac均可，本文服务端和客户端都是在Windows 下进行的</li>
+<li>nps服务端：需要安装在一个有公网IP的服务器上，</li>
+<li>npc客户端：安装在需要被访问的内网服务器或者个人电脑上。</li>
+<li>注意nps和npc版本要保持一致</li>
+</ul>
+</blockquote>
+<h2 id="2、NPS安装"><a href="#2、NPS安装" class="headerlink" title="2、NPS安装"></a>2、NPS安装</h2><pre class="language-java" data-language="java"><code class="language-java"># 下载
+wget https:&#x2F;&#x2F;github.com&#x2F;cnlh&#x2F;nps&#x2F;releases&#x2F;download&#x2F;v0.23.2&#x2F;linux_amd64_server.tar.gz
+# 解压
+tar xzvf linux_amd64_server.tar.gz
+    
+# 解压后，首先改一下conf文件夹下的npx.conf文件(conf&#x2F;nps.conf)
+</code></pre>
 
-<p><strong>2、长短链接</strong></p>
-<blockquote>
-<p>长链接和短链接<br>长链接：通信双方长期保持一个链接状态不断开，比如QQ，当我们登陆QQ的时候，就会链接腾讯的服务器建立一个链接，链接一旦建立就一会断开，除非发生异常<br>短链接：通信双方不是保持一个长链接状态，比如http协议，请求数据响应完成之后，链接就会断开</p>
-</blockquote>
-<p><strong>3、IOService接口</strong></p>
-<p>*<strong>实现了对网络通信的客户端和服务端之间的抽象，子接口IOConnector用于描述客户端，子接口IOAcceptor用于描述服务端。*</strong></p>
-<p>  <strong>作用：</strong>IOService可以管理我们网络通信的客户端和服务端，并且可以管理连接双方的会话session，同样可以添加过滤器。</p>
-<img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220717174143094.png" alt="image-20220717174143094" style="zoom:50%;" />
+<h3 id="2-1-基本信息"><a href="#2-1-基本信息" class="headerlink" title="2.1  基本信息"></a>2.1  基本信息</h3><pre class="language-java" data-language="java"><code class="language-java">将 nps 运行到一个有公网 IP 的服务器上，关注配置文件中的 bridge_port 与 web_port。bridge_port 用来与 NPC 相连接，web_port 用来从浏览器访问，从而配置 NPS。
 
-<blockquote>
-<p>IoService接口声明了服务端的共有属性和行为；</p>
-<p>IoAcceptor接口继承了IoService接口，并添加了服务端特有的接口属性及方法，比如bind（）方法，成为典型的服务端接口；</p>
-<p>IoConnector接口同样继承了IoService接口，并添加了客户端特有的接口属性及方法，比如connect（）方法，成为典型的客户端接口；</p>
-<p>AbstractIoService实现了IoService中管理服务的方法，比如getFilterChainBuilder方法—获得过滤器链；</p>
-<p>AbstractIoService抽象类继承了AbstractIoService抽象类并实现了IoAcceptor接口，成为了拥有管理服务端实现功能的服务端类；我们常用的NioSocketAcceptor就是它的子类；</p>
-<p>AbstractIoConnector抽象类继承了AbstractIoService抽象类并实现了IoConnector接口，成为了拥有管理客户端实现功能的客户端类；我们常用的NioSocketConnector就是它的子类；</p>
-</blockquote>
-<p><strong>4、编码解码</strong></p>
-<p>前面提到Mina最主要的工作就是把底层传输的字节码转换为Java对象，提供给应用程序；或者把应用程序返回的结果转换为字节码，交给底层传输。</p>
-<blockquote>
-<p>应用程序				        														 	网络<br>java对象或者基本数据类型   												二进制</p>
-<p>对象输出到网络———————编码—————————-&gt;需要编码成二进制</p>
-<p>网络传入的应用程序&lt;—————————解码—————-需要解码成java对象或者基本数据类型</p>
-</blockquote>
+sudo .&#x2F;nps 阻断模式运行，可以看到错误信息，如果有端口占用的问题，可以使用 lsof -i:port 的方式查询占用该端口的进程名，从而将该进程 kill 掉或者关掉。</code></pre>
+
+<h3 id="2-2-配置"><a href="#2-2-配置" class="headerlink" title="2.2  配置"></a>2.2  配置</h3><pre class="language-java" data-language="java"><code class="language-java">appname &#x3D; nps
+#Boot mode(dev|pro)
+runmode &#x3D; dev
+ 
+##bridge,用来与 NPC 相连接
+# 底层通信协议，默认tcp，可选用kcp
+bridge_type&#x3D;tcp
+# 底层通信端口，默认8024，如已被占用请指定其他端口，若未开放，先开放端口
+bridge_port&#x3D;8024
+bridge_ip&#x3D;0.0.0.0
+ 
+#web,用来从浏览器访问
+web_host&#x3D;116.62.49.243
+web_username&#x3D;admin
+web_password&#x3D;666666
+web_port &#x3D; 8080
+web_ip&#x3D;0.0.0.0</code></pre>
+
+<h3 id="2-3-安装、启动"><a href="#2-3-安装、启动" class="headerlink" title="2.3  安装、启动"></a>2.3  安装、启动</h3><h4 id="2-3-1-服务端"><a href="#2-3-1-服务端" class="headerlink" title="2.3.1 服务端"></a>2.3.1 服务端</h4><pre class="language-java" data-language="java"><code class="language-java"># 安装
+修改完配置文件之后，
+.&#x2F;nps install
+当前的配置文件和web静态文件拷贝到&#x2F;etc&#x2F;nps下，以后修改配置文件直接修改&#x2F;etc&#x2F;nps&#x2F;conf&#x2F;nps.conf
+    
+
+# 启动
+.&#x2F;nps start
+    
+    
+# web 访问
+ web_host:web_port</code></pre>
+
+<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120165112869.png" alt="image-20211120165112869"></p>
+<h4 id="2-3-1-客户端"><a href="#2-3-1-客户端" class="headerlink" title="2.3.1 客户端"></a>2.3.1 客户端</h4><pre class="language-java" data-language="java"><code class="language-java">npc.exe -server&#x3D;116.62.49.243:8024 -vkey&#x3D;0z9ogzrb6h8hmgqa
+这里的ip是你服务器ip
+端口是你nps.conf中#bridge设置的桥接端口
+-vkey是你控制面板客户端生成的唯一认证密钥</code></pre>
+
+<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120170931250.png" alt="image-20211120170931250"></p>
+<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120171044364.png" alt="image-20211120171044364"></p>
+<h3 id="2-4-内网穿透设置"><a href="#2-4-内网穿透设置" class="headerlink" title="2.4  内网穿透设置"></a>2.4  内网穿透设置</h3><pre class="language-java" data-language="java"><code class="language-java">1、服务端端口
+    服务器连接内网需要的端口，随便写一个，然后去开放安全组
+    
+2、目标：
+    内网要穿透的端口号</code></pre>
+
+
+
+<p>点击“隧道之后”点击新增按钮，创建一个隧道，其中“服务端端口”为你穿透成功之后要访问的端口，“目标 (IP:端口)”为你要穿透的项目的启动端口，我这里项目的启动端口为9091，所以，“目标 (IP:端口)”写9091，服务端端口我写的是9099，如图</p>
+<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120172936384.png" alt="image-20211120172936384"></p>
+<p>此时，我们可以在公网通过访问服务端的ip+端口来访问我们本地的项目了</p>
+<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120173933307.png" alt="image-20211120173933307"></p>
+<p> 这样就可以访问到我们本地项目的test接口了</p>
 
                 
             </div>
@@ -673,7 +712,7 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对象，提
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://superzqbo.github.io/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/">https://superzqbo.github.io/2022/07/17/mina-ji-chu-yi-ji-chu-jie-shao/</a>
+                    <a href="https://superzqbo.github.io/2022/07/20/nei-wang-chuan-tou-gong-ju-nps-npc/">https://superzqbo.github.io/2022/07/20/nei-wang-chuan-tou-gong-ju-nps-npc/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -711,16 +750,8 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对象，提
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Socket/">
-                                    <span class="chip bg-color">Socket</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/">
-                                    <span class="chip bg-color">网络通信</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%95%BF%E9%93%BE%E6%8E%A5/">
-                                    <span class="chip bg-color">长链接</span>
+                                <a href="/tags/NPS-NPC/">
+                                    <span class="chip bg-color">NPS-NPC</span>
                                 </a>
                             
                         </div>
@@ -1160,16 +1191,17 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对象，提
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/07/18/java-diao-yong-c-dong-tai-ku/">
+                <a href="/2022/07/20/nei-wang-chuan-tou-gong-ju-nps-npc/">
                     <div class="card-image">
                         
-                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/900f02764f84875d5647d78c5c3a25e6225dfefdc7d6d-hMuZm7_fw1200.jpeg" class="responsive-img" alt="Java调用C动态库">
+                        <img src="https://gd-hbimg.huaban.com/4e5c3aa4f618a0281fc3e72babda505615c4f2ec9be1e-Y89cED_fw1200" class="responsive-img" alt="内网穿透工具nps-npc">
                         
-                        <span class="card-title">Java调用C动态库</span>
+                        <span class="card-title">内网穿透工具nps-npc</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1179,26 +1211,27 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对象，提
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JNA/" class="post-category">
-                                    JNA
+                            <a href="/categories/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" class="post-category">
+                                    内网穿透
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JNA/">
-                        <span class="chip bg-color">JNA</span>
+                    <a href="/tags/NPS-NPC/">
+                        <span class="chip bg-color">NPS-NPC</span>
                     </a>
                     
                 </div>
@@ -1212,12 +1245,12 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对象，提
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/14/mybatis-fen-ye/">
+                <a href="/2022/07/19/shu-ju-ku-ban-ben-kong-zhi-gong-ju-flyway/">
                     <div class="card-image">
                         
-                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/e4e40ce7ea8a2219458191dbf412ecd401e060fa17e1df-1bJcts.jpeg" class="responsive-img" alt="mybatis分页">
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/2e5583b27cc58192fe1a8e5cf089c269fb3c7d5d3f7a09-JMKdJE_fw1200.jpeg" class="responsive-img" alt="数据库版本控制工具FlyWay">
                         
-                        <span class="card-title">mybatis分页</span>
+                        <span class="card-title">数据库版本控制工具FlyWay</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1228,14 +1261,14 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对象，提
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Mybatis/" class="post-category">
-                                    Mybatis
+                            <a href="/categories/Flyway/" class="post-category">
+                                    Flyway
                                 </a>
                             
                             
@@ -1245,8 +1278,12 @@ Mina最主要的工作就是把底层传输的字节码转换为Java对象，提
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%88%86%E9%A1%B5/">
-                        <span class="chip bg-color">分页</span>
+                    <a href="/tags/Flyway/">
+                        <span class="chip bg-color">Flyway</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>

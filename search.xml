@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>内网穿透工具nps-npc</title>
+      <link href="/2022/07/20/nei-wang-chuan-tou-gong-ju-nps-npc/"/>
+      <url>/2022/07/20/nei-wang-chuan-tou-gong-ju-nps-npc/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1、基本概念"><a href="#1、基本概念" class="headerlink" title="1、基本概念"></a>1、基本概念</h2><p>内网穿透:内网穿透就是客户端通过访问中转服务器间接性的去访问内网服务器中的东西</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120161858323.png" alt="image-20211120161858323"></p><pre class="language-java" data-language="java"><code class="language-java">nps是一款轻量级、高性能、功能强大的内网穿透代理服务器。目前支持tcp、udp流量转发，可支持任何tcp、udp上层协议（访问内网网站、本地支付接口调试、ssh访问、远程桌面，内网dns解析等等……），此外还支持内网http代理、内网socks5代理、p2p等，并带有功能强大的web管理端。</code></pre><p><strong>Github地址：</strong><a href="https://github.com/cnlh/nps">https://github.com/cnlh/nps</a>  </p><blockquote><ul><li>系统为Linux&#x2F;Windows&#x2F;Mac均可，本文服务端和客户端都是在Windows 下进行的</li><li>nps服务端：需要安装在一个有公网IP的服务器上，</li><li>npc客户端：安装在需要被访问的内网服务器或者个人电脑上。</li><li>注意nps和npc版本要保持一致</li></ul></blockquote><h2 id="2、NPS安装"><a href="#2、NPS安装" class="headerlink" title="2、NPS安装"></a>2、NPS安装</h2><pre class="language-java" data-language="java"><code class="language-java"># 下载wget https:&#x2F;&#x2F;github.com&#x2F;cnlh&#x2F;nps&#x2F;releases&#x2F;download&#x2F;v0.23.2&#x2F;linux_amd64_server.tar.gz# 解压tar xzvf linux_amd64_server.tar.gz    # 解压后，首先改一下conf文件夹下的npx.conf文件(conf&#x2F;nps.conf)</code></pre><h3 id="2-1-基本信息"><a href="#2-1-基本信息" class="headerlink" title="2.1  基本信息"></a>2.1  基本信息</h3><pre class="language-java" data-language="java"><code class="language-java">将 nps 运行到一个有公网 IP 的服务器上，关注配置文件中的 bridge_port 与 web_port。bridge_port 用来与 NPC 相连接，web_port 用来从浏览器访问，从而配置 NPS。sudo .&#x2F;nps 阻断模式运行，可以看到错误信息，如果有端口占用的问题，可以使用 lsof -i:port 的方式查询占用该端口的进程名，从而将该进程 kill 掉或者关掉。</code></pre><h3 id="2-2-配置"><a href="#2-2-配置" class="headerlink" title="2.2  配置"></a>2.2  配置</h3><pre class="language-java" data-language="java"><code class="language-java">appname &#x3D; nps#Boot mode(dev|pro)runmode &#x3D; dev ##bridge,用来与 NPC 相连接# 底层通信协议，默认tcp，可选用kcpbridge_type&#x3D;tcp# 底层通信端口，默认8024，如已被占用请指定其他端口，若未开放，先开放端口bridge_port&#x3D;8024bridge_ip&#x3D;0.0.0.0 #web,用来从浏览器访问web_host&#x3D;116.62.49.243web_username&#x3D;adminweb_password&#x3D;666666web_port &#x3D; 8080web_ip&#x3D;0.0.0.0</code></pre><h3 id="2-3-安装、启动"><a href="#2-3-安装、启动" class="headerlink" title="2.3  安装、启动"></a>2.3  安装、启动</h3><h4 id="2-3-1-服务端"><a href="#2-3-1-服务端" class="headerlink" title="2.3.1 服务端"></a>2.3.1 服务端</h4><pre class="language-java" data-language="java"><code class="language-java"># 安装修改完配置文件之后，.&#x2F;nps install当前的配置文件和web静态文件拷贝到&#x2F;etc&#x2F;nps下，以后修改配置文件直接修改&#x2F;etc&#x2F;nps&#x2F;conf&#x2F;nps.conf    # 启动.&#x2F;nps start        # web 访问 web_host:web_port</code></pre><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120165112869.png" alt="image-20211120165112869"></p><h4 id="2-3-1-客户端"><a href="#2-3-1-客户端" class="headerlink" title="2.3.1 客户端"></a>2.3.1 客户端</h4><pre class="language-java" data-language="java"><code class="language-java">npc.exe -server&#x3D;116.62.49.243:8024 -vkey&#x3D;0z9ogzrb6h8hmgqa这里的ip是你服务器ip端口是你nps.conf中#bridge设置的桥接端口-vkey是你控制面板客户端生成的唯一认证密钥</code></pre><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120170931250.png" alt="image-20211120170931250"></p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120171044364.png" alt="image-20211120171044364"></p><h3 id="2-4-内网穿透设置"><a href="#2-4-内网穿透设置" class="headerlink" title="2.4  内网穿透设置"></a>2.4  内网穿透设置</h3><pre class="language-java" data-language="java"><code class="language-java">1、服务端端口    服务器连接内网需要的端口，随便写一个，然后去开放安全组    2、目标：    内网要穿透的端口号</code></pre><p>点击“隧道之后”点击新增按钮，创建一个隧道，其中“服务端端口”为你穿透成功之后要访问的端口，“目标 (IP:端口)”为你要穿透的项目的启动端口，我这里项目的启动端口为9091，所以，“目标 (IP:端口)”写9091，服务端端口我写的是9099，如图</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120172936384.png" alt="image-20211120172936384"></p><p>此时，我们可以在公网通过访问服务端的ip+端口来访问我们本地的项目了</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20211120173933307.png" alt="image-20211120173933307"></p><p> 这样就可以访问到我们本地项目的test接口了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 内网穿透 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NPS-NPC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据库版本控制工具FlyWay</title>
       <link href="/2022/07/19/shu-ju-ku-ban-ben-kong-zhi-gong-ju-flyway/"/>
       <url>/2022/07/19/shu-ju-ku-ban-ben-kong-zhi-gong-ju-flyway/</url>
