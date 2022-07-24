@@ -416,6 +416,19 @@ NoSQL（非关系型数据库）：键值对数据库，文档数据库(">
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -1789,6 +1802,12 @@ db.number.find(&#123;&#125;,&#123;ename:1,_id:0,age:1&#125;).
 </footer>
 
 <div class="progress-bar"></div>
+
+<img src="https://gitee.com/marmalade0/images/blob/master/www.marmalade.vip/beian.png">
+<a href="http://www.beian.miit.gov.cn/"  style="color:#f72b07" target="_blank">陇ICP备2022001973号</a>
+
+
+
 
 
     <!-- 搜索遮罩框 -->
