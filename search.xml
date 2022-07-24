@@ -13,7 +13,7 @@
       
       <categories>
           
-          <category> 内网穿透 </category>
+          <category> 后端 - 网络 </category>
           
       </categories>
       
@@ -38,7 +38,7 @@
       
       <categories>
           
-          <category> Flyway </category>
+          <category> 数据库 - FlyWay </category>
           
       </categories>
       
@@ -65,7 +65,7 @@
       
       <categories>
           
-          <category> MongoDb </category>
+          <category> 后端 - MongoDb </category>
           
       </categories>
       
@@ -90,7 +90,7 @@
       
       <categories>
           
-          <category> Mina </category>
+          <category> 后端 - Mina </category>
           
       </categories>
       
@@ -119,7 +119,7 @@
       
       <categories>
           
-          <category> JNA </category>
+          <category> 后端 - JNA </category>
           
       </categories>
       
@@ -144,7 +144,7 @@
       
       <categories>
           
-          <category> Mina </category>
+          <category> 后端 - Mina </category>
           
       </categories>
       
@@ -173,7 +173,7 @@
       
       <categories>
           
-          <category> Mybatis </category>
+          <category> 后端 - Mybatis </category>
           
       </categories>
       
@@ -198,7 +198,7 @@
       
       <categories>
           
-          <category> 内存分析 </category>
+          <category> 后端 - 内存分析 </category>
           
       </categories>
       
@@ -225,9 +225,7 @@
       
       <categories>
           
-          <category> PostgreSQL </category>
-          
-          <category> JSON </category>
+          <category> 后端 - PostgreSQL </category>
           
       </categories>
       
@@ -281,7 +279,7 @@
       
       <categories>
           
-          <category> Mina </category>
+          <category> 后端 - Mina </category>
           
       </categories>
       
@@ -308,8 +306,6 @@
           
           <category> Docker </category>
           
-          <category> Docker基础 </category>
-          
       </categories>
       
       
@@ -333,7 +329,7 @@
       
       <categories>
           
-          <category> 网络工具 </category>
+          <category> 后端 - 网络 </category>
           
       </categories>
       
