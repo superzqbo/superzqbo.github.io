@@ -4,15 +4,10 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Mina基础(二):客户端、服务端实现, 牧羊人">
-    <meta name="description" content="一、服务端本次示例当中服务端由一下几部分构成
-
-1、服务端Socket
-2、服务端Socket封装类
-3、DataHandler数据处理
-4、项目启动后调用
-
-1.1、创建Session服务端package com.test.mina.se">
+    <meta name="keywords" content="MongoDB-数据备份还原, 牧羊人">
+    <meta name="description" content="
+注意！！！！： 数据库迁移需要使用备份(mongodump)与恢复(mongorestore)语法，如果数据库没有开启权限验证，则直接使用命令即可；
+如果开启了验证登录，是无法直接备份和恢复数据库的，报如下错误：error reading">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -26,7 +21,7 @@
 
     
 
-    <title>Mina基础(二):客户端、服务端实现 | 牧羊人</title>
+    <title>MongoDB-数据备份还原 | 牧羊人</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -424,7 +419,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '615ed7fb1504b0c724a296d7a69e6c7b2f9ea2c57c1d8206c5afdf392ebdfd25';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -437,12 +432,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://superzqbo.oss-cn-hangzhou.aliyuncs.com/6a41c7cb8cc9b2d7f87fe34c4902529aab1336ece0c87-DeRio9_fw1200.jpeg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://superzqbo.oss-cn-hangzhou.aliyuncs.com/f362ba627750c3f1f897c0340c5b2ba39203e503be032-F0GNRw_fw658.jpeg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Mina基础(二):客户端、服务端实现</h1>
+                    <h1 class="description center-align post-title">MongoDB-数据备份还原</h1>
                 </div>
             </div>
         </div>
@@ -558,16 +553,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Socket/">
-                                <span class="chip bg-color">Socket</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/">
-                                <span class="chip bg-color">网络通信</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%95%BF%E9%93%BE%E6%8E%A5/">
-                                <span class="chip bg-color">长链接</span>
+                            <a href="/tags/MongoDb/">
+                                <span class="chip bg-color">MongoDb</span>
                             </a>
                         
                     </div>
@@ -578,8 +565,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%90%8E%E7%AB%AF-Mina/" class="post-category">
-                                后端 - Mina
+                            <a href="/categories/%E5%90%8E%E7%AB%AF-MongoDb/" class="post-category">
+                                后端 - MongoDb
                             </a>
                         
                     </div>
@@ -591,28 +578,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-19
+                    2022-07-28
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-07-24
+                    2022-07-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.1k
+                    146
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    21 分
+                    1 分
                 </div>
                 
 
@@ -635,933 +622,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一、服务端"><a href="#一、服务端" class="headerlink" title="一、服务端"></a>一、服务端</h3><p>本次示例当中服务端由一下几部分构成</p>
-<blockquote>
-<p>1、服务端Socket</p>
-<p>2、服务端Socket封装类</p>
-<p>3、DataHandler数据处理</p>
-<p>4、项目启动后调用</p>
-</blockquote>
-<h4 id="1-1、创建Session服务端"><a href="#1-1、创建Session服务端" class="headerlink" title="1.1、创建Session服务端"></a>1.1、创建Session服务端</h4><pre class="language-java" data-language="java"><code class="language-java">package com.test.mina.server;
+                <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220630093148047.png" alt="image-20220630093148047"></p>
+<pre class="language-java" data-language="java"><code class="language-java">注意！！！！： 数据库迁移需要使用备份(mongodump)与恢复(mongorestore)语法，如果数据库没有开启权限验证，则直接使用命令即可；
+如果开启了验证登录，是无法直接备份和恢复数据库的，报如下错误：error reading database: command listCollections requires authentication
+解决方案
 
-import org.apache.mina.core.filterchain.IoFilter;
-import org.apache.mina.core.service.IoAcceptor;
-import org.apache.mina.core.service.IoHandler;
-import org.apache.mina.core.session.IdleStatus;
-import org.apache.mina.filter.codec.ProtocolCodecFilter;
-import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
-import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+添加：-u &lt;username&gt; -p&#x3D;&lt;password&gt;
+添加：--authenticationDatabase admin</code></pre>
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
 
-&#x2F;**
- * @ClassName SocketServer
- * @description: Mina服务端,提供socket端口侦听服务:用于监听客户端连接，并接受客户端发送过来的数据
- * @author: bozhiqiang
- * @Version 1.0.0
- * @createTime: 2022-07-08 13:49:19
- *&#x2F;
-public class SocketServer &#123;
-    private final static Logger logger &#x3D; LoggerFactory.getLogger(SocketServer.class);
-    &#x2F;**
-     * 1、创建一个非阻塞的server端的Socket
-     * 2、设置编码过滤器（使用Mina提供的文本换行符编解码器）
-     * 3、设置读取数据的缓冲区大小
-     * 4、设置读写通道无操作进入空闲状态的时间 10ms
-     * 5、绑定真正的逻辑处理
-     * 6、绑定端口
-     *&#x2F;
 
-    &#x2F;&#x2F; 绑定的端口
-    private int port;
-    private String name;
-    &#x2F;&#x2F; 服务启动标志
-    private boolean started&#x3D;false;
-
-    &#x2F;&#x2F; 设置读取、设置数据的缓冲区大小
-    private int readerIndleTime&#x3D;60; &#x2F;&#x2F;s
-    private int writerIndleTime&#x3D;900; &#x2F;&#x2F;s
-
-    private IoHandler dataHandler;
-
-    private IoAcceptor acceptorServer;
-    public SocketServer(String name,int port)&#123;
-        this.name &#x3D; name;
-        this.port &#x3D; port;
-    &#125;
-
-    public boolean start()&#123;
-        if(started)&#123;
-            return true;
-        &#125;
-
-        try &#123;
-            &#x2F;&#x2F; 创建一个非阻塞的server端的Socket
-            acceptorServer &#x3D; new NioSocketAcceptor();
-
-            acceptorServer.getSessionConfig().setReaderIdleTime(getReaderIndleTime());
-            acceptorServer.getSessionConfig().setWriterIdleTime(getWriterIndleTime());
-            &#x2F;&#x2F; 设置读写通道无操作进入空闲状态的时间 10ms
-            acceptorServer.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
-
-            &#x2F;&#x2F; 设置过滤链
-            acceptorServer.getFilterChain().addLast(&quot;codec&quot;, new ProtocolCodecFilter(new TextLineCodecFactory()));
-            acceptorServer.setHandler(getDataHandler());
-
-            acceptorServer.bind(new InetSocketAddress(port));
-            logger.info(&quot;&#123;&#125; listening port:&#123;&#125;&quot;,name,port);
-
-            started &#x3D; true;
-
-            return true;
-        &#125; catch (IOException e) &#123;
-            logger.error(&quot;start&quot;,e);
-            return false;
-        &#125;
-    &#125;
-
-
-    public void close() &#123;
-        this.acceptorServer.dispose();
-    &#125;
-
-    public int getReaderIndleTime() &#123;
-        return readerIndleTime;
-    &#125;
-
-    public void setReaderIndleTime(int readerIndleTime) &#123;
-        this.readerIndleTime &#x3D; readerIndleTime;
-    &#125;
-
-    public int getWriterIndleTime() &#123;
-        return writerIndleTime;
-    &#125;
-
-    public void setWriterIndleTime(int writerIndleTime) &#123;
-        this.writerIndleTime &#x3D; writerIndleTime;
-    &#125;
-
-    public IoHandler getDataHandler() &#123;
-        return dataHandler;
-    &#125;
-
-    public void setDataHandler(IoHandler dataHandler) &#123;
-        this.dataHandler &#x3D; dataHandler;
-    &#125;
-&#125;
-</code></pre>
-
-<h4 id="1-2、创建服务端封装类"><a href="#1-2、创建服务端封装类" class="headerlink" title="1.2、创建服务端封装类"></a>1.2、创建服务端封装类</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.server;
-
-import com.techen.mina.utils.Config;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-&#x2F;**
- * @ClassName Fes
- * @description:
- * @author: bozhiqiang
- * @Version 1.0.0
- * @createTime: 2022-07-15 10:22:26
- *&#x2F;
-public class Fes &#123;
-    private static final Logger logger&#x3D; LoggerFactory.getLogger(Fes.class);
-
-    &#x2F;&#x2F; 终端上线端口服务
-    private SocketServer terminalServer;
-    &#x2F;&#x2F; 主站侧端口服务
-    private SocketServer clientServer;
-
-    &#x2F;&#x2F; 终端上线端口
-    private int terminalPort;
-    &#x2F;&#x2F; 主站连接端口
-    private int clientPort;
-
-    private Config config;
-
-    &#x2F;&#x2F; 终端数据处理器
-    private DataHandler terminalDataHandler;
-    &#x2F;&#x2F; 主站连接数据处理器
-    private DataHandler clientDataHandler;
-
-    public Fes(Config config) &#123;
-        this.config &#x3D; config;
-    &#125;
-
-
-
-    public void start() &#123;
-
-        &#x2F;&#x2F; 启动终端通信监听
-        terminalPort &#x3D; config.getIntValue(&quot;terminal_port&quot;, 12000);
-        terminalServer &#x3D; new SocketServer(&quot;Terminal Service&quot;, terminalPort);
-        terminalServer.setReaderIndleTime(config.getIntValue(&quot;terminal_idle&quot;, 300));
-        terminalServer.setWriterIndleTime(config.getIntValue(&quot;terminal_idle&quot;, 300));
-        terminalServer.setDataHandler(terminalDataHandler);
-        terminalServer.start();
-
-
-        &#x2F;&#x2F; 启动主站通信监听
-        clientPort &#x3D; config.getIntValue(&quot;client_port&quot;, 12001);
-        clientServer &#x3D; new SocketServer(&quot;Client Service&quot;, clientPort);
-        clientServer.setReaderIndleTime(config.getIntValue(&quot;client_idle&quot;, 60));
-
-        clientServer.setDataHandler(clientDataHandler);
-        clientServer.start();
-
-        logger.info(&quot;fes started.&quot;);
-    &#125;
-
-    public void close() &#123;
-        terminalServer.close();
-        clientServer.close();
-    &#125;
-
-    public void setTerminalDataHandler(DataHandler terminalDataHandler) &#123;
-        this.terminalDataHandler &#x3D; terminalDataHandler;
-    &#125;
-
-    public DataHandler getClientDataHandler() &#123;
-        return clientDataHandler;
-    &#125;
-
-    public DataHandler getTerminalDataHandler() &#123;
-        return terminalDataHandler;
-    &#125;
-
-    public void setClientDataHandler(DataHandler clientDataHandler) &#123;
-        this.clientDataHandler &#x3D; clientDataHandler;
-    &#125;
-&#125;
-
-</code></pre>
-
-
-
-<h4 id="1-3、数据处理"><a href="#1-3、数据处理" class="headerlink" title="1.3、数据处理"></a>1.3、数据处理</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.server;
-
-import org.apache.mina.core.buffer.IoBuffer;
-import org.apache.mina.core.service.IoHandlerAdapter;
-import org.apache.mina.core.session.IdleStatus;
-import org.apache.mina.core.session.IoSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
-
-import java.nio.charset.StandardCharsets;
-
-&#x2F;**
- * @ClassName DataHandler
- * @description:
- * @author: bozhiqiang
- * @Version 1.0.0
- * @createTime: 2022-07-15 09:59:56
- *&#x2F;
-@Component
-public abstract class DataHandler extends IoHandlerAdapter &#123;
-    private static final Logger logger &#x3D; LoggerFactory.getLogger(DataHandler.class);
-
-    public DataHandler() &#123;
-        super();
-    &#125;
-
-    @Override
-    public void sessionCreated(IoSession session) throws Exception &#123;
-        logger.info(&quot;连接成功&quot;);
-    &#125;
-
-    @Override
-    public void sessionOpened(IoSession session) throws Exception &#123;
-        logger.info(&quot;服务端与客户端连接打开&quot;);
-    &#125;
-
-    @Override
-    public void sessionClosed(IoSession session) throws Exception &#123;
-        logger.info(&quot;服务端与客户端连接关闭&quot;);
-    &#125;
-
-    @Override
-    public void sessionIdle(IoSession session, IdleStatus status) throws Exception &#123;
-        logger.info(&quot;服务端进入空闲状态&quot;);
-    &#125;
-
-    @Override
-    public void exceptionCaught(IoSession session, Throwable cause) throws Exception &#123;
-        logger.error(&quot;服务端发生异常&quot;, cause);
-    &#125;
-
-    @Override
-    public void messageReceived(IoSession session, Object message) throws Exception &#123;
-        &#x2F;&#x2F; 收到的是字符串(传输之前的数据类型)
-        byte[] msgBytes &#x3D; message.toString().getBytes(StandardCharsets.UTF_8);
-
-        try &#123;
-            this.messageReceived(session, msgBytes);
-        &#125; catch (Exception var6) &#123;
-            logger.error(var6.getMessage(), var6);
-        &#125;
-    &#125;
-
-    public abstract void messageReceived(IoSession var1, byte[] var2);
-
-    @Override
-    public void messageSent(IoSession session, Object message) throws Exception &#123;
-        logger.info(&quot;服务端发送消息成功&quot;);
-    &#125;
-
-    @Override
-    public void inputClosed(IoSession session) throws Exception &#123;
-        logger.info(&quot;输入关闭&quot;);
-    &#125;
-&#125;
-&#x2F;**-----------------------------------------------------------------------------------------------------**&#x2F;
-package com.techen.mina.server;
-
-import org.apache.mina.core.session.IoSession;
-
-&#x2F;**
- * @ClassName ClientDataHandler
- * @description:
- * @author: bozhiqiang
- * @Version 1.0.0
- * @createTime: 2022-07-15 13:16:44
- *&#x2F;
-public class ClientDataHandler extends DataHandler&#123;
-
-    @Override
-    public void messageReceived(IoSession session, byte[] msgBytes) &#123;
-        System.out.println(&quot;收到客户端信息：&quot;+new String(msgBytes));
-    &#125;
-&#125;
-&#x2F;**---------------------------------------------------------------------------------------------------**&#x2F;
-package com.techen.mina.server;
-
-import org.apache.mina.core.session.IoSession;
-
-&#x2F;**
- * @ClassName TerminalDataHandler
- * @description:
- * @author: bozhiqiang
- * @Version 1.0.0
- * @createTime: 2022-07-15 16:18:34
- *&#x2F;
-public class TerminalDataHandler extends DataHandler&#123;
-
-    @Override
-    public void messageReceived(IoSession session, byte[] msgBytes) &#123;
-        System.out.println(&quot;收到设备端信息：&quot;+new String(msgBytes));
-    &#125;
-&#125;    </code></pre>
-
-<h4 id="1-4、项目启动后调用"><a href="#1-4、项目启动后调用" class="headerlink" title="1.4、项目启动后调用"></a>1.4、项目启动后调用</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina;
-
-import com.techen.mina.server.ClientDataHandler;
-import com.techen.mina.server.Fes;
-import com.techen.mina.server.TerminalDataHandler;
-import com.techen.mina.utils.Configs;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class SocketMinaApplication &#123;
-
-    public static void main(String[] args) &#123;
-        SpringApplication.run(SocketMinaApplication.class, args);
-        Fes fes &#x3D; new Fes(Configs.getConfig(&quot;&#x2F;config&#x2F;serverconfig.properties&quot;));
-        fes.setClientDataHandler(new ClientDataHandler());
-        fes.setTerminalDataHandler(new TerminalDataHandler());
-        fes.start();
-    &#125;
-&#125;</code></pre>
-
-
-
-<h3 id="二、客户端"><a href="#二、客户端" class="headerlink" title="二、客户端"></a>二、客户端</h3><p>本次示例当中客户端由一下几部分构成</p>
-<blockquote>
-<p>1、客户端Socket</p>
-<p>2、客户端Socket封装类</p>
-<p>3、DataHandler数据处理</p>
-<p>4、项目启动后调用</p>
-<p>5、测试</p>
-</blockquote>
-<h4 id="2-1-客户端Socket"><a href="#2-1-客户端Socket" class="headerlink" title="2.1 客户端Socket"></a>2.1 客户端Socket</h4><p>该类当中有一个主要的方法init,在该方法当中，添加监听端口connect.addListener()时,监听端口类可以实现IoServiceListener，去实现自动重连功能；connect方法用于连接服务端；sendMessage方法用于发送报文</p>
-<pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.client;
-
-import com.techen.mina.utils.CommUtils;
-import com.techen.mina.utils.Configs;
-import com.techen.mina.utils.SimpleThreadFactory;
-import org.apache.mina.core.future.ConnectFuture;
-import org.apache.mina.core.service.IoConnector;
-import org.apache.mina.core.service.IoHandler;
-import org.apache.mina.core.service.IoService;
-import org.apache.mina.core.service.IoServiceListener;
-import org.apache.mina.core.session.IdleStatus;
-import org.apache.mina.core.session.IoSession;
-import org.apache.mina.filter.codec.ProtocolCodecFactory;
-import org.apache.mina.filter.codec.ProtocolCodecFilter;
-import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
-import org.apache.mina.filter.executor.ExecutorFilter;
-import org.apache.mina.transport.socket.nio.NioSocketConnector;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.InetSocketAddress;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-&#x2F;**
- * @ClassName ClientServer：mina socket客户端封装。提供连接建立，自动重连等功能。
- * @description: IoSession是最重要的一个接口：当连接建立之后，不同的客户端会单独建立一个Session，在Session当中进行数据传输
- * @author: bozhiqiang
- * @Version 1.0.0
- * @createTime: 2022-07-18 17:39:39
- *&#x2F;
-public class SocketClient &#123;
-
-    &#x2F;**
-     * 1、创建一个非阻塞的客户端
-     * 2、设置超时时间
-     * 3、设置编码解码器
-     * 4、绑定逻辑处理类
-     * 5、创建连接
-     * 6、等待连接创建完成
-     * 7、获取连接session
-     * 8、发送数据
-     * 9、等待关闭连接
-     *&#x2F;
-    private final static Logger logger &#x3D; LoggerFactory.getLogger(SocketClient.class);
-    private IoConnector connector;
-    private IoSession ioSession;
-    private AtomicBoolean beKilled&#x3D;new AtomicBoolean(false);
-    private AtomicBoolean isConnecting&#x3D;new AtomicBoolean(false);
-
-    private ProtocolCodecFactory codecFactory;
-    &#x2F;&#x2F; 延时连接 s
-    private int delayConnect &#x3D; Configs.getConfig().getIntValue(&quot;SOCKET_DELAY_CONNECT&quot;,5);
-    &#x2F;&#x2F; 重连间隔 s
-    private int reConnectInterval &#x3D; Configs.getConfig().getIntValue(&quot;SOCKET_RECONNECT_INTERVAL&quot;,10);
-    &#x2F;&#x2F; 连接超时时间 s
-    private int connectTimeout &#x3D; Configs.getConfig().getIntValue(&quot;SOCKET_CONNECT_TIMEOUT&quot;,20);
-    &#x2F;&#x2F; read idle time s
-    private int readIdleTime &#x3D; Configs.getConfig().getIntValue(&quot;SOCKET_READIDLE_TIME&quot;,30);
-
-    &#x2F;**
-     * 自动重连
-     *&#x2F;
-    private boolean autoReconnect&#x3D;true;
-
-    private String ip;
-    private int port;
-
-    public SocketClient(String ip, int port) &#123;
-        init(ip,port,connectTimeout, readIdleTime);
-    &#125;
-    public SocketClient(String ip, int port, int conTimeOut, int idleTime) &#123;
-        init(ip,port,conTimeOut, idleTime);
-    &#125;
-
-
-
-    &#x2F;**
-     * @description: 初始化连接参数
-     * @author: bozhiqiang
-     * @updateTime: 2022&#x2F;7&#x2F;18 18:59
-     *&#x2F;
-    private void init(String ip, int port,int conTimeOut, int idleTime) &#123;
-        this.ip &#x3D; ip;
-        this.port &#x3D; port;
-        &#x2F;&#x2F; 创建一个非阻塞的客户端
-        connector &#x3D; new NioSocketConnector();
-        connector.setConnectTimeoutMillis(conTimeOut * 1000);
-        connector.getSessionConfig().setIdleTime(IdleStatus.READER_IDLE,idleTime);
-
-        &#x2F;&#x2F;设置过滤链
-        connector.getFilterChain().addLast(&quot;codec&quot;, new ProtocolCodecFilter(new TextLineCodecFactory()));
-        connector.getFilterChain().addLast(&quot;executor&quot;, new ExecutorFilter());
-        connector.addListener(new ClientIoServiceListener());
-    &#125;
-
-    &#x2F;**
-     * @description: mina socket连接状态监听类：mina socket连接状态监听类，在连接session失效后，自动重连
-     * @author: bozhiqiang
-     * @updateTime: 2022&#x2F;7&#x2F;18 19:02
-     *&#x2F;
-    private class ClientIoServiceListener implements IoServiceListener &#123;
-        @Override
-        public void serviceActivated(IoService service) throws Exception &#123;
-            &#x2F;&#x2F;logger.debug(&quot;socketClient serviceActivated&quot;);
-        &#125;
-
-        @Override
-        public void serviceDeactivated(IoService service) throws Exception &#123;
-            &#x2F;&#x2F;logger.debug(&quot;socketClient serviceDeactivated&quot;);
-        &#125;
-        @Override
-        public void serviceIdle(IoService service, IdleStatus idleStatus)
-                throws Exception &#123;
-            logger.debug(&quot;socketClient serviceIdle&quot;);
-        &#125;
-        @Override
-        public void sessionClosed(IoSession session) throws Exception &#123;
-            logger.debug(&quot;socketClient sessionClosed&quot;);
-        &#125;
-        @Override
-        public void sessionCreated(IoSession session) throws Exception &#123;
-            logger.debug(&quot;socketClient sessionCreated&quot;);
-        &#125;
-
-        @Override
-        public void sessionDestroyed(IoSession session) throws Exception &#123;
-            logger.debug(&quot;socketClient sessionDestroyed! &quot;);
-            if(autoReconnect)&#123;
-                delayConnect(delayConnect, TimeUnit.SECONDS);
-            &#125;
-        &#125;
-    &#125;
-
-    &#x2F;**
-     * socket连接断开后，延时重连
-     * @Description: 在侦听到连接断开事件后，延时重连
-     * @param delay		延时时间
-     * @param timeUnit	延时时间单位
-     * @return: void
-     * @Modify:
-     *&#x2F;
-    private void delayConnect(long delay, TimeUnit timeUnit) &#123;
-        logger.debug(&quot;delay &quot; + delay+&quot; &quot;+timeUnit  +&quot; to reconnect&quot;);
-        scheduleExecutor.schedule(new Runnable() &#123;
-            public void run() &#123;
-                try &#123;
-                    SocketClient.this.connect();
-                &#125; catch (Exception e) &#123;
-                    logger.error(&quot;error&quot;, e);
-                &#125;
-            &#125;
-        &#125;, delay, timeUnit);
-    &#125;
-    &#x2F;**
-     * 连接建立线程池，目前只是内部自动重连采用该线程池，外部调用connect方法，还是通过调用线程
-     *&#x2F;
-    private static ScheduledExecutorService scheduleExecutor &#x3D; Executors.newScheduledThreadPool(6, new SimpleThreadFactory(&quot;SocketClientConManager&quot;));
-    &#x2F;**
-     * 连接服务器
-     * @Description: SocketClient实例创建后，根据连接参数与服务器建立连接。建立连接为阻塞过程，如连接无法建立当前线程将一直阻塞
-     * @return: void
-     * @Modify:
-     *&#x2F;
-    public void connect() &#123;
-        if (isConnecting.get() ||( ioSession !&#x3D; null &amp;&amp;  ioSession.isConnected())) &#123;
-            return;
-        &#125;
-        isConnecting.set(true);
-        beKilled.set(false);
-        logger.info(&quot;connecting to &#123;&#125;:&#123;&#125;  &quot;,ip,port );
-        while(true)&#123;
-            try&#123;
-                if(beKilled.get()&#x3D;&#x3D;true)&#123;
-                    logger.warn(&quot;socketClient was killed, break connect(). &quot;);
-                    break;
-                &#125;
-                &#x2F;&#x2F; 创建连接
-                ConnectFuture cf &#x3D; connector.connect(new InetSocketAddress(ip, port));
-                &#x2F;&#x2F; 等待连接创建完成:阻塞直到连接建立,因为我们后面要使用连接成功之后创建的Session对象来进行写数据的操作
-                cf.awaitUninterruptibly();
-                &#x2F;&#x2F; 获取连接session
-                ioSession &#x3D; cf.getSession();
-                if(ioSession.isConnected())&#123;
-                    logger.info(&quot;connected to &#123;&#125;:&#123;&#125;&quot;,ip,port);
-                &#125;
-                isConnecting.set(false);
-                break;
-            &#125; catch(Exception e)&#123;
-                logger.error(e.getMessage(),e);
-                if(autoReconnect)&#123;
-                    logger.warn(&quot;connect to &#123;&#125;:&#123;&#125; failed! reconnect after &#123;&#125; s&quot;,ip,port,reConnectInterval);
-                    try &#123;
-                        Thread.sleep(reConnectInterval*1000);
-                    &#125; catch (InterruptedException e1) &#123;
-                        e1.printStackTrace();
-                    &#125;
-                &#125;
-                else&#123;
-                    break;
-                &#125;
-            &#125;
-        &#125;
-    &#125;
-
-
-
-    &#x2F;&#x2F; 当前连接是否可用
-    public boolean isConnected()&#123;
-        return (ioSession !&#x3D; null &amp;&amp; ioSession.isConnected());
-    &#125;
-
-    &#x2F;**
-     * 关闭连接
-     * @Description: 关闭socket连接，如close前，SocketClient实例正在进行连接建立（或重连）操作，则关闭后，连接建立或重连操作也将取消
-     * @return: void
-     * @Modify:
-     *&#x2F;
-    public void close() &#123;
-        if (ioSession !&#x3D; null &amp;&amp; ioSession.isConnected()) &#123;
-            ioSession.closeNow();
-        &#125;
-        if(connector!&#x3D;null)&#123;
-            connector.dispose();
-        &#125;
-        beKilled.set(true);
-    &#125;
-
-
-    &#x2F;**
-     * 发送报文
-     * @Description: 通过ioSession.write发送报文到服务端
-     * @param messages	byte[] 报文，AMR自定义报文格式
-     * @return: void
-     * @Modify:
-     *&#x2F;
-    public boolean sendMessage(byte[] messages) &#123;
-        if (ioSession !&#x3D; null &amp;&amp; ioSession.isConnected()) &#123;
-            try &#123;
-                ioSession.write(messages);
-                logger.debug(&quot;forward to server:&quot; + CommUtils.byteToHexString(messages));
-            &#125; catch (Exception e) &#123;
-                logger.error(&quot;&quot;,e);
-                return false;
-            &#125;
-        &#125; else &#123;
-            logger.info(&quot;IoSession is not connected! &quot; + ioSession);
-            return false;
-        &#125;
-        return true;
-    &#125;
-
-
-
-
-    public String getIp() &#123;
-        return ip;
-    &#125;
-    public void setIp(String ip) &#123;
-        this.ip &#x3D; ip;
-    &#125;
-    public int getPort() &#123;
-        return port;
-    &#125;
-    public void setPort(int port) &#123;
-        this.port &#x3D; port;
-    &#125;
-    public void setDataHandler(IoHandler dataHandler) &#123;
-        connector.setHandler(dataHandler);
-    &#125;
-    public void setCodecFactory(ProtocolCodecFactory codecFactory) &#123;
-        this.codecFactory &#x3D; codecFactory;
-    &#125;
-    public IoSession getIoSession() &#123;
-        return ioSession;
-    &#125;
-    public AtomicBoolean getBeKilled() &#123;
-        return beKilled;
-    &#125;
-    public void setBeKilled(AtomicBoolean beKilled) &#123;
-        this.beKilled &#x3D; beKilled;
-    &#125;
-    public int getDelayConnect() &#123;
-        return delayConnect;
-    &#125;
-    public void setDelayConnect(int delayConnect) &#123;
-        this.delayConnect &#x3D; delayConnect;
-    &#125;
-    public int getReConnectInterval() &#123;
-        return reConnectInterval;
-    &#125;
-    public void setReConnectInterval(int reConnectInterval) &#123;
-        this.reConnectInterval &#x3D; reConnectInterval;
-    &#125;
-    public int getConnectTimeout() &#123;
-        return connectTimeout;
-    &#125;
-    public void setConnectTimeout(int connectTimeout) &#123;
-        this.connectTimeout &#x3D; connectTimeout;
-    &#125;
-    public int getReadIdleTime() &#123;
-        return readIdleTime;
-    &#125;
-    public void setReadIdleTime(int readIdleTime) &#123;
-        this.readIdleTime &#x3D; readIdleTime;
-    &#125;
-    public boolean isAutoReconnect() &#123;
-        return autoReconnect;
-    &#125;
-    public void setAutoReconnect(boolean autoReconnect) &#123;
-        this.autoReconnect &#x3D; autoReconnect;
-    &#125;
-
-&#125;
-</code></pre>
-
-
-
-<h4 id="2-2-客户端Socket封装"><a href="#2-2-客户端Socket封装" class="headerlink" title="2.2 客户端Socket封装"></a>2.2 客户端Socket封装</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.client;
-
-import com.techen.mina.utils.Configs;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
-&#x2F;**
- * @ClassName JobServer
- * @description:
- * @author: bozhiqiang
- * @Version 1.0.0
- * @createTime: 2022-07-18 19:50:26
- *&#x2F;
-public class JobServer &#123;
-    String ip;
-    int port;
-    &#x2F;&#x2F; 终端数据处理器
-    private DataHandler clientTaskDataHandler;
-    &#x2F;&#x2F; 终端上线端口服务
-    private SocketClient socketClient;
-
-    &#x2F;**
-     * 任务服务器、前置机连接集合，key为前置机的serverId
-     *&#x2F;
-    public static Map&lt;String,SocketClient&gt; onlineClients;
-
-    public JobServer()&#123;
-        onlineClients &#x3D; new ConcurrentHashMap&lt;&gt;();
-    &#125;
-
-    &#x2F;&#x2F; 服务启动时调用即可
-    public void start() &#123;
-        &#x2F;&#x2F; 启动终端通信监听
-        ip &#x3D; Configs.getConfig().getValue(&quot;server_ip&quot;, &quot;127.0.0.1&quot;);
-        port &#x3D; Configs.getConfig().getIntValue(&quot;server_port&quot;, 7950);
-
-        &#x2F;&#x2F; 初始化ip、port、创建创建一个非阻塞的客户端(connect)
-        socketClient &#x3D; new SocketClient(ip,port);
-        &#x2F;&#x2F; 设置处理器
-        socketClient.setDataHandler(getClientTaskDataHandler());
-
-        &#x2F;&#x2F; 将连接加入到容器当中
-        onlineClients.put(&quot;1&quot;,socketClient);
-        &#x2F;&#x2F; 创建连接、获取IoSession
-        socketClient.connect();
-    &#125;
-
-
-    public DataHandler getClientTaskDataHandler() &#123;
-        return clientTaskDataHandler;
-    &#125;
-    public void setClientTaskDataHandler(DataHandler clientTaskDataHandler) &#123;
-        this.clientTaskDataHandler &#x3D; clientTaskDataHandler;
-    &#125;
-
-    public static Map&lt;String, SocketClient&gt; getOnlineClients() &#123;
-        return onlineClients;
-    &#125;
-&#125;
-</code></pre>
-
-
-
-<h4 id="2-3-DataHandler数据处理"><a href="#2-3-DataHandler数据处理" class="headerlink" title="2.3 DataHandler数据处理"></a>2.3 DataHandler数据处理</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.client;
-
-import org.apache.mina.core.service.IoHandlerAdapter;
-import org.apache.mina.core.session.IdleStatus;
-import org.apache.mina.core.session.IoSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
-
-import java.nio.charset.StandardCharsets;
-
-&#x2F;**
- * @ClassName DataHandler
- * @description:
- * @author: bozhiqiang
- * @Version 1.0.0
- * @createTime: 2022-07-15 09:59:56
- *&#x2F;
-@Component
-public abstract class DataHandler extends IoHandlerAdapter &#123;
-    private static final Logger logger &#x3D; LoggerFactory.getLogger(DataHandler.class);
-
-    public DataHandler() &#123;
-        super();
-    &#125;
-
-    @Override
-    public void sessionCreated(IoSession session) throws Exception &#123;
-        logger.info(&quot;客端登录成功&quot;);
-    &#125;
-
-    @Override
-    public void sessionOpened(IoSession session) throws Exception &#123;
-        logger.info(&quot;服务端与客户端连接打开&quot;);
-    &#125;
-
-    @Override
-    public void sessionClosed(IoSession session) throws Exception &#123;
-        logger.info(&quot;客户端登录关闭&quot;);
-    &#125;
-
-    @Override
-    public void sessionIdle(IoSession session, IdleStatus status) throws Exception &#123;
-        logger.info(&quot;服务端进入空闲状态&quot;);
-    &#125;
-
-    @Override
-    public void exceptionCaught(IoSession session, Throwable cause) throws Exception &#123;
-        logger.error(&quot;服务端发生异常&quot;, cause);
-    &#125;
-
-    @Override
-    public void messageReceived(IoSession session, Object message) throws Exception &#123;
-        byte[] msgBytes &#x3D; message.toString().getBytes(StandardCharsets.UTF_8);
-
-        try &#123;
-            this.messageReceived(session, msgBytes);
-        &#125; catch (Exception var6) &#123;
-            logger.error(var6.getMessage(), var6);
-        &#125;
-    &#125;
-
-    public abstract void messageReceived(IoSession var1, byte[] var2);
-
-    @Override
-    public void messageSent(IoSession session, Object message) throws Exception &#123;
-    &#125;
-
-    @Override
-    public void inputClosed(IoSession session) throws Exception &#123;
-        logger.info(&quot;输入关闭&quot;);
-    &#125;
-&#125;
-&#x2F;**-----------------------------------------------------------------------------------------------------**&#x2F;
-    package com.techen.mina.client;
-
-import com.techen.mina.utils.CommUtils;
-import com.techen.mina.utils.Configs;
-import org.apache.mina.core.session.IdleStatus;
-import org.apache.mina.core.session.IoSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.net.InetSocketAddress;
-
-&#x2F;**
- * @ClassName ClientTaskDataHandler
- * @description: 该处理器的作用主要是接收信息,并维持心跳
- * @author: bozhiqiang
- * @Version 1.0.0
- * @createTime: 2022-07-18 19:43:00
- *&#x2F;
-public class ClientTaskDataHandler extends DataHandler &#123;
-
-    private static final Logger logger &#x3D; LoggerFactory.getLogger(ClientTaskDataHandler.class);
-    @Override
-    public void messageReceived(IoSession session, byte[] message) &#123;
-        logger.info(&quot;客户端收到消息:&#123;&#125;&quot;, CommUtils.byteToHexString(message));
-    &#125;
-
-    @Override
-    public void sessionIdle(IoSession session, IdleStatus status) throws Exception &#123;
-        InetSocketAddress remoteSocketAddress &#x3D; (InetSocketAddress)session.getRemoteAddress();
-        &#x2F;&#x2F;超过2个心跳周期未收到前置机报文，断开连接
-        if(session.getIdleCount(IdleStatus.READER_IDLE) &gt;Integer.parseInt(Configs.getConfig().getValue(&quot;max_heart_count&quot;, &quot;2&quot;)))&#123;
-            logger.info(&quot;taskclient readidle count&gt;&#x3D;2, close now. &#123;&#125;&quot;,remoteSocketAddress);
-            session.closeNow();
-            return;
-        &#125;
-        &#x2F;&#x2F;发送心跳报文
-        if(status&#x3D;&#x3D;IdleStatus.READER_IDLE)&#123;
-            logger.debug(&quot;send heart bytes to:&#123;&#125;&quot;,remoteSocketAddress);
-            session.write(&quot;心跳报文&quot;);
-        &#125;
-    &#125;
-
-    @Override
-    public void sessionOpened(IoSession session) throws Exception &#123;
-        &#x2F;&#x2F;发送登录报文
-        InetSocketAddress remoteSocketAddress &#x3D; (InetSocketAddress)session.getRemoteAddress();
-        logger.info(&quot;send login bytes to:&#123;&#125;&quot;,remoteSocketAddress);
-        session.write(&quot;登录报文&quot;);
-    &#125;
-&#125;
-</code></pre>
-
-
-
-<h4 id="2-4-容器启动时创建"><a href="#2-4-容器启动时创建" class="headerlink" title="2.4 容器启动时创建"></a>2.4 容器启动时创建</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina;
-
-import com.techen.mina.client.ClientTaskDataHandler;
-import com.techen.mina.client.JobServer;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class SocketMinaApplication &#123;
-
-    public static void main(String[] args) &#123;
-        SpringApplication.run(SocketMinaApplication.class, args);
-        JobServer jobServer &#x3D; new JobServer();
-        jobServer.setClientTaskDataHandler(new ClientTaskDataHandler());
-        jobServer.start();
-    &#125;
-
-&#125;</code></pre>
-
-<h4 id="2-5-测试"><a href="#2-5-测试" class="headerlink" title="2.5 测试"></a>2.5 测试</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.controller;
-
-import com.techen.mina.client.JobServer;
-import com.techen.mina.client.SocketClient;
-import com.techen.mina.utils.CommUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-&#x2F;**
- * @ClassName ClientController
- * @description:
- * @author: bozhiqiang
- * @Version 1.0.0
- * @createTime: 2022-07-19 10:06:19
- *&#x2F;
-@RestController
-public class ClientController &#123;
-
-    @GetMapping(&quot;&#x2F;test1&quot;)
-    public void test1()&#123;
-
-        SocketClient socketClient &#x3D; JobServer.getOnlineClients().get(&quot;1&quot;);
-        &#x2F;&#x2F; 发送报文到服务端
-        socketClient.sendMessage(CommUtils.hex2BinaryLH(&quot;168e200e200684b000586000210f70000010002cbbc0a100068562113000000681104333334333c1600000000000000000000000000000000574010090800c916&quot;));
-
-    &#125;
-    @GetMapping(&quot;&#x2F;test2&quot;)
-    public void test2()&#123;
-        SocketClient socketClient &#x3D; JobServer.getOnlineClients().get(&quot;1&quot;);
-        &#x2F;&#x2F; 发送报文到服务端
-        socketClient.sendMessage(CommUtils.hex2BinaryLH(&quot;268e200e200684b000586000210f70000010002cbbc0a100068562113000000681104333334333c1600000000000000000000000000000000574010090800c916&quot;));
-
-    &#125;
-
-    @GetMapping(&quot;&#x2F;test3&quot;)
-    public void test3()&#123;
-        SocketClient socketClient &#x3D; JobServer.getOnlineClients().get(&quot;1&quot;);
-        &#x2F;&#x2F; 发送报文到服务端
-        socketClient.sendMessage(CommUtils.hex2BinaryLH(&quot;368e200e200684b000586000210f70000010002cbbc0a100068562113000000681104333334333c1600000000000000000000000000000000574010090800c916&quot;));
-
-    &#125;
-&#125;
-</code></pre>
-
+<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220630093340591.png" alt="image-20220630093340591"></p>
+<p>Mongo的账户是存储在数据库表里面的，比如这里创建的leanote用户，是存储在了leanote表当中的；管理员账户一般是存在在admin当中的</p>
+<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220702163108158.png" alt="image-20220702163108158"></p>
 
                 
             </div>
@@ -1588,7 +661,7 @@ public class ClientController &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://superzqbo.github.io/2022/07/19/mina-ji-chu-er-ke-hu-duan-fu-wu-duan-shi-xian/">https://superzqbo.github.io/2022/07/19/mina-ji-chu-er-ke-hu-duan-fu-wu-duan-shi-xian/</a>
+                    <a href="https://superzqbo.github.io/2022/07/28/mongodb-shu-ju-bei-fen-huan-yuan/">https://superzqbo.github.io/2022/07/28/mongodb-shu-ju-bei-fen-huan-yuan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1626,16 +699,8 @@ public class ClientController &#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Socket/">
-                                    <span class="chip bg-color">Socket</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/">
-                                    <span class="chip bg-color">网络通信</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%95%BF%E9%93%BE%E6%8E%A5/">
-                                    <span class="chip bg-color">长链接</span>
+                                <a href="/tags/MongoDb/">
+                                    <span class="chip bg-color">MongoDb</span>
                                 </a>
                             
                         </div>
@@ -2079,12 +1144,12 @@ public class ClientController &#123;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/07/19/mongodb-xue-xi-bi-ji/">
+                <a href="/2022/07/28/dian-biao-645-xie-yi-sheng-ji-liu-cheng-fen-xi/">
                     <div class="card-image">
                         
-                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/583ca91c8b5d8c5f86a8c89ad7903bfc423df9ef4a863f-gAQmZ1_fw1200.jpeg" class="responsive-img" alt="MongoDB学习笔记">
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/281dc69aefa5386e34e49a930ff6aad54806b7311828f5-LmZcFr_fw1200.jpeg" class="responsive-img" alt="电表645协议升级流程分析">
                         
-                        <span class="card-title">MongoDB学习笔记</span>
+                        <span class="card-title">电表645协议升级流程分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -2095,14 +1160,14 @@ public class ClientController &#123;
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-28
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%90%8E%E7%AB%AF-MongoDb/" class="post-category">
-                                    后端 - MongoDb
+                            <a href="/categories/%E7%94%B5%E8%A1%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-645/" class="post-category">
+                                    电表通信协议 - 645
                                 </a>
                             
                             
@@ -2112,8 +1177,8 @@ public class ClientController &#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MongoDb/">
-                        <span class="chip bg-color">MongoDb</span>
+                    <a href="/tags/645%E5%8D%8F%E8%AE%AE/">
+                        <span class="chip bg-color">645协议</span>
                     </a>
                     
                 </div>
@@ -2127,12 +1192,12 @@ public class ClientController &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/18/java-diao-yong-c-dong-tai-ku/">
+                <a href="/2022/07/20/nei-wang-chuan-tou-gong-ju-nps-npc/">
                     <div class="card-image">
                         
-                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/900f02764f84875d5647d78c5c3a25e6225dfefdc7d6d-hMuZm7_fw1200.jpeg" class="responsive-img" alt="Java调用C动态库">
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/2130931e329652a4e75904e68b2e5eaed58be34d80f32b-em51ON_fw1200.jpeg" class="responsive-img" alt="内网穿透工具nps-npc">
                         
-                        <span class="card-title">Java调用C动态库</span>
+                        <span class="card-title">内网穿透工具nps-npc</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -2143,14 +1208,14 @@ public class ClientController &#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%90%8E%E7%AB%AF-JNA/" class="post-category">
-                                    后端 - JNA
+                            <a href="/categories/%E5%90%8E%E7%AB%AF-%E7%BD%91%E7%BB%9C/" class="post-category">
+                                    后端 - 网络
                                 </a>
                             
                             
@@ -2160,8 +1225,8 @@ public class ClientController &#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JNA/">
-                        <span class="chip bg-color">JNA</span>
+                    <a href="/tags/NPS-NPC/">
+                        <span class="chip bg-color">NPS-NPC</span>
                     </a>
                     
                 </div>

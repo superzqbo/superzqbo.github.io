@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-07-24T10:04:15.082Z</updated>
+  <updated>2022-07-28T13:32:36.367Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>电表645协议升级流程分析</title>
+    <link href="https://superzqbo.github.io/2022/07/28/dian-biao-645-xie-yi-sheng-ji-liu-cheng-fen-xi/"/>
+    <id>https://superzqbo.github.io/2022/07/28/dian-biao-645-xie-yi-sheng-ji-liu-cheng-fen-xi/</id>
+    <published>2022-07-28T13:19:40.000Z</published>
+    <updated>2022-07-28T13:32:36.367Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近做了645电表的升级，记录一下基本流程&lt;/p&gt;
+&lt;h4 id=&quot;1、升级初始帧&quot;&gt;&lt;a href=&quot;#1、升级初始帧&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="电表通信协议 - 645" scheme="https://superzqbo.github.io/categories/%E7%94%B5%E8%A1%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE-645/"/>
+    
+    
+    <category term="645协议" scheme="https://superzqbo.github.io/tags/645%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB-数据备份还原</title>
+    <link href="https://superzqbo.github.io/2022/07/28/mongodb-shu-ju-bei-fen-huan-yuan/"/>
+    <id>https://superzqbo.github.io/2022/07/28/mongodb-shu-ju-bei-fen-huan-yuan/</id>
+    <published>2022-07-28T13:17:30.000Z</published>
+    <updated>2022-07-28T13:28:13.099Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220630093148047.png&quot; alt=&quot;image-20220630093148047&quot;&gt;&lt;/p&gt;
+&lt;pre</summary>
+        
+      
+    
+    
+    
+    <category term="后端 - MongoDb" scheme="https://superzqbo.github.io/categories/%E5%90%8E%E7%AB%AF-MongoDb/"/>
+    
+    
+    <category term="MongoDb" scheme="https://superzqbo.github.io/tags/MongoDb/"/>
+    
+  </entry>
   
   <entry>
     <title>内网穿透工具nps-npc</title>

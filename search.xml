@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>电表645协议升级流程分析</title>
+      <link href="/2022/07/28/dian-biao-645-xie-yi-sheng-ji-liu-cheng-fen-xi/"/>
+      <url>/2022/07/28/dian-biao-645-xie-yi-sheng-ji-liu-cheng-fen-xi/</url>
+      
+        <content type="html"><![CDATA[<p>最近做了645电表的升级，记录一下基本流程</p><h4 id="1、升级初始帧"><a href="#1、升级初始帧" class="headerlink" title="1、升级初始帧"></a>1、升级初始帧</h4><p>升级初始帧也是升级帧，只是结构和升级帧有点区别，结构如下</p><pre class="language-java" data-language="java"><code class="language-java">68 00 00 00 00 00 00 68 14 5D 34 33 33 D3 &#x2F;&#x2F; DI33 33 33 33 &#x2F;&#x2F; passwordAB 89 67 45 &#x2F;&#x2F; operation33 33 81 45 36 48 &#x2F;&#x2F; 00 00(2字节包号) 81(81-33&#x3D;4E,1字节长度,即后面数据的长度) 12 03(两字节总包数,312&#x3D;786,要发786帧) 15(1字节文件类型,暂用15)    &#x2F;&#x2F; 升级数据35 FC CD C3 38 13 21 23 D6 22 23 C3 39 34 A7 3C 23 45 89 07 57 55 45 88 06 45 8D 70 45 89 41 45 8C B3 C3 38 17 45 88 F1 45 89 07 57 54 45 88 06 45 89 36 45 8C B3 C3 38 17 45 88 F1 45 89 07 57 53 45 88 06 45 89 36 45 8C B3 17 3A 16 </code></pre><h4 id="2、升级帧"><a href="#2、升级帧" class="headerlink" title="2、升级帧"></a>2、升级帧</h4><p>升级帧如下：</p><pre class="language-java" data-language="java"><code class="language-java">68 00 00 00 00 00 00 68 14 5A 34 33 33 D3 &#x2F;&#x2F; DI33 33 33 33 &#x2F;&#x2F; password AB 89 67 45 &#x2F;&#x2F; operation34 33 7E     &#x2F;&#x2F; 01 00(包序号) 7E(7E-33&#x3D;4B 1字节长度)         C3 38 15 23 D6 23 45 89 07 32 57 55 45 88 06 13 30 E7 38 3E 22 57 54 45 88 06 13 97 39 93 7A 20 E7 36 46 45 89 07 57 54 45 88 06 13 32 97 63 93 68 22 97 44 93 63 45 89 07 32 57 55 45 88 06 13 E7 4E 3E 22 57 54 45 88 06 13 97 77 16 </code></pre><h4 id="3、激活帧"><a href="#3、激活帧" class="headerlink" title="3、激活帧"></a>3、激活帧</h4><pre class="language-java" data-language="java"><code class="language-java">68 11 11 11 11 11 11 68 14 13 35 33 33 D3 33 33 33 33 AB 89 67 45 33 32 32 32 32 32 32 &#x2F;&#x2F;目前数据是固定的D6 16 </code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 电表通信协议 - 645 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 645协议 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MongoDB-数据备份还原</title>
+      <link href="/2022/07/28/mongodb-shu-ju-bei-fen-huan-yuan/"/>
+      <url>/2022/07/28/mongodb-shu-ju-bei-fen-huan-yuan/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220630093148047.png" alt="image-20220630093148047"></p><pre class="language-java" data-language="java"><code class="language-java">注意！！！！： 数据库迁移需要使用备份(mongodump)与恢复(mongorestore)语法，如果数据库没有开启权限验证，则直接使用命令即可；如果开启了验证登录，是无法直接备份和恢复数据库的，报如下错误：error reading database: command listCollections requires authentication解决方案添加：-u &lt;username&gt; -p&#x3D;&lt;password&gt;添加：--authenticationDatabase admin</code></pre><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220630093340591.png" alt="image-20220630093340591"></p><p>Mongo的账户是存储在数据库表里面的，比如这里创建的leanote用户，是存储在了leanote表当中的；管理员账户一般是存在在admin当中的</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220702163108158.png" alt="image-20220702163108158"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 - MongoDb </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MongoDb </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>内网穿透工具nps-npc</title>
       <link href="/2022/07/20/nei-wang-chuan-tou-gong-ju-nps-npc/"/>
       <url>/2022/07/20/nei-wang-chuan-tou-gong-ju-nps-npc/</url>
