@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-07-28T13:32:36.367Z</updated>
+  <updated>2022-07-30T13:09:48.640Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java并发编程之CountDownLatch</title>
+    <link href="https://superzqbo.github.io/2022/07/30/java-bing-fa-bian-cheng-zhi-countdownlatch/"/>
+    <id>https://superzqbo.github.io/2022/07/30/java-bing-fa-bian-cheng-zhi-countdownlatch/</id>
+    <published>2022-07-30T13:05:25.000Z</published>
+    <updated>2022-07-30T13:09:48.640Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;原文链接：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="后端 - 并发 - CountDownLatch" scheme="https://superzqbo.github.io/categories/%E5%90%8E%E7%AB%AF-%E5%B9%B6%E5%8F%91-CountDownLatch/"/>
+    
+    
+    <category term="并发" scheme="https://superzqbo.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+    <category term="CountDownLatch" scheme="https://superzqbo.github.io/tags/CountDownLatch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux程序提示killed的原因</title>
+    <link href="https://superzqbo.github.io/2022/07/30/linux-cheng-xu-ti-shi-killed-de-yuan-yin/"/>
+    <id>https://superzqbo.github.io/2022/07/30/linux-cheng-xu-ti-shi-killed-de-yuan-yin/</id>
+    <published>2022-07-30T13:05:03.000Z</published>
+    <updated>2022-07-30T13:14:00.054Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;运行程序时，Linux出现Killed,然后程序就被终止了&lt;/p&gt;
+&lt;p&gt;当系统资源不足时，Linux 内核也可以决定终止一个或多个进程。 一个非常常见的例子是&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Linux - 进程" scheme="https://superzqbo.github.io/categories/Linux-%E8%BF%9B%E7%A8%8B/"/>
+    
+    
+    <category term="Linux" scheme="https://superzqbo.github.io/tags/Linux/"/>
+    
+    <category term="进程" scheme="https://superzqbo.github.io/tags/%E8%BF%9B%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>电表645协议升级流程分析</title>

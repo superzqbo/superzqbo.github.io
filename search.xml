@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>Java并发编程之CountDownLatch</title>
+      <link href="/2022/07/30/java-bing-fa-bian-cheng-zhi-countdownlatch/"/>
+      <url>/2022/07/30/java-bing-fa-bian-cheng-zhi-countdownlatch/</url>
+      
+        <content type="html"><![CDATA[<p>原文链接：<a href="https://blog.csdn.net/qq877728715/article/details/121857013">https://blog.csdn.net/qq877728715/article/details/121857013</a></p><h3 id="1、并发请求介绍"><a href="#1、并发请求介绍" class="headerlink" title="1、并发请求介绍"></a>1、并发请求介绍</h3><p>java中模拟并发请求，只要多开几个线程，发起请求就好了。但是，这种请求，一般会存在启动的先后顺序了，算不得真正的同时并发！怎么样才能做到真正的同时并发呢？java中提供了闭锁 CountDownLatch、信号量Semaphore、同步屏障CyclicBarrier, 刚好就用来做这种事就最合适了</p><p>本文主要记录CountDownLatch</p><pre class="language-java" data-language="java"><code class="language-java">1. 开启n个线程，加一个闭锁，开启所有线程；2. 待所有线程都准备好后，按下开启按钮，就可以真正的发起并发请求了。</code></pre><h3 id="2、CountDownLatch执行逻辑"><a href="#2、CountDownLatch执行逻辑" class="headerlink" title="2、CountDownLatch执行逻辑"></a>2、CountDownLatch执行逻辑</h3><p>CountDownLatch俗称：(同步计数器&#x2F;闭锁)，可以使一个线程等待其他线程全部执行完毕后再执行。 类似join()的效果。</p><ul><li>场景：主要用来解决一个线程等待 N 个线程的场景。通常用来汇总各个线程执行后的结果</li><li>CountDownLatch内部通过一个计数器来控制等待线程数，该计数器的操作是原子操作，即同时只能有一个线程去更新该计数器。<ul><li>调用await()方法的线程会一直处于阻塞状态，直到其他线程调用countDown()使当前计数器的值变为 0，每次调用countDown()方法计数器的值减1。</li><li>当计数器值减至0时，所有因调用await()方法而处于等待状态的线程就会被唤醒然后继续往下执行。</li><li>这种现象只会出现一次，因为计数器不能被重置。</li></ul></li></ul><p>并发请求流程示意图：</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220730163123424.png" alt="image-20220730163123424"></p><blockquote><p>设置了一道门，以保证所有线程可以同时生效。但是，这里的同时启动，也只是语言层面的东西，也并非绝对的同时并发。具体的调用还要依赖于CPU个数，线程数及操作系统的线程调度功能等，不过咱们也无需纠结于这些了，重点在于理解原理！</p><p>与 CountDownLatch 有类似功能的，还有工具栅栏 CyclicBarrier, 也是提供一个等待所有线程到达某一点后，再一起开始某个动作，效果一致，不过栅栏的目的确实比较纯粹，就是等待所有线程到达，而前面说的闭锁 CountDownLatch 虽然实现的也是所有线程到达后再开始，但是他的触发点其实是 最后那一个开关，所以侧重点是不一样的。</p></blockquote><h3 id="3、实例代码"><a href="#3、实例代码" class="headerlink" title="3、实例代码"></a>3、实例代码</h3><p>示例代码：</p><blockquote><p>1、定义了一个开始门，一个结束门，开始门的线程数是1，结束门的线程数是1500，</p><p>2、开始门用来阻塞所有的线程，所有线程创建后，在开始门前阻塞;当countDown()&#x3D;&#x3D;0时，阻塞线程后续的逻辑开始执行</p><p>3、结束门用来统计所有线程的执行时间；当开始门开始时开始计时，每执行一个线程countDown，当countDown()&#x3D;&#x3D;0时，结束门的阻塞失效，程序开始向下执行，线程执行完成，统计执行时间</p></blockquote><pre class="language-java" data-language="java"><code class="language-java">package com.codesheep.terminaldemo.config;import com.codesheep.terminaldemo.service.TaskClient;import org.slf4j.Logger;import org.slf4j.LoggerFactory;import org.springframework.stereotype.Component;import java.time.LocalDateTime;import java.time.format.DateTimeFormatter;import java.util.concurrent.CountDownLatch;import java.util.concurrent.ExecutorService;import java.util.concurrent.Executors;&#x2F;** * @ClassName TerminalInfo * @description: * @author: codesheep * @Version 1.0.0 * @createTime: 2022-07-29 13:17:48 *&#x2F;@Componentpublic class TerminalInfo &#123;    private static final Logger logger &#x3D; LoggerFactory.getLogger(TerminalInfo.class);    private static int TERMINAL_COUNT &#x3D; 1500;    private static int COUNT &#x3D; 0;    &#x2F;&#x2F; 定义线程池    ExecutorService executorService &#x3D; Executors.newCachedThreadPool();    &#x2F;&#x2F;开始门    final CountDownLatch startGate &#x3D; new CountDownLatch(1);    &#x2F;&#x2F;结束门    final CountDownLatch endGate &#x3D; new CountDownLatch(TERMINAL_COUNT);        public void process1()&#123;        for (int i &#x3D; 0; i &lt; TERMINAL_COUNT; i++) &#123;            executorService.execute(() -&gt; &#123;                try &#123;                    &#x2F;&#x2F; 使线程在此等待，当开始门打开时，一起涌入门中                    startGate.await();                    try &#123;                        &#x2F;&#x2F; 执行业务逻辑:发起请求                        process2();                    &#125; finally &#123;                        &#x2F;&#x2F; 业务执行完毕:将结束门减1，减到0时，就可以开启结束门了                        endGate.countDown();                    &#125;                &#125; catch (InterruptedException ie) &#123;                    ie.printStackTrace();                &#125;            &#125;);        &#125;        long startTime &#x3D; System.nanoTime();        logger.info(startTime + &quot; [&quot; + Thread.currentThread() + &quot;] 所有线程都准备好了，准备并发运行...&quot;);        &#x2F;&#x2F; startGate为0,立马执行该startGate阻塞的线程(线程向后执行),因开始门只需一个开关，所以立马就开启开始门        startGate.countDown();        &#x2F;&#x2F; 阻塞线程不让向下执行(直到endGate为0,此处是所有线程执行完毕):等结束门开启(endGate为0,所有的任务执行完毕,统计执行时间)        try &#123;            endGate.await();        &#125; catch (InterruptedException e) &#123;            e.printStackTrace();        &#125;        &#x2F;&#x2F;返回并发执行耗时（纳秒）        long endTime &#x3D; System.nanoTime();        logger.info(endTime + &quot; [&quot; + Thread.currentThread() + &quot;] 所有的线程执行完成.&quot;+&quot;   耗时:&quot;+(endTime - startTime)+&quot; ns&quot;);    &#125;    private void process2() &#123;        TaskClient newTaskClient &#x3D; new TaskClient(&quot;1&quot;,&quot;119.167.1.112&quot;, 8888);        newTaskClient.connect();        COUNT++;        logger.info(&quot;٩(๑❛❛๑)۶ &#x3D;&#x3D;&#x3D;终端数&#x3D;&#x3D;&#x3D; &quot; + COUNT +&quot; &#x3D;&#x3D;&#x3D; &quot;+ LocalDateTime.now().format(DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;)));    &#125;&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 后端 - 并发 - CountDownLatch </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 并发 </tag>
+            
+            <tag> CountDownLatch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux程序提示killed的原因</title>
+      <link href="/2022/07/30/linux-cheng-xu-ti-shi-killed-de-yuan-yin/"/>
+      <url>/2022/07/30/linux-cheng-xu-ti-shi-killed-de-yuan-yin/</url>
+      
+        <content type="html"><![CDATA[<p>运行程序时，Linux出现Killed,然后程序就被终止了</p><p>当系统资源不足时，Linux 内核也可以决定终止一个或多个进程。 一个非常常见的例子是<a href="https://so.csdn.net/so/search?q=%E5%86%85%E5%AD%98&spm=1001.2101.3001.7020">内存</a>不足 (OOM) killer，会在系统的物理内存耗尽时触发。</p><pre class="language-bash" data-language="bash"><code class="language-bash">[root@ecs-1773-3 fes-stress-test]# sudo dmesg | tail -7[6229228.008634] [98387]     0 98387    18062      182      39        0             0 sftp-server[6229228.012426] [99129]     0 99129    39329      351      79        0             0 sshd[6229228.015908] [99132]     0 99132    18062      204      38        0             0 sftp-server[6229228.019624] [101710]     0 101710  2759959   382547    4202        0             0 java[6229228.023244] [106758]     0 106758      807        1       4        0             0 zabbix_server[6229228.027147] Out of memory: Kill process 101710 (java) score 187 or sacrifice child[6229228.031308] Killed process 101710 (java), UID 0, total-vm:11039836kB, anon-rss:1530188kB, file-rss:0kB, shmem-rss:0kB</code></pre><p>分析：</p><ul><li>Out of memory: Kill process 101710 (java) score 187 or sacrifice child，内存不够<ul><li>total_vm：总共使用的虚拟内存 Virtual memory use (in 4 kB pages)  11039836&#x2F;1024(得到MB)&#x2F;1024(得到GB)&#x3D;10.56GB</li><li>rss：常驻内存使用Resident memory use (in 4 kB pages)，1530188&#x2F;1024&#x2F;1024&#x3D;1.45GB</li></ul></li></ul><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220730135757686.png" alt="image-20220730135757686"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux - 进程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 进程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>电表645协议升级流程分析</title>
       <link href="/2022/07/28/dian-biao-645-xie-yi-sheng-ji-liu-cheng-fen-xi/"/>
       <url>/2022/07/28/dian-biao-645-xie-yi-sheng-ji-liu-cheng-fen-xi/</url>
