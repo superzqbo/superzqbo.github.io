@@ -13,7 +13,7 @@
       
       <categories>
           
-          <category> 后端 - 并发 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -40,7 +40,7 @@
       
       <categories>
           
-          <category> Linux - 进程 </category>
+          <category> Linux </category>
           
       </categories>
       
@@ -67,7 +67,7 @@
       
       <categories>
           
-          <category> 电表通信协议 - 645 </category>
+          <category> 电表通信协议 </category>
           
       </categories>
       
@@ -92,7 +92,7 @@
       
       <categories>
           
-          <category> 后端 - MongoDb </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -117,7 +117,7 @@
       
       <categories>
           
-          <category> 后端 - 网络 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -142,7 +142,7 @@
       
       <categories>
           
-          <category> 数据库 - FlyWay </category>
+          <category> 数据库 </category>
           
       </categories>
       
@@ -169,7 +169,7 @@
       
       <categories>
           
-          <category> 后端 - MongoDb </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -194,7 +194,7 @@
       
       <categories>
           
-          <category> 后端 - Mina </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -223,7 +223,7 @@
       
       <categories>
           
-          <category> 后端 - JNA </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -248,7 +248,7 @@
       
       <categories>
           
-          <category> 后端 - Mina </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -277,7 +277,7 @@
       
       <categories>
           
-          <category> 后端 - Mybatis </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -302,7 +302,7 @@
       
       <categories>
           
-          <category> 后端 - 内存分析 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -329,7 +329,7 @@
       
       <categories>
           
-          <category> 后端 - PostgreSQL </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -383,7 +383,7 @@
       
       <categories>
           
-          <category> 后端 - Socket </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -433,7 +433,7 @@
       
       <categories>
           
-          <category> 后端 - 网络 </category>
+          <category> 后端 </category>
           
       </categories>
       
