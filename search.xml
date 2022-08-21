@@ -35,19 +35,19 @@
       <link href="/2022/08/21/lian-jie-pg-shu-ju-ku-bao-cuo/"/>
       <url>/2022/08/21/lian-jie-pg-shu-ju-ku-bao-cuo/</url>
       
-        <content type="html"><![CDATA[<p><strong>连接PG数据库报错</strong></p><p>org.postgresql.util.PSQLException: The authentication type 10 is not supported. Check that you have configured the pg_hba.conf file to include the client’s IP address or subnet, and that it is using an authentication scheme supported by the driver.</p><p>***方法1:修改pg_hba.conf配置文件当中的ipv4如下 ***</p><pre class="language-java" data-language="java"><code class="language-java"># TYPE  DATABASE        USER            ADDRESS                 METHOD# &quot;local&quot; is for Unix domain socket connections onlylocal   all             all                                     trust# IPv4 local connections:#host   all             all             127.0.0.1&#x2F;32            trusthost    all             all             0.0.0.0&#x2F;0               trust# IP6 local connections:host    all             all             ::1&#x2F;128                 trust# Allow replication connections from localhost, by a user with the# replication privilege.local   replication     all                                     trusthost    replication     all             127.0.0.1&#x2F;32            trusthost    replication     all             ::1&#x2F;128                 trusthost all all all scram-sha-256</code></pre><p>*** 方法2:***</p><pre class="language-none"><code class="language-none">解决方法将pg_hba.conf由&quot;host all all all scram-sha-256&quot;改&quot;host all all all trust&quot;····</code></pre>]]></content>
+        <content type="html"><![CDATA[<p><strong>连接PG数据库报错</strong></p><blockquote><p>org.postgresql.util.PSQLException: The authentication type 10 is not supported. Check that you have configured the pg_hba.conf file to include the client’s IP address or subnet, and that it is using an authentication scheme supported by the driver.</p></blockquote><p>***方法1:修改pg_hba.conf配置文件当中的ipv4如下 ***</p><pre class="language-java" data-language="java"><code class="language-java"># TYPE  DATABASE        USER            ADDRESS                 METHOD# &quot;local&quot; is for Unix domain socket connections onlylocal   all             all                                     trust# IPv4 local connections:#host   all             all             127.0.0.1&#x2F;32            trusthost    all             all             0.0.0.0&#x2F;0               trust# IP6 local connections:host    all             all             ::1&#x2F;128                 trust# Allow replication connections from localhost, by a user with the# replication privilege.local   replication     all                                     trusthost    replication     all             127.0.0.1&#x2F;32            trusthost    replication     all             ::1&#x2F;128                 trusthost all all all scram-sha-256</code></pre><p>*** 方法2:***</p><pre class="language-none"><code class="language-none">解决方法将pg_hba.conf由&quot;host all all all scram-sha-256&quot;改&quot;host all all all trust&quot;····</code></pre>]]></content>
       
       
       <categories>
           
-          <category> PostGreSQL </category>
+          <category> PostgreSQL </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> PostGreSQL </tag>
+            <tag> PostgreSQL </tag>
             
         </tags>
       
@@ -85,7 +85,7 @@
       <link href="/2022/08/12/docker-she-zhi-fu-wu-suo-zhan-nei-cun/"/>
       <url>/2022/08/12/docker-she-zhi-fu-wu-suo-zhan-nei-cun/</url>
       
-        <content type="html"><![CDATA[<p>今天在跑定时任务时，发现程序崩溃了，在服务器上查看之后发现是内存满了，其他的服务占用的内存太多，所以想要限制服务所占的内存，做了如下的操作：</p><p>所以在docker-componse当中指定服务所占的内存，这样在访问内存较大时，服务会变慢，以防止占用内存太多导致其他服务无法正常运行；注意这种方式的前提是其他服务很少用到，不会出现内存溢出情况。</p><p>![截屏2022-08-12 22.05.28](<a href="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/%E6%88%AA%E5%B1%8F2022-08-12">https://superzqbo.oss-cn-hangzhou.aliyuncs.com/截屏2022-08-12</a> 22.05.28.png)</p><p>注意加了deploy之后，启动时需要使用docker-compose –compatibility up指令来启动,否则会warn：use the ‘deploy’ key, which will be ignored. Compose does not support ‘deploy’ configuration - use <code>docker stack deploy</code> to deploy to a swarm.</p><pre class="language-java" data-language="java"><code class="language-java">docker-compose --compatibility up -d</code></pre><p>效果如下：</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220812215811472.png" alt="image-20220812215811472"></p>]]></content>
+        <content type="html"><![CDATA[<p>今天在跑定时任务时，发现程序崩溃了，在服务器上查看之后发现是内存满了，其他的服务占用的内存太多，所以想要限制服务所占的内存，做了如下的操作：</p><p>所以在docker-componse当中指定服务所占的内存，这样在访问内存较大时，服务会变慢，以防止占用内存太多导致其他服务无法正常运行；注意这种方式的前提是其他服务很少用到，不会出现内存溢出情况。</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220821190023076.png" alt="image-20220821190023076"></p><p>注意加了deploy之后，启动时需要使用docker-compose –compatibility up指令来启动,否则会warn：use the ‘deploy’ key, which will be ignored. Compose does not support ‘deploy’ configuration - use <code>docker stack deploy</code> to deploy to a swarm.</p><pre class="language-java" data-language="java"><code class="language-java">docker-compose --compatibility up -d</code></pre><p>效果如下：</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220812215811472.png" alt="image-20220812215811472"></p>]]></content>
       
       
       <categories>

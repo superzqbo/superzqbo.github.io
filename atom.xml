@@ -49,7 +49,7 @@
     <link href="https://superzqbo.github.io/2022/08/21/lian-jie-pg-shu-ju-ku-bao-cuo/"/>
     <id>https://superzqbo.github.io/2022/08/21/lian-jie-pg-shu-ju-ku-bao-cuo/</id>
     <published>2022-08-21T10:33:19.000Z</published>
-    <updated>2022-08-21T10:37:09.296Z</updated>
+    <updated>2022-08-21T11:02:57.593Z</updated>
     
     
       
@@ -57,16 +57,17 @@
         
         
     <summary type="html">&lt;p&gt;&lt;strong&gt;连接PG数据库报错&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;org.postgresql.util.PSQLException: The authentication type 10 is not supported. Check that you have</summary>
+&lt;blockquote&gt;
+&lt;p&gt;org.postgresql.util.PSQLException: The authentication type 10 is not supported. Check</summary>
         
       
     
     
     
-    <category term="PostGreSQL" scheme="https://superzqbo.github.io/categories/PostGreSQL/"/>
+    <category term="PostgreSQL" scheme="https://superzqbo.github.io/categories/PostgreSQL/"/>
     
     
-    <category term="PostGreSQL" scheme="https://superzqbo.github.io/tags/PostGreSQL/"/>
+    <category term="PostgreSQL" scheme="https://superzqbo.github.io/tags/PostgreSQL/"/>
     
   </entry>
   
@@ -101,7 +102,7 @@
     <link href="https://superzqbo.github.io/2022/08/12/docker-she-zhi-fu-wu-suo-zhan-nei-cun/"/>
     <id>https://superzqbo.github.io/2022/08/12/docker-she-zhi-fu-wu-suo-zhan-nei-cun/</id>
     <published>2022-08-12T13:57:43.000Z</published>
-    <updated>2022-08-21T10:26:53.746Z</updated>
+    <updated>2022-08-21T11:00:29.943Z</updated>
     
     
       

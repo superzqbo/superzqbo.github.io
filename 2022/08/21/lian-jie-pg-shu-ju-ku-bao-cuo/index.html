@@ -6,7 +6,8 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="连接PG数据库报错, 牧羊人">
     <meta name="description" content="连接PG数据库报错
-org.postgresql.util.PSQLException: The authentication type 10 is not supported. Check that you have configured">
+
+org.postgresql.util.PSQLException: The authentication type 10 is not supported. Check that you have configure">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -552,8 +553,8 @@ org.postgresql.util.PSQLException: The authentication type 10 is not supported. 
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/PostGreSQL/">
-                                <span class="chip bg-color">PostGreSQL</span>
+                            <a href="/tags/PostgreSQL/">
+                                <span class="chip bg-color">PostgreSQL</span>
                             </a>
                         
                     </div>
@@ -564,8 +565,8 @@ org.postgresql.util.PSQLException: The authentication type 10 is not supported. 
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/PostGreSQL/" class="post-category">
-                                PostGreSQL
+                            <a href="/categories/PostgreSQL/" class="post-category">
+                                PostgreSQL
                             </a>
                         
                     </div>
@@ -622,7 +623,9 @@ org.postgresql.util.PSQLException: The authentication type 10 is not supported. 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>连接PG数据库报错</strong></p>
+<blockquote>
 <p>org.postgresql.util.PSQLException: The authentication type 10 is not supported. Check that you have configured the pg_hba.conf file to include the client’s IP address or subnet, and that it is using an authentication scheme supported by the driver.</p>
+</blockquote>
 <p>***方法1:修改pg_hba.conf配置文件当中的ipv4如下 ***</p>
 <pre class="language-java" data-language="java"><code class="language-java"># TYPE  DATABASE        USER            ADDRESS                 METHOD
 
@@ -710,8 +713,8 @@ host all all all scram-sha-256
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/PostGreSQL/">
-                                    <span class="chip bg-color">PostGreSQL</span>
+                                <a href="/tags/PostgreSQL/">
+                                    <span class="chip bg-color">PostgreSQL</span>
                                 </a>
                             
                         </div>
