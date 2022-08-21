@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-08-01T11:47:05.017Z</updated>
+  <updated>2022-08-21T10:49:36.317Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -15,6 +15,141 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis 清空数据</title>
+    <link href="https://superzqbo.github.io/2022/08/21/redis-qing-kong-shu-ju/"/>
+    <id>https://superzqbo.github.io/2022/08/21/redis-qing-kong-shu-ju/</id>
+    <published>2022-08-21T10:45:42.000Z</published>
+    <updated>2022-08-21T10:49:36.317Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;由于服务器上Redis端口未对外开放，所以清除缓存需要从服务器上清除，操作如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220821184616335.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Redis" scheme="https://superzqbo.github.io/categories/Redis/"/>
+    
+    
+    <category term="随笔" scheme="https://superzqbo.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="Redis" scheme="https://superzqbo.github.io/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>连接PG数据库报错</title>
+    <link href="https://superzqbo.github.io/2022/08/21/lian-jie-pg-shu-ju-ku-bao-cuo/"/>
+    <id>https://superzqbo.github.io/2022/08/21/lian-jie-pg-shu-ju-ku-bao-cuo/</id>
+    <published>2022-08-21T10:33:19.000Z</published>
+    <updated>2022-08-21T10:37:09.296Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;连接PG数据库报错&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;org.postgresql.util.PSQLException: The authentication type 10 is not supported. Check that you have</summary>
+        
+      
+    
+    
+    
+    <category term="PostGreSQL" scheme="https://superzqbo.github.io/categories/PostGreSQL/"/>
+    
+    
+    <category term="PostGreSQL" scheme="https://superzqbo.github.io/tags/PostGreSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker安装Mysql遇到的问题</title>
+    <link href="https://superzqbo.github.io/2022/08/21/docker-an-zhuang-mysql-yu-dao-de-wen-ti/"/>
+    <id>https://superzqbo.github.io/2022/08/21/docker-an-zhuang-mysql-yu-dao-de-wen-ti/</id>
+    <published>2022-08-21T10:26:00.000Z</published>
+    <updated>2022-08-21T10:51:33.093Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Docker安装Mysql遇到的问题&lt;/p&gt;
+&lt;h3 id=&quot;1、查看mysql的日志，发现如下提示，步奏如下&quot;&gt;&lt;a href=&quot;#1、查看mysql的日志，发现如下提示，步奏如下&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Docker" scheme="https://superzqbo.github.io/categories/Docker/"/>
+    
+    
+    <category term="Docker-MySql" scheme="https://superzqbo.github.io/tags/Docker-MySql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker 设置服务所占内存</title>
+    <link href="https://superzqbo.github.io/2022/08/12/docker-she-zhi-fu-wu-suo-zhan-nei-cun/"/>
+    <id>https://superzqbo.github.io/2022/08/12/docker-she-zhi-fu-wu-suo-zhan-nei-cun/</id>
+    <published>2022-08-12T13:57:43.000Z</published>
+    <updated>2022-08-21T10:26:53.746Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今天在跑定时任务时，发现程序崩溃了，在服务器上查看之后发现是内存满了，其他的服务占用的内存太多，所以想要限制服务所占的内存，做了如下的操作：&lt;/p&gt;
+&lt;p&gt;所以在docker-componse当中指定服务所占的内存，这样在访问内存较大时，服务会变慢，以防止占用内存太多导致其</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://superzqbo.github.io/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="https://superzqbo.github.io/tags/Linux/"/>
+    
+    <category term="Docker-内存" scheme="https://superzqbo.github.io/tags/Docker-%E5%86%85%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 常用指令(一)</title>
+    <link href="https://superzqbo.github.io/2022/08/12/linux-chang-yong-zhi-ling-yi/"/>
+    <id>https://superzqbo.github.io/2022/08/12/linux-chang-yong-zhi-ling-yi/</id>
+    <published>2022-08-12T13:54:53.000Z</published>
+    <updated>2022-08-21T10:25:06.192Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;1、查询内存情况&quot;&gt;&lt;a href=&quot;#1、查询内存情况&quot; class=&quot;headerlink&quot; title=&quot;1、查询内存情况&quot;&gt;&lt;/a&gt;1、查询内存情况&lt;/h3&gt;&lt;pre class=&quot;language-bash&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://superzqbo.github.io/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="https://superzqbo.github.io/tags/Linux/"/>
+    
+    <category term="内存" scheme="https://superzqbo.github.io/tags/%E5%86%85%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>Java并发编程之CountDownLatch</title>
@@ -419,82 +554,6 @@ import</summary>
     
     
     <category term="网络通信" scheme="https://superzqbo.github.io/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker学习笔记</title>
-    <link href="https://superzqbo.github.io/2022/07/03/docker-xue-xi-bi-ji/"/>
-    <id>https://superzqbo.github.io/2022/07/03/docker-xue-xi-bi-ji/</id>
-    <published>2022-07-02T16:46:46.000Z</published>
-    <updated>2022-08-01T11:34:49.167Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Docker是基于go开发的&lt;/p&gt;
-&lt;h3 id=&quot;一、为什么使用docker&quot;&gt;&lt;a href=&quot;#一、为什么使用docker&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Docker" scheme="https://superzqbo.github.io/categories/Docker/"/>
-    
-    
-    <category term="Docker" scheme="https://superzqbo.github.io/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>wireshark使用手册</title>
-    <link href="https://superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/"/>
-    <id>https://superzqbo.github.io/2022/05/11/wireshark-shi-yong-shou-ce/</id>
-    <published>2022-05-10T16:10:41.000Z</published>
-    <updated>2022-08-01T11:49:37.838Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;一、Wireshark-介绍&quot;&gt;&lt;a href=&quot;#一、Wireshark-介绍&quot; class=&quot;headerlink&quot; title=&quot;一、Wireshark 介绍&quot;&gt;&lt;/a&gt;一、Wireshark</summary>
-        
-      
-    
-    
-    
-    <category term="后端" scheme="https://superzqbo.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-    <category term="网络" scheme="https://superzqbo.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
-    
-    <category term="WireShark" scheme="https://superzqbo.github.io/tags/WireShark/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://superzqbo.github.io/2022/05/05/hello-world/"/>
-    <id>https://superzqbo.github.io/2022/05/05/hello-world/</id>
-    <published>2022-05-04T16:13:13.052Z</published>
-    <updated>2022-05-05T16:10:08.311Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Markdown" scheme="https://superzqbo.github.io/tags/Markdown/"/>
     
   </entry>
   
