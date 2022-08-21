@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>电表DLMS协议升级流程分析</title>
+      <link href="/2022/08/21/dian-biao-dlms-xie-yi-sheng-ji-liu-cheng-fen-xi/"/>
+      <url>/2022/08/21/dian-biao-dlms-xie-yi-sheng-ji-liu-cheng-fen-xi/</url>
+      
+        <content type="html"><![CDATA[<p>最近进行电表DLMS的升级，特记录下升级流程</p><p><strong>1、初始化</strong></p><p> ——————————————————- 初始化 ————————————————–</p><p> 1、Set ImageBlockSize 设置传输块大小(没帧多少个字节)</p><pre class="language-java" data-language="java"><code class="language-java">c10141001200002c0000ff0200060000017c c501c100 </code></pre><p> 2、image_transfer_initiate 清空上次升级的文件(设置文件名和总共需要下发文件的大小)</p><pre class="language-java" data-language="java"><code class="language-java">c30142001200002c0000ff01010202090854413235525657330600033d9c c701c20000</code></pre><p> 3、image_transfer_status 查询状态，初始化是否成功Image transfer initiated</p><pre class="language-java" data-language="java"><code class="language-java">c00143001200002c0000ff0600 c40183001601</code></pre><p><strong>2、升级</strong></p><p> ——————————————————- 升级 ————————————————–</p><p> 4、image_block_size 传输文件</p><pre class="language-java" data-language="java"><code class="language-java">c3 014200 12 00 00 2c 00 00 ff 010102 02    06 00 00 00 00 &#x2F;&#x2F; 第N块    09 82 01 7c 17da5fa01633cd9abc5b6cbf14aa1e337666ba667e0bacc1c0c7b1a19f325d61292b3a22c0d19a1 86fd601a6818fe47cc3809968328c7b83a09435b24e81bfd7575aba24e4a923b7ef072632eede30a 9a958f005f5f851bc7c373bd29a1944f4c50ae6cc1f226f0c1a726c36d32bb12eea0c37cbd711c88 3c0b60fd21bee18edef8b563d82bc0600f89a02b9a4088bc86f76cf2b83009d508d338dcc8eea37d 4d23fb00ffe4874aa2afcf884e881520c40a4e720a3394e1a25e66aefa88e49d524a217b67a622d6 57b949cf6b173a667c0450ff72b0cefb335045ad84739c1a400aef646bf59b21267b2400f3c1eb3f 9773c8d4819c3fc1db7ba9db332cb295c69972ad5d6de41838ae102a0a40fd87f43e303a413280a1 0c20c14e4c9612994250cecfa2d0d877a332607b156504cf8fd8805d8af083b4767f56c71bc7b36b 72e665d8d075c85857fa3d20edeb60693716a8f0c8f499c1c8e85fd745aebc7df02cff167351768e 44a245d5fe4468e4b1bda6441b8974c6abd356d62</code></pre><p> 5、image_transferred_blocks_status 查询升级块状态</p><pre class="language-java" data-language="java"><code class="language-java">c00181001200002c0000ff0300 c40181000482022d000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000000000000000000</code></pre><p>6、image_verify(data) 激活验证完整性</p><pre class="language-java" data-language="java"><code class="language-java">c30181001200002c0000ff03010f00 发00 c701c10000</code></pre><p> ——————————————————- 激活 ————————————————–</p><p>7、验证是否成功 image_transfer_status 校验已成功《可以进行激活了</p><pre class="language-java" data-language="java"><code class="language-java">c00181001200002c0000ff0600 c40181001603</code></pre><p>8、激活 image_activate</p><pre class="language-java" data-language="java"><code class="language-java">c30181001200002c0000ff04010f00 c701c10000</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 电表通信协议 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DLMS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Redis 清空数据</title>
       <link href="/2022/08/21/redis-qing-kong-shu-ju/"/>
       <url>/2022/08/21/redis-qing-kong-shu-ju/</url>
@@ -20,9 +45,9 @@
       
         <tags>
             
-            <tag> Redis </tag>
-            
             <tag> 随笔 </tag>
+            
+            <tag> Redis </tag>
             
         </tags>
       

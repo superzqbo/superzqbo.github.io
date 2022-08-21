@@ -4,8 +4,12 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="PostgreSql数组及JSON类型数据在Mybatis项目中的使用, 牧羊人">
-    <meta name="description" content="postgresql提供了很多数据类型，某些特殊的类型无法同java数据类型映射。Mybatis提供了一些默认的TypeHandler，但不包含诸如数组、json这些类型在内。为了使用pgsql的这些类型，我们可以自己添加一些特定的type">
+    <meta name="keywords" content="电表DLMS协议升级流程分析, 牧羊人">
+    <meta name="description" content="最近进行电表DLMS的升级，特记录下升级流程
+1、初始化
+ ——————————————————- 初始化 ————————————————–
+ 1、Set ImageBlockSize 设置传输块大小(没帧多少个字节)
+c10141001">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +23,7 @@
 
     
 
-    <title>PostgreSql数组及JSON类型数据在Mybatis项目中的使用 | 牧羊人</title>
+    <title>电表DLMS协议升级流程分析 | 牧羊人</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -430,12 +434,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://superzqbo.oss-cn-hangzhou.aliyuncs.com/8b856c9afb5ba6647960358e125fb82c273f5db969868-8UY28B_fw1200.jpeg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://superzqbo.oss-cn-hangzhou.aliyuncs.com/wallhaven-rdkwyq.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">PostgreSql数组及JSON类型数据在Mybatis项目中的使用</h1>
+                    <h1 class="description center-align post-title">电表DLMS协议升级流程分析</h1>
                 </div>
             </div>
         </div>
@@ -445,10 +449,104 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -457,12 +555,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                                <span class="chip bg-color">随笔</span>
-                            </a>
-                        
-                            <a href="/tags/PostgreSQL/">
-                                <span class="chip bg-color">PostgreSQL</span>
+                            <a href="/tags/DLMS/">
+                                <span class="chip bg-color">DLMS</span>
                             </a>
                         
                     </div>
@@ -473,8 +567,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                后端
+                            <a href="/categories/%E7%94%B5%E8%A1%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="post-category">
+                                电表通信协议
                             </a>
                         
                     </div>
@@ -486,21 +580,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-12
+                    2022-08-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-08-01
+                    2022-08-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    387
+                    198
                 </div>
                 
 
@@ -530,68 +624,63 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>postgresql提供了很多数据类型，某些特殊的类型无法同java数据类型映射。Mybatis提供了一些默认的TypeHandler，但不包含诸如数组、json这些类型在内。为了使用pgsql的这些类型，我们可以自己添加一些特定的typehandler，注册后就可以标注使用了。</p>
-<p><strong>基本操作流程如下：</strong></p>
-<pre class="language-java" data-language="java"><code class="language-java">1、定义实体类，继承BaseTypeHandler
-  
-2、在映射文件当中指明typeHandler是这个实体类
-  
-3、字符赋值为JSONObject类型</code></pre>
+                <p>最近进行电表DLMS的升级，特记录下升级流程</p>
+<p><strong>1、初始化</strong></p>
+<p> ——————————————————- 初始化 ————————————————–</p>
+<p> 1、Set ImageBlockSize 设置传输块大小(没帧多少个字节)</p>
+<pre class="language-java" data-language="java"><code class="language-java">c10141001200002c0000ff0200060000017c 
+c501c100 </code></pre>
 
-<p><strong>实体类代码块：</strong></p>
-<pre class="language-java" data-language="java"><code class="language-java">package com.techen.ami.hes.jobserver.entity;
+<p> 2、image_transfer_initiate 清空上次升级的文件(设置文件名和总共需要下发文件的大小)</p>
+<pre class="language-java" data-language="java"><code class="language-java">c30142001200002c0000ff01010202090854413235525657330600033d9c 
+c701c20000</code></pre>
 
-import java.sql.CallableStatement;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import com.alibaba.fastjson.JSON;
-import org.apache.ibatis.type.BaseTypeHandler;
-import org.apache.ibatis.type.JdbcType;
-import org.postgresql.util.PGobject;
-
-&#x2F;**
- * @description: postgresql提供了很多数据类型，某些特殊的类型无法同java数据类型映射。Mybatis提供了一些默认的TypeHandler，但不包含诸如数组、json这些类型在内。为了使用pgsql的这些类型，我们可以自己添加一些特定的typehandler，注册后就可以标注使用了。
- * @author: bozhiqiang
- * @updateTime: 2022&#x2F;7&#x2F;12 17:07
- * @Param: 
- * @return: 
- * @throw:
- *&#x2F;
-public class JsonTypeHandler extends BaseTypeHandler&lt;Object&gt; &#123;
-
-    private static final PGobject pgObject &#x3D; new PGobject();
-
-    @Override
-    public Object getNullableResult(ResultSet resultSet, String columnLabel) throws SQLException &#123;
-        return resultSet.getString(columnLabel);
-    &#125;
-
-    @Override
-    public Object getNullableResult(ResultSet resultSet, int columnIndex) throws SQLException &#123;
-        return resultSet.getString(columnIndex);
-    &#125;
-
-    @Override
-    public Object getNullableResult(CallableStatement callableStatement, int parameterIndex) throws SQLException &#123;
-        return callableStatement.getString(parameterIndex);
-    &#125;
-
-    @Override
-    public void setNonNullParameter(PreparedStatement preparedStatement, int i, Object object, JdbcType jdbcType) throws SQLException &#123;
-        pgObject.setType(&quot;json&quot;);
-        pgObject.setValue(JSON.toJSONString(object));
-        preparedStatement.setObject(i, pgObject);
-    &#125;
-&#125;</code></pre>
+<p> 3、image_transfer_status 查询状态，初始化是否成功Image transfer initiated</p>
+<pre class="language-java" data-language="java"><code class="language-java">c00143001200002c0000ff0600 
+c40183001601</code></pre>
 
 
 
-<p><strong>JSONObject类型数据</strong></p>
-<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220712214436903.png" alt="image-20220712214436903"></p>
-<p><strong>映射文件</strong></p>
-<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220712214502296.png" alt="image-20220712214502296"></p>
+<p><strong>2、升级</strong></p>
+<p> ——————————————————- 升级 ————————————————–</p>
+<p> 4、image_block_size 传输文件</p>
+<pre class="language-java" data-language="java"><code class="language-java">c3 01
+42
+00 12 
+00 00 2c 00 00 ff 
+01
+01
+02 02 
+   06 00 00 00 00 &#x2F;&#x2F; 第N块 
+   09 82 01 7c 17da5fa01633cd9abc5b6cbf14aa1e337666ba667e0bacc1c0c7b1a19f325d61292b3a22c0d19a1 86fd601a6818fe47cc3809968328c7b83a09435b24e81bfd7575aba24e4a923b7ef072632eede30a 9a958f005f5f851bc7c373bd29a1944f4c50ae6cc1f226f0c1a726c36d32bb12eea0c37cbd711c88 3c0b60fd21bee18edef8b563d82bc0600f89a02b9a4088bc86f76cf2b83009d508d338dcc8eea37d 4d23fb00ffe4874aa2afcf884e881520c40a4e720a3394e1a25e66aefa88e49d524a217b67a622d6 57b949cf6b173a667c0450ff72b0cefb335045ad84739c1a400aef646bf59b21267b2400f3c1eb3f 9773c8d4819c3fc1db7ba9db332cb295c69972ad5d6de41838ae102a0a40fd87f43e303a413280a1 0c20c14e4c9612994250cecfa2d0d877a332607b156504cf8fd8805d8af083b4767f56c71bc7b36b 72e665d8d075c85857fa3d20edeb60693716a8f0c8f499c1c8e85fd745aebc7df02cff167351768e 44a245d5fe4468e4b1bda6441b8974c6abd356d62</code></pre>
+
+
+
+<p> 5、image_transferred_blocks_status 查询升级块状态</p>
+<pre class="language-java" data-language="java"><code class="language-java">c00181001200002c0000ff0300 
+c40181000482022d000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000000000000000000</code></pre>
+
+
+
+<p>6、image_verify(data) 激活验证完整性</p>
+<pre class="language-java" data-language="java"><code class="language-java">c30181001200002c0000ff03010f00 发00 
+c701c10000</code></pre>
+
+
+
+<p> ——————————————————- 激活 ————————————————–</p>
+<p>7、验证是否成功 image_transfer_status 校验已成功《可以进行激活了</p>
+<pre class="language-java" data-language="java"><code class="language-java">c00181001200002c0000ff0600 
+c40181001603</code></pre>
+
+
+
+<p>8、激活 image_activate</p>
+<pre class="language-java" data-language="java"><code class="language-java">c30181001200002c0000ff04010f00 
+c701c10000</code></pre>
+
+
+
 
                 
             </div>
@@ -618,7 +707,7 @@ public class JsonTypeHandler extends BaseTypeHandler&lt;Object&gt; &#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://superzqbo.github.io/2022/07/12/postgresql-shu-zu-ji-json-lei-xing-shu-ju-zai-mybatis-xiang-mu-zhong-de-shi-yong/">https://superzqbo.github.io/2022/07/12/postgresql-shu-zu-ji-json-lei-xing-shu-ju-zai-mybatis-xiang-mu-zhong-de-shi-yong/</a>
+                    <a href="https://superzqbo.github.io/2022/08/21/dian-biao-dlms-xie-yi-sheng-ji-liu-cheng-fen-xi/">https://superzqbo.github.io/2022/08/21/dian-biao-dlms-xie-yi-sheng-ji-liu-cheng-fen-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -656,12 +745,8 @@ public class JsonTypeHandler extends BaseTypeHandler&lt;Object&gt; &#123;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%9A%8F%E7%AC%94/">
-                                    <span class="chip bg-color">随笔</span>
-                                </a>
-                            
-                                <a href="/tags/PostgreSQL/">
-                                    <span class="chip bg-color">PostgreSQL</span>
+                                <a href="/tags/DLMS/">
+                                    <span class="chip bg-color">DLMS</span>
                                 </a>
                             
                         </div>
@@ -1101,16 +1186,17 @@ public class JsonTypeHandler extends BaseTypeHandler&lt;Object&gt; &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/07/14/windows-xia-cha-zhao-java-ying-yong-nei-cun-qing-kuang-fen-xi/">
+                <a href="/2022/08/21/dian-biao-dlms-xie-yi-sheng-ji-liu-cheng-fen-xi/">
                     <div class="card-image">
                         
-                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/thumb_1680_0_20211208022358414.jpg" class="responsive-img" alt="windows下查找java应用内存情况分析">
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/wallhaven-rdkwyq.jpg" class="responsive-img" alt="电表DLMS协议升级流程分析">
                         
-                        <span class="card-title">windows下查找java应用内存情况分析</span>
+                        <span class="card-title">电表DLMS协议升级流程分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1120,30 +1206,27 @@ public class JsonTypeHandler extends BaseTypeHandler&lt;Object&gt; &#123;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                    后端
+                            <a href="/categories/%E7%94%B5%E8%A1%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="post-category">
+                                    电表通信协议
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90/">
-                        <span class="chip bg-color">内存分析</span>
-                    </a>
-                    
-                    <a href="/tags/Windows/">
-                        <span class="chip bg-color">Windows</span>
+                    <a href="/tags/DLMS/">
+                        <span class="chip bg-color">DLMS</span>
                     </a>
                     
                 </div>
@@ -1157,12 +1240,12 @@ public class JsonTypeHandler extends BaseTypeHandler&lt;Object&gt; &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/">
+                <a href="/2022/08/21/redis-qing-kong-shu-ju/">
                     <div class="card-image">
                         
-                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/wallhaven-ey2j1w.png" class="responsive-img" alt="Hexo部署到服务器">
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/wallhaven-6qk267.jpg" class="responsive-img" alt="Redis 清空数据">
                         
-                        <span class="card-title">Hexo部署到服务器</span>
+                        <span class="card-title">Redis 清空数据</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1173,14 +1256,14 @@ public class JsonTypeHandler extends BaseTypeHandler&lt;Object&gt; &#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
+                            <a href="/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                             
                             
@@ -1190,12 +1273,12 @@ public class JsonTypeHandler extends BaseTypeHandler&lt;Object&gt; &#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
+                        <span class="chip bg-color">随笔</span>
                     </a>
                     
-                    <a href="/tags/Nginx/">
-                        <span class="chip bg-color">Nginx</span>
+                    <a href="/tags/Redis/">
+                        <span class="chip bg-color">Redis</span>
                     </a>
                     
                 </div>
@@ -1264,6 +1347,87 @@ public class JsonTypeHandler extends BaseTypeHandler&lt;Object&gt; &#123;
 
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
 
     
 

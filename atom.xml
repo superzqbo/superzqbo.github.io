@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-08-21T11:08:21.679Z</updated>
+  <updated>2022-08-21T11:22:12.148Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>电表DLMS协议升级流程分析</title>
+    <link href="https://superzqbo.github.io/2022/08/21/dian-biao-dlms-xie-yi-sheng-ji-liu-cheng-fen-xi/"/>
+    <id>https://superzqbo.github.io/2022/08/21/dian-biao-dlms-xie-yi-sheng-ji-liu-cheng-fen-xi/</id>
+    <published>2022-08-21T11:12:02.000Z</published>
+    <updated>2022-08-21T11:22:12.148Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近进行电表DLMS的升级，特记录下升级流程&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1、初始化&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt; ——————————————————- 初始化 ————————————————–&lt;/p&gt;
+&lt;p&gt; 1、Set ImageBlockSize</summary>
+        
+      
+    
+    
+    
+    <category term="电表通信协议" scheme="https://superzqbo.github.io/categories/%E7%94%B5%E8%A1%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
+    
+    
+    <category term="DLMS" scheme="https://superzqbo.github.io/tags/DLMS/"/>
+    
+  </entry>
   
   <entry>
     <title>Redis 清空数据</title>
@@ -38,9 +66,9 @@
     <category term="Redis" scheme="https://superzqbo.github.io/categories/Redis/"/>
     
     
-    <category term="Redis" scheme="https://superzqbo.github.io/tags/Redis/"/>
-    
     <category term="随笔" scheme="https://superzqbo.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="Redis" scheme="https://superzqbo.github.io/tags/Redis/"/>
     
   </entry>
   
@@ -530,31 +558,6 @@ import</summary>
     <category term="Hexo" scheme="https://superzqbo.github.io/tags/Hexo/"/>
     
     <category term="Nginx" scheme="https://superzqbo.github.io/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Socket通信</title>
-    <link href="https://superzqbo.github.io/2022/07/06/socket-tong-xin/"/>
-    <id>https://superzqbo.github.io/2022/07/06/socket-tong-xin/</id>
-    <published>2022-07-06T15:53:23.000Z</published>
-    <updated>2022-08-01T11:49:11.613Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;一、数据通信过程&quot;&gt;&lt;a href=&quot;#一、数据通信过程&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="后端" scheme="https://superzqbo.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-    <category term="网络通信" scheme="https://superzqbo.github.io/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
     
   </entry>
   
