@@ -8,7 +8,7 @@
       <link href="/2022/08/21/redis-qing-kong-shu-ju/"/>
       <url>/2022/08/21/redis-qing-kong-shu-ju/</url>
       
-        <content type="html"><![CDATA[<p>由于服务器上Redis端口未对外开放，所以清除缓存需要从服务器上清除，操作如下：</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220821184616335.png" alt="image-20220821184616335"></p>]]></content>
+        <content type="html"><![CDATA[<p>由于服务器上Redis端口未对外开放，所以清除缓存需要从服务器上清除；对于Windows服务器可以直接通过客户端图形化界面来进行清空缓存，但是Linux服务器则需要通过指令来清空，具体操作如下：</p><p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220821184616335.png" alt="image-20220821184616335"></p>]]></content>
       
       
       <categories>
@@ -20,9 +20,9 @@
       
         <tags>
             
-            <tag> 随笔 </tag>
-            
             <tag> Redis </tag>
+            
+            <tag> 随笔 </tag>
             
         </tags>
       
