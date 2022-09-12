@@ -5,9 +5,10 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="MongoDB学习笔记, 牧羊人">
-    <meta name="description" content="一、概述内存的特点：一旦重启，或者断电，数据全部不没了，故需要将数据存在磁盘上
+    <meta name="description" content="一、概述
+内存的特点：一旦重启，或者断电，数据全部不没了，故需要将数据存在磁盘上
 RDAMS（关系型数据库）：全都是表，关系型数据库是由表组成的，所有的关系型数据库都是使用SQL操作的
-NoSQL（非关系型数据库）：键值对数据库，文档数据库(">
+NoSQL（非关系型数据库）：键值对数据库，文档数据库">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -622,17 +623,16 @@ NoSQL（非关系型数据库）：键值对数据库，文档数据库(">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><p>内存的特点：一旦重启，或者断电，数据全部不没了，故需要将数据存在磁盘上</p>
+                <h3 id="一、概述">一、概述</h3>
+<p>内存的特点：一旦重启，或者断电，数据全部不没了，故需要将数据存在磁盘上</p>
 <p>RDAMS（关系型数据库）：全都是表，关系型数据库是由表组成的，所有的关系型数据库都是使用SQL操作的</p>
 <p>NoSQL（非关系型数据库）：键值对数据库，文档数据库(MongoDB)</p>
 <p>MongoDB是为了快速开发互联网web应用而开发的一款数据库，省了建表、改表的时间，而MongoDB是文档数据库，所以速度很快，想改就改，想删就删</p>
 <p>MongoDB的数据模型是面向文档的，所谓文档是一种类似JSON的数据格式，简单理解为，MongoDB当中存储的是各种各样的JSON（BJSON），当然也可以存储一些二进制数据，但是我们把它当成是JSON格式的</p>
 <p>指定数据库位置：</p>
 <pre class="language-java" data-language="java"><code class="language-java">mongod --dbpath 数据库路径 --port 端口号</code></pre>
-
-
-
-<h3 id="二、Docker-componse方式安装"><a href="#二、Docker-componse方式安装" class="headerlink" title="二、Docker-componse方式安装"></a>二、Docker-componse方式安装</h3><pre class="language-java" data-language="java"><code class="language-java">mongo:
+<h3 id="二、Docker-componse方式安装">二、Docker-componse方式安装</h3>
+<pre class="language-java" data-language="java"><code class="language-java">mongo:
   image: mongo:4.4.6
   container_name: tienChin-mongo
   restart: always
@@ -681,14 +681,9 @@ mongo-express:
       aliases:
         - tienChi-mongo-express
 </code></pre>
-
-
-
-
-
-
-
-<h3 id="三、基本概念"><a href="#三、基本概念" class="headerlink" title="三、基本概念"></a>三、基本概念</h3><h4 id="3-1数据库操作"><a href="#3-1数据库操作" class="headerlink" title="3.1数据库操作"></a>3.1数据库操作</h4><p>一个数据库当中有多个集合，类似于数据，数据当中可以存储文档，文档是数据库当中的最小单位，我们操作的都是文档</p>
+<h3 id="三、基本概念">三、基本概念</h3>
+<h4 id="3-1数据库操作">3.1数据库操作</h4>
+<p>一个数据库当中有多个集合，类似于数据，数据当中可以存储文档，文档是数据库当中的最小单位，我们操作的都是文档</p>
 <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20210105102350091.png" alt="image-20210105102350091"></p>
 <p>注意：在MongoDB当中，集合与数据库都不需要手动创建，如果我们在创建文档时，如果文档所在的集合或者数据库不存在，会自动创建，只是，如果没有数据，不会显示，只有在第一次添加数据时会创建，显示</p>
 <pre class="language-java" data-language="java"><code class="language-java">show dbs                     &#x2F;&#x2F;显示系统当中的数据库
@@ -696,10 +691,8 @@ show databases
 db                           &#x2F;&#x2F;查看当前数据库
 use 数据库名                  &#x2F;&#x2F;数据库切换
 show collections             &#x2F;&#x2F;显示当前数据库当中的集合</code></pre>
-
-
-
-<h4 id="3-2-库操作"><a href="#3-2-库操作" class="headerlink" title="3.2 库操作"></a>3.2 库操作</h4><pre class="language-java" data-language="java"><code class="language-java">使用用户名和密码连接到 MongoDB 服务器，你必须使用 &#39;username:password@hostname&#x2F;dbname&#39; 格式，&#39;username&#39;为用户名，&#39;password&#39; 为密码。
+<h4 id="3-2-库操作">3.2 库操作</h4>
+<pre class="language-java" data-language="java"><code class="language-java">使用用户名和密码连接到 MongoDB 服务器，你必须使用 &#39;username:password@hostname&#x2F;dbname&#39; 格式，&#39;username&#39;为用户名，&#39;password&#39; 为密码。
 
 mongodb:&#x2F;&#x2F;fred:foobar@localhost   &#x2F;&#x2F;使用用户名fred，密码foobar登录localhost的admin数据库。
 
@@ -713,10 +706,8 @@ MongoDB创建数据库
 	use DATABASE_NAME  &#x2F;&#x2F;如果数据库不存在，则创建数据库，否则切换到指定数据库。
 
 实例：</code></pre>
-
-
-
-<h4 id="3-3CRUD"><a href="#3-3CRUD" class="headerlink" title="3.3CRUD"></a>3.3CRUD</h4><pre class="language-java" data-language="java"><code class="language-java">1、insert
+<h4 id="3-3CRUD">3.3CRUD</h4>
+<pre class="language-java" data-language="java"><code class="language-java">1、insert
     
     db.collection.insert() &#x2F;&#x2F;首先切换到需要的数据库，然后插入文档到集合当中
     db.stu.insert(&#123;name：&quot;古踏仙&quot;,age：36,gender：&quot;男&quot;&#125;)
@@ -758,9 +749,6 @@ MongoDB创建数据库
     db.student.remove(&#123;&#125;)    &#x2F;&#x2F;清空集合
     db.student.drop()  &#x2F;&#x2F;删除集合
 </code></pre>
-
-
-
 <pre class="language-java" data-language="java"><code class="language-java">&#x2F;&#x2F; 增加-向集合当中插入一个或者多个文档
 db.student.insert(&#123;name:&quot;王腾&quot;,age:24,gender:&quot;男&quot;&#125;);
 
@@ -834,17 +822,17 @@ db.number.find(&#123;&#125;).sort(sal:1);
 &#x2F;&#x2F;查询时，可以在第二个参数的位置指定查询结果的投影
 db.number.find(&#123;&#125;,&#123;ename:1,_id:0,age:1&#125;).
 </code></pre>
-
-
-
-
-
-<h3 id="四、备份会还原"><a href="#四、备份会还原" class="headerlink" title="四、备份会还原"></a>四、备份会还原</h3><blockquote>
-<p>数据导入：<br> mongorestore -h 127.0.0.1:27017 -d leanote –dir &#x2F;mongodb_backup&#x2F;leanote_install_data&#x2F;<br> – –h ：服务器ip</p>
-<p>​    —–d ：服务器上数据库<br>​    – –dir导入文件所在目录</p>
+<h3 id="四、备份会还原">四、备份会还原</h3>
+<blockquote>
+<p>数据导入：<br>
+mongorestore -h 127.0.0.1:27017 -d leanote --dir /mongodb_backup/leanote_install_data/<br>
+– --h ：服务器ip</p>
+<p>​    -----d ：服务器上数据库<br>
+​    – --dir导入文件所在目录</p>
 <p>数据导出:</p>
-<p>​	mongodump -h 192.168.17.129:27017 -d leanote -o &#x2F;home&#x2F;mongodump&#x2F;</p>
-<p>​    – —o:导出到本地的某个位置<br>​    ——-: 将192.168.17.129服务器上的，leanote库，导出到&#x2F;home&#x2F;mongodump&#x2F;目录下</p>
+<p>​	mongodump -h 192.168.17.129:27017 -d leanote -o /home/mongodump/</p>
+<p>​    – —o:导出到本地的某个位置<br>
+​    -------: 将192.168.17.129服务器上的，leanote库，导出到/home/mongodump/目录下</p>
 </blockquote>
 
                 
@@ -1677,7 +1665,7 @@ db.number.find(&#123;&#125;,&#123;ename:1,_id:0,age:1&#125;).
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.9k</span>
+                        class="white-color">29.1k</span>
             
             
             

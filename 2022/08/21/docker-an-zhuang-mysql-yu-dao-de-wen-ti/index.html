@@ -6,7 +6,8 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Docker安装Mysql遇到的问题, 牧羊人">
     <meta name="description" content="Docker安装Mysql遇到的问题
-1、查看mysql的日志，发现如下提示，步奏如下mysqld: [Warning] World-writable config file &amp;#39;&amp;#x2F;etc&amp;#x2F;mysql&amp;#x2F;m">
+1、查看mysql的日志，发现如下提示，步奏如下
+mysqld: [Warning] World-writable config file &amp;#39;&amp;#x2F;etc&amp;#x2F;mysql&amp;#x2F;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -591,7 +592,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    265
+                    261
                 </div>
                 
 
@@ -622,32 +623,27 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>Docker安装Mysql遇到的问题</p>
-<h3 id="1、查看mysql的日志，发现如下提示，步奏如下"><a href="#1、查看mysql的日志，发现如下提示，步奏如下" class="headerlink" title="1、查看mysql的日志，发现如下提示，步奏如下"></a>1、查看mysql的日志，发现如下提示，步奏如下</h3><pre class="language-java" data-language="java"><code class="language-java">mysqld: [Warning] World-writable config file &#39;&#x2F;etc&#x2F;mysql&#x2F;my.cnf&#39; is ignored.
+<h3 id="1、查看mysql的日志，发现如下提示，步奏如下">1、查看mysql的日志，发现如下提示，步奏如下</h3>
+<pre class="language-java" data-language="java"><code class="language-java">mysqld: [Warning] World-writable config file &#39;&#x2F;etc&#x2F;mysql&#x2F;my.cnf&#39; is ignored.
   
 mysqld: Error on realpath() on &#39;&#x2F;var&#x2F;lib&#x2F;mysql-files&#39; (Error 2 - No such file or directory)
 2022-06-24T07:26:45.507436Z 0 [ERROR] [MY-010095] [Server] Failed to access directory for --secure-file-priv. Please make sure that directory exists and is accessible by MySQL Server. Supplied value : &#x2F;var&#x2F;lib&#x2F;mysql-files</code></pre>
-
-
-
 <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220624154649340.png" alt="image-20220624154649340"></p>
-<h4 id="1-1-可能是mysql-files"><a href="#1-1-可能是mysql-files" class="headerlink" title="1.1 可能是mysql-files"></a>1.1 可能是mysql-files</h4><pre class="language-JAVA" data-language="JAVA"><code class="language-JAVA">#造成这种情况可能是因为mysql-files文件夹不存在或权限错误，
+<h4 id="1-1-可能是mysql-files">1.1 可能是mysql-files</h4>
+<pre class="language-JAVA" data-language="JAVA"><code class="language-JAVA">#造成这种情况可能是因为mysql-files文件夹不存在或权限错误，
 # 在宿主机挂载数据目录下touch &#x2F;var&#x2F;lib&#x2F;mysql-files
 
 shell&gt; touch &#x2F;var&#x2F;lib&#x2F;mysql-files
 </code></pre>
-
-<h4 id="1-2-linux下："><a href="#1-2-linux下：" class="headerlink" title="1.2 linux下："></a>1.2 linux下：</h4><p>修改my.cnf 在[mysqld]内加入secure_file_priv&#x3D;&#x2F;var&#x2F;lib&#x2F;mysql</p>
-<h4 id="1-3-赋予权限"><a href="#1-3-赋予权限" class="headerlink" title="1.3 赋予权限"></a>1.3 赋予权限</h4><p>先赋予777权限，但是还是报错，遂修改权限未644</p>
+<h4 id="1-2-linux下：">1.2 linux下：</h4>
+<p>修改my.cnf 在[mysqld]内加入secure_file_priv=/var/lib/mysql</p>
+<h4 id="1-3-赋予权限">1.3 赋予权限</h4>
+<p>先赋予777权限，但是还是报错，遂修改权限未644</p>
 <pre class="language-java" data-language="java"><code class="language-java">权限777，任何一个用户都可以改my.cnf，存在很大的安全隐患.
 
 修改my.cnf文件的权限为644 设置为用户可读写，其他用户不可写.
 
 chmod 644 &#x2F;etc&#x2F;my.cnf</code></pre>
-
-
-
-
-
 
                 
             </div>
@@ -1471,7 +1467,7 @@ chmod 644 &#x2F;etc&#x2F;my.cnf</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.9k</span>
+                        class="white-color">29.1k</span>
             
             
             

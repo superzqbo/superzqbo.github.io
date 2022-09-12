@@ -8,8 +8,9 @@
     <meta name="description" content="java调用C++动态库
 由于项目，需要调用明华IC卡读卡器接口，项目使用的语言是java，所以需要用到java的JNA技术，去调用C的DLL动态库
 一、JNI、JNA介绍
+
 java调用C的方式有两种JNA、JNI
-JNI(Java Nat">
+JNI(Java Na">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -626,22 +627,24 @@ JNI(Java Nat">
             <div id="articleContent">
                 <p>java调用C++动态库</p>
 <p>由于项目，需要调用明华IC卡读卡器接口，项目使用的语言是java，所以需要用到java的JNA技术，去调用C的DLL动态库</p>
-<h3 id="一、JNI、JNA介绍"><a href="#一、JNI、JNA介绍" class="headerlink" title="一、JNI、JNA介绍"></a>一、JNI、JNA介绍</h3><blockquote>
+<h3 id="一、JNI、JNA介绍">一、JNI、JNA介绍</h3>
+<blockquote>
 <p>java调用C的方式有两种JNA、JNI</p>
 <p>JNI(Java Native Interface):通过使用 Java本地接口书写程序，可以确保代码在不同的平台上方便移植</p>
-<p>JNA（Java Native Access）：提供一组Java工具类用于在运行期间动态访问系统本地库（native library：如Window的dll）而不需要编写任何Native&#x2F;JNI代码。开发人员只要在一个java接口中描述目标native library的函数与结构，JNA将自动实现Java接口到native function的映射。<br>简而言之，就是jna基于jni的方式封装了很多api，在使用上面相对于jni来说简化了很多。</p>
-<p>JNA全称Java  Access，是一个建立在经典的JNI技术之上的Java开源框架。JNA提供一组Java工具类用于在运行期动态访问系统本地库（native library：如Window的dll）而不需要编写任何Native&#x2F;JNI代码。开发人员只要在一个java接口中描述目标native library的函数与结构，JNA将自动实现Java接口到native function的映射。</p>
+<p>JNA（Java Native Access）：提供一组Java工具类用于在运行期间动态访问系统本地库（native library：如Window的dll）而不需要编写任何Native/JNI代码。开发人员只要在一个java接口中描述目标native library的函数与结构，JNA将自动实现Java接口到native function的映射。<br>
+简而言之，就是jna基于jni的方式封装了很多api，在使用上面相对于jni来说简化了很多。</p>
+<p>JNA全称Java  Access，是一个建立在经典的JNI技术之上的Java开源框架。JNA提供一组Java工具类用于在运行期动态访问系统本地库（native library：如Window的dll）而不需要编写任何Native/JNI代码。开发人员只要在一个java接口中描述目标native library的函数与结构，JNA将自动实现Java接口到native function的映射。</p>
 <p>需要注意的是：在使用JNI技术调用dll动态链接库时，32位dll只能是32位JDK去调用，64位dll只能是64位JDK去调用。这个必须是这样的，如果发现无法调用或者提示版本错误，首先要检查下JDK的位数和dll的位数是否是对应的。</p>
 </blockquote>
-<h3 id="二、代码演示"><a href="#二、代码演示" class="headerlink" title="二、代码演示"></a>二、代码演示</h3><h4 id="1、引入jar包"><a href="#1、引入jar包" class="headerlink" title="1、引入jar包"></a>1、引入jar包</h4><pre class="language-java" data-language="java"><code class="language-java">&lt;dependency&gt;
+<h3 id="二、代码演示">二、代码演示</h3>
+<h4 id="1、引入jar包">1、引入jar包</h4>
+<pre class="language-java" data-language="java"><code class="language-java">&lt;dependency&gt;
     &lt;groupId&gt;net.java.dev.jna&lt;&#x2F;groupId&gt;
     &lt;artifactId&gt;jna&lt;&#x2F;artifactId&gt;
     &lt;version&gt;5.12.1&lt;&#x2F;version&gt;
 &lt;&#x2F;dependency&gt;</code></pre>
-
-
-
-<h4 id="2、定义接口，创建动态库实例和动态库接口"><a href="#2、定义接口，创建动态库实例和动态库接口" class="headerlink" title="2、定义接口，创建动态库实例和动态库接口"></a>2、定义接口，创建动态库实例和动态库接口</h4><blockquote>
+<h4 id="2、定义接口，创建动态库实例和动态库接口">2、定义接口，创建动态库实例和动态库接口</h4>
+<blockquote>
 <p>1、接口需要继承Library类</p>
 <p>2、定义动态库接口</p>
 <p>3、定义动态库实例</p>
@@ -743,10 +746,8 @@ public class JnaInterface &#123;
     &#125;
 &#125;
 </code></pre>
-
-
-
-<h4 id="3、工具类封装"><a href="#3、工具类封装" class="headerlink" title="3、工具类封装"></a>3、工具类封装</h4><pre class="language-java" data-language="java"><code class="language-java">package com.test.jnademo.utils;
+<h4 id="3、工具类封装">3、工具类封装</h4>
+<pre class="language-java" data-language="java"><code class="language-java">package com.test.jnademo.utils;
 
 import com.sun.jna.ptr.IntByReference;
 
@@ -808,8 +809,8 @@ public class JnaUtils &#123;
     &#125;
 &#125;
 </code></pre>
-
-<h4 id="4、调用"><a href="#4、调用" class="headerlink" title="4、调用"></a>4、调用</h4><pre class="language-java" data-language="java"><code class="language-java">package com.test.jnademo;
+<h4 id="4、调用">4、调用</h4>
+<pre class="language-java" data-language="java"><code class="language-java">package com.test.jnademo;
 
 import com.test.jnademo.utils.JnaInterface;
 import com.test.jnademo.utils.JnaUtils;
@@ -834,7 +835,6 @@ class JnaDemoApplicationTests &#123;
         con.disconnectDev(epen);
     &#125;
 &#125;</code></pre>
-
 
                 
             </div>
@@ -1670,7 +1670,7 @@ class JnaDemoApplicationTests &#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.9k</span>
+                        class="white-color">29.1k</span>
             
             
             

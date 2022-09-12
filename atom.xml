@@ -6,7 +6,7 @@
   <link href="https://superzqbo.github.io/atom.xml" rel="self"/>
   
   <link href="https://superzqbo.github.io/"/>
-  <updated>2022-08-21T11:22:12.148Z</updated>
+  <updated>2022-09-12T10:20:21.926Z</updated>
   <id>https://superzqbo.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>重学Spring</title>
+    <link href="https://superzqbo.github.io/2022/09/12/chong-xue-spring/"/>
+    <id>https://superzqbo.github.io/2022/09/12/chong-xue-spring/</id>
+    <published>2022-09-12T10:05:55.000Z</published>
+    <updated>2022-09-12T10:20:21.926Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、Spring介绍&quot;&gt;一、Spring介绍&lt;/h2&gt;
+&lt;p&gt;​	&lt;strong&gt;Spring是一个开源框架，Spring是于2003 年兴起的一个轻量级的Java 开发框架&lt;/strong&gt;，由&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Spring" scheme="https://superzqbo.github.io/categories/Spring/"/>
+    
+    <category term="面试" scheme="https://superzqbo.github.io/categories/Spring/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+    <category term="Spring" scheme="https://superzqbo.github.io/tags/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title>电表DLMS协议升级流程分析</title>
@@ -30,8 +58,7 @@
         
     <summary type="html">&lt;p&gt;最近进行电表DLMS的升级，特记录下升级流程&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1、初始化&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt; ——————————————————- 初始化 ————————————————–&lt;/p&gt;
-&lt;p&gt; 1、Set ImageBlockSize</summary>
+&lt;p&gt;------------------------------------------------------- 初始化</summary>
         
       
     
@@ -112,7 +139,8 @@
         
         
     <summary type="html">&lt;p&gt;Docker安装Mysql遇到的问题&lt;/p&gt;
-&lt;h3 id=&quot;1、查看mysql的日志，发现如下提示，步奏如下&quot;&gt;&lt;a href=&quot;#1、查看mysql的日志，发现如下提示，步奏如下&quot; class=&quot;headerlink&quot;</summary>
+&lt;h3 id=&quot;1、查看mysql的日志，发现如下提示，步奏如下&quot;&gt;1、查看mysql的日志，发现如下提示，步奏如下&lt;/h3&gt;
+&lt;pre class=&quot;language-java&quot;</summary>
         
       
     
@@ -165,7 +193,9 @@
       
         
         
-    <summary type="html">&lt;h3 id=&quot;1、查询内存情况&quot;&gt;&lt;a href=&quot;#1、查询内存情况&quot; class=&quot;headerlink&quot; title=&quot;1、查询内存情况&quot;&gt;&lt;/a&gt;1、查询内存情况&lt;/h3&gt;&lt;pre class=&quot;language-bash&quot;</summary>
+    <summary type="html">&lt;h3 id=&quot;1、查询内存情况&quot;&gt;1、查询内存情况&lt;/h3&gt;
+&lt;pre class=&quot;language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ free -h&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img</summary>
         
       
     
@@ -248,7 +278,9 @@
         
         
     <summary type="html">&lt;p&gt;最近做了645电表的升级，记录一下基本流程&lt;/p&gt;
-&lt;h4 id=&quot;1、升级初始帧&quot;&gt;&lt;a href=&quot;#1、升级初始帧&quot; class=&quot;headerlink&quot;</summary>
+&lt;h4 id=&quot;1、升级初始帧&quot;&gt;1、升级初始帧&lt;/h4&gt;
+&lt;p&gt;升级初始帧也是升级帧，只是结构和升级帧有点区别，结构如下&lt;/p&gt;
+&lt;pre class=&quot;language-java&quot;</summary>
         
       
     
@@ -299,7 +331,8 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;1、基本概念&quot;&gt;&lt;a href=&quot;#1、基本概念&quot; class=&quot;headerlink&quot; title=&quot;1、基本概念&quot;&gt;&lt;/a&gt;1、基本概念&lt;/h2&gt;&lt;p&gt;内网穿透:内网穿透就是客户端通过访问中转服务器间接性的去访问内网服务器中的东西&lt;/p&gt;
+    <summary type="html">&lt;h2 id=&quot;1、基本概念&quot;&gt;1、基本概念&lt;/h2&gt;
+&lt;p&gt;内网穿透:内网穿透就是客户端通过访问中转服务器间接性的去访问内网服务器中的东西&lt;/p&gt;
 &lt;p&gt;&lt;img</summary>
         
       
@@ -325,7 +358,12 @@
       
         
         
-    <summary type="html">&lt;h3 id=&quot;一、概念解释&quot;&gt;&lt;a href=&quot;#一、概念解释&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h3 id=&quot;一、概念解释&quot;&gt;一、概念解释&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Flyway是一款开源的数据库迁移工具。可以相对简单的对数据库版本进行控制。&lt;/p&gt;
+&lt;p&gt;数据库版本文件：存放在版本文件目录下的sql脚本&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3</summary>
         
       
     
@@ -352,7 +390,7 @@
       
         
         
-    <summary type="html">&lt;h3 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h3</summary>
         
       
     
@@ -377,7 +415,7 @@
       
         
         
-    <summary type="html">&lt;h3 id=&quot;一、服务端&quot;&gt;&lt;a href=&quot;#一、服务端&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h3</summary>
         
       
     
@@ -408,7 +446,7 @@
         
     <summary type="html">&lt;p&gt;java调用C++动态库&lt;/p&gt;
 &lt;p&gt;由于项目，需要调用明华IC卡读卡器接口，项目使用的语言是java，所以需要用到java的JNA技术，去调用C的DLL动态库&lt;/p&gt;
-&lt;h3 id=&quot;一、JNI、JNA介绍&quot;&gt;&lt;a href=&quot;#一、JNI、JNA介绍&quot;</summary>
+&lt;h3</summary>
         
       
     
@@ -531,33 +569,6 @@ import</summary>
     <category term="随笔" scheme="https://superzqbo.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
     
     <category term="PostgreSQL" scheme="https://superzqbo.github.io/tags/PostgreSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo部署到服务器</title>
-    <link href="https://superzqbo.github.io/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/"/>
-    <id>https://superzqbo.github.io/2022/07/10/hexo-bu-shu-dao-fu-wu-qi/</id>
-    <published>2022-07-10T12:26:16.000Z</published>
-    <updated>2022-08-01T11:32:32.495Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;一、服务器配置&quot;&gt;&lt;a href=&quot;#一、服务器配置&quot; class=&quot;headerlink&quot; title=&quot;一、服务器配置&quot;&gt;&lt;/a&gt;一、服务器配置&lt;/h2&gt;&lt;h3 id=&quot;1-1-新建用户作为git登陆用户&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Hexo" scheme="https://superzqbo.github.io/categories/Hexo/"/>
-    
-    
-    <category term="Hexo" scheme="https://superzqbo.github.io/tags/Hexo/"/>
-    
-    <category term="Nginx" scheme="https://superzqbo.github.io/tags/Nginx/"/>
     
   </entry>
   

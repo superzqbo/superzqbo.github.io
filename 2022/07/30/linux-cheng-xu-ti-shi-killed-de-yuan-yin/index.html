@@ -596,7 +596,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    245
+                    239
                 </div>
                 
 
@@ -627,7 +627,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>运行程序时，Linux出现Killed,然后程序就被终止了</p>
-<p>当系统资源不足时，Linux 内核也可以决定终止一个或多个进程。 一个非常常见的例子是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%86%85%E5%AD%98&spm=1001.2101.3001.7020">内存</a>不足 (OOM) killer，会在系统的物理内存耗尽时触发。</p>
+<p>当系统资源不足时，Linux 内核也可以决定终止一个或多个进程。 一个非常常见的例子是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%86%85%E5%AD%98&amp;spm=1001.2101.3001.7020">内存</a>不足 (OOM) killer，会在系统的物理内存耗尽时触发。</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">[root@ecs-1773-3 fes-stress-test]# sudo dmesg | tail -7
 [6229228.008634] [98387]     0 98387    18062      182      39        0             0 sftp-server
 [6229228.012426] [99129]     0 99129    39329      351      79        0             0 sshd
@@ -637,12 +637,12 @@
 [6229228.027147] Out of memory: Kill process 101710 (java) score 187 or sacrifice child
 [6229228.031308] Killed process 101710 (java), UID 0, total-vm:11039836kB, anon-rss:1530188kB, file-rss:0kB, shmem-rss:0kB
 </code></pre>
-
 <p>分析：</p>
 <ul>
-<li>Out of memory: Kill process 101710 (java) score 187 or sacrifice child，内存不够<ul>
-<li>total_vm：总共使用的虚拟内存 Virtual memory use (in 4 kB pages)  11039836&#x2F;1024(得到MB)&#x2F;1024(得到GB)&#x3D;10.56GB</li>
-<li>rss：常驻内存使用Resident memory use (in 4 kB pages)，1530188&#x2F;1024&#x2F;1024&#x3D;1.45GB</li>
+<li>Out of memory: Kill process 101710 (java) score 187 or sacrifice child，内存不够
+<ul>
+<li>total_vm：总共使用的虚拟内存 Virtual memory use (in 4 kB pages)  11039836/1024(得到MB)/1024(得到GB)=10.56GB</li>
+<li>rss：常驻内存使用Resident memory use (in 4 kB pages)，1530188/1024/1024=1.45GB</li>
 </ul>
 </li>
 </ul>
@@ -1474,7 +1474,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.9k</span>
+                        class="white-color">29.1k</span>
             
             
             

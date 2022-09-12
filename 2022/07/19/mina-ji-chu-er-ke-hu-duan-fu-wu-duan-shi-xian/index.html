@@ -5,14 +5,16 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Mina基础(二):客户端、服务端实现, 牧羊人">
-    <meta name="description" content="一、服务端本次示例当中服务端由一下几部分构成
+    <meta name="description" content="一、服务端
+本次示例当中服务端由一下几部分构成
 
 1、服务端Socket
 2、服务端Socket封装类
 3、DataHandler数据处理
 4、项目启动后调用
 
-1.1、创建Session服务端package com.test.mina.se">
+1.1、创建Session服务端
+package com.test.mina.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -612,7 +614,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    21 分
+                    22 分
                 </div>
                 
 
@@ -635,14 +637,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一、服务端"><a href="#一、服务端" class="headerlink" title="一、服务端"></a>一、服务端</h3><p>本次示例当中服务端由一下几部分构成</p>
+                <h3 id="一、服务端">一、服务端</h3>
+<p>本次示例当中服务端由一下几部分构成</p>
 <blockquote>
 <p>1、服务端Socket</p>
 <p>2、服务端Socket封装类</p>
 <p>3、DataHandler数据处理</p>
 <p>4、项目启动后调用</p>
 </blockquote>
-<h4 id="1-1、创建Session服务端"><a href="#1-1、创建Session服务端" class="headerlink" title="1.1、创建Session服务端"></a>1.1、创建Session服务端</h4><pre class="language-java" data-language="java"><code class="language-java">package com.test.mina.server;
+<h4 id="1-1、创建Session服务端">1.1、创建Session服务端</h4>
+<pre class="language-java" data-language="java"><code class="language-java">package com.test.mina.server;
 
 import org.apache.mina.core.filterchain.IoFilter;
 import org.apache.mina.core.service.IoAcceptor;
@@ -753,8 +757,8 @@ public class SocketServer &#123;
     &#125;
 &#125;
 </code></pre>
-
-<h4 id="1-2、创建服务端封装类"><a href="#1-2、创建服务端封装类" class="headerlink" title="1.2、创建服务端封装类"></a>1.2、创建服务端封装类</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.server;
+<h4 id="1-2、创建服务端封装类">1.2、创建服务端封装类</h4>
+<pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.server;
 
 import com.techen.mina.utils.Config;
 import org.slf4j.Logger;
@@ -838,10 +842,8 @@ public class Fes &#123;
 &#125;
 
 </code></pre>
-
-
-
-<h4 id="1-3、数据处理"><a href="#1-3、数据处理" class="headerlink" title="1.3、数据处理"></a>1.3、数据处理</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.server;
+<h4 id="1-3、数据处理">1.3、数据处理</h4>
+<pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.server;
 
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.service.IoHandlerAdapter;
@@ -955,8 +957,8 @@ public class TerminalDataHandler extends DataHandler&#123;
         System.out.println(&quot;收到设备端信息：&quot;+new String(msgBytes));
     &#125;
 &#125;    </code></pre>
-
-<h4 id="1-4、项目启动后调用"><a href="#1-4、项目启动后调用" class="headerlink" title="1.4、项目启动后调用"></a>1.4、项目启动后调用</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina;
+<h4 id="1-4、项目启动后调用">1.4、项目启动后调用</h4>
+<pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina;
 
 import com.techen.mina.server.ClientDataHandler;
 import com.techen.mina.server.Fes;
@@ -976,10 +978,8 @@ public class SocketMinaApplication &#123;
         fes.start();
     &#125;
 &#125;</code></pre>
-
-
-
-<h3 id="二、客户端"><a href="#二、客户端" class="headerlink" title="二、客户端"></a>二、客户端</h3><p>本次示例当中客户端由一下几部分构成</p>
+<h3 id="二、客户端">二、客户端</h3>
+<p>本次示例当中客户端由一下几部分构成</p>
 <blockquote>
 <p>1、客户端Socket</p>
 <p>2、客户端Socket封装类</p>
@@ -987,7 +987,8 @@ public class SocketMinaApplication &#123;
 <p>4、项目启动后调用</p>
 <p>5、测试</p>
 </blockquote>
-<h4 id="2-1-客户端Socket"><a href="#2-1-客户端Socket" class="headerlink" title="2.1 客户端Socket"></a>2.1 客户端Socket</h4><p>该类当中有一个主要的方法init,在该方法当中，添加监听端口connect.addListener()时,监听端口类可以实现IoServiceListener，去实现自动重连功能；connect方法用于连接服务端；sendMessage方法用于发送报文</p>
+<h4 id="2-1-客户端Socket">2.1 客户端Socket</h4>
+<p>该类当中有一个主要的方法init,在该方法当中，添加监听端口connect.addListener()时,监听端口类可以实现IoServiceListener，去实现自动重连功能；connect方法用于连接服务端；sendMessage方法用于发送报文</p>
 <pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.client;
 
 import com.techen.mina.utils.CommUtils;
@@ -1305,10 +1306,8 @@ public class SocketClient &#123;
 
 &#125;
 </code></pre>
-
-
-
-<h4 id="2-2-客户端Socket封装"><a href="#2-2-客户端Socket封装" class="headerlink" title="2.2 客户端Socket封装"></a>2.2 客户端Socket封装</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.client;
+<h4 id="2-2-客户端Socket封装">2.2 客户端Socket封装</h4>
+<pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.client;
 
 import com.techen.mina.utils.Configs;
 import java.util.Map;
@@ -1368,10 +1367,8 @@ public class JobServer &#123;
     &#125;
 &#125;
 </code></pre>
-
-
-
-<h4 id="2-3-DataHandler数据处理"><a href="#2-3-DataHandler数据处理" class="headerlink" title="2.3 DataHandler数据处理"></a>2.3 DataHandler数据处理</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.client;
+<h4 id="2-3-DataHandler数据处理">2.3 DataHandler数据处理</h4>
+<pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.client;
 
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
@@ -1496,10 +1493,8 @@ public class ClientTaskDataHandler extends DataHandler &#123;
     &#125;
 &#125;
 </code></pre>
-
-
-
-<h4 id="2-4-容器启动时创建"><a href="#2-4-容器启动时创建" class="headerlink" title="2.4 容器启动时创建"></a>2.4 容器启动时创建</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina;
+<h4 id="2-4-容器启动时创建">2.4 容器启动时创建</h4>
+<pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina;
 
 import com.techen.mina.client.ClientTaskDataHandler;
 import com.techen.mina.client.JobServer;
@@ -1517,8 +1512,8 @@ public class SocketMinaApplication &#123;
     &#125;
 
 &#125;</code></pre>
-
-<h4 id="2-5-测试"><a href="#2-5-测试" class="headerlink" title="2.5 测试"></a>2.5 测试</h4><pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.controller;
+<h4 id="2-5-测试">2.5 测试</h4>
+<pre class="language-java" data-language="java"><code class="language-java">package com.techen.mina.controller;
 
 import com.techen.mina.client.JobServer;
 import com.techen.mina.client.SocketClient;
@@ -1561,7 +1556,6 @@ public class ClientController &#123;
     &#125;
 &#125;
 </code></pre>
-
 
                 
             </div>
@@ -2389,7 +2383,7 @@ public class ClientController &#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.9k</span>
+                        class="white-color">29.1k</span>
             
             
             

@@ -6,12 +6,13 @@
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="电表645协议升级流程分析, 牧羊人">
     <meta name="description" content="最近做了645电表的升级，记录一下基本流程
-1、升级初始帧升级初始帧也是升级帧，只是结构和升级帧有点区别，结构如下
+1、升级初始帧
+升级初始帧也是升级帧，只是结构和升级帧有点区别，结构如下
 68 00 00 00 00 00 00 68 
 14 
 5D 
 34 33 33 D3 &amp;#x2F;&amp;#x2F; DI
-3">
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -627,7 +628,8 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>最近做了645电表的升级，记录一下基本流程</p>
-<h4 id="1、升级初始帧"><a href="#1、升级初始帧" class="headerlink" title="1、升级初始帧"></a>1、升级初始帧</h4><p>升级初始帧也是升级帧，只是结构和升级帧有点区别，结构如下</p>
+<h4 id="1、升级初始帧">1、升级初始帧</h4>
+<p>升级初始帧也是升级帧，只是结构和升级帧有点区别，结构如下</p>
 <pre class="language-java" data-language="java"><code class="language-java">68 00 00 00 00 00 00 68 
 14 
 5D 
@@ -637,10 +639,8 @@ AB 89 67 45 &#x2F;&#x2F; operation
 33 33 81 45 36 48 &#x2F;&#x2F; 00 00(2字节包号) 81(81-33&#x3D;4E,1字节长度,即后面数据的长度) 12 03(两字节总包数,312&#x3D;786,要发786帧) 15(1字节文件类型,暂用15)
     &#x2F;&#x2F; 升级数据
 35 FC CD C3 38 13 21 23 D6 22 23 C3 39 34 A7 3C 23 45 89 07 57 55 45 88 06 45 8D 70 45 89 41 45 8C B3 C3 38 17 45 88 F1 45 89 07 57 54 45 88 06 45 89 36 45 8C B3 C3 38 17 45 88 F1 45 89 07 57 53 45 88 06 45 89 36 45 8C B3 17 3A 16 </code></pre>
-
-
-
-<h4 id="2、升级帧"><a href="#2、升级帧" class="headerlink" title="2、升级帧"></a>2、升级帧</h4><p>升级帧如下：</p>
+<h4 id="2、升级帧">2、升级帧</h4>
+<p>升级帧如下：</p>
 <pre class="language-java" data-language="java"><code class="language-java">68 00 00 00 00 00 00 68 
 14 
 5A 
@@ -649,8 +649,8 @@ AB 89 67 45 &#x2F;&#x2F; operation
 AB 89 67 45 &#x2F;&#x2F; operation
 34 33 7E     &#x2F;&#x2F; 01 00(包序号) 7E(7E-33&#x3D;4B 1字节长度)
          C3 38 15 23 D6 23 45 89 07 32 57 55 45 88 06 13 30 E7 38 3E 22 57 54 45 88 06 13 97 39 93 7A 20 E7 36 46 45 89 07 57 54 45 88 06 13 32 97 63 93 68 22 97 44 93 63 45 89 07 32 57 55 45 88 06 13 E7 4E 3E 22 57 54 45 88 06 13 97 77 16 </code></pre>
-
-<h4 id="3、激活帧"><a href="#3、激活帧" class="headerlink" title="3、激活帧"></a>3、激活帧</h4><pre class="language-java" data-language="java"><code class="language-java">68 11 11 11 11 11 11 68 
+<h4 id="3、激活帧">3、激活帧</h4>
+<pre class="language-java" data-language="java"><code class="language-java">68 11 11 11 11 11 11 68 
 14 
 13 
 35 33 33 D3 
@@ -658,7 +658,6 @@ AB 89 67 45 &#x2F;&#x2F; operation
 AB 89 67 45 
 33 32 32 32 32 32 32 &#x2F;&#x2F;目前数据是固定的
 D6 16 </code></pre>
-
 
                 
             </div>
@@ -1482,7 +1481,7 @@ D6 16 </code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.9k</span>
+                        class="white-color">29.1k</span>
             
             
             

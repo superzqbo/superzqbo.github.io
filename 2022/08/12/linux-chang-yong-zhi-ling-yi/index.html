@@ -5,11 +5,12 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Linux 常用指令(一), 牧羊人">
-    <meta name="description" content="1、查询内存情况$ free -h
+    <meta name="description" content="1、查询内存情况
+$ free -h
 
-
-2、查询端口对应的进程[root@ecs-1773-3 fes-stress-test]# lsof -i:6379
-COMMAND    PID USER   FD   TYPE DEVICE SI">
+2、查询端口对应的进程
+[root@ecs-1773-3 fes-stress-test]# lsof -i:6379
+COMMAND    PID USER   FD   TYPE DEVICE S">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -628,10 +629,11 @@ COMMAND    PID USER   FD   TYPE DEVICE SI">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1、查询内存情况"><a href="#1、查询内存情况" class="headerlink" title="1、查询内存情况"></a>1、查询内存情况</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ free -h</code></pre>
-
+                <h3 id="1、查询内存情况">1、查询内存情况</h3>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ free -h</code></pre>
 <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220730142019717.png" alt="image-20220730142019717"></p>
-<h3 id="2、查询端口对应的进程"><a href="#2、查询端口对应的进程" class="headerlink" title="2、查询端口对应的进程"></a>2、查询端口对应的进程</h3><pre class="language-bash" data-language="bash"><code class="language-bash">[root@ecs-1773-3 fes-stress-test]# lsof -i:6379
+<h3 id="2、查询端口对应的进程">2、查询端口对应的进程</h3>
+<pre class="language-bash" data-language="bash"><code class="language-bash">[root@ecs-1773-3 fes-stress-test]# lsof -i:6379
 COMMAND    PID USER   FD   TYPE DEVICE SIZE&#x2F;OFF NODE NAME
 docker-pr 2683 root    4u  IPv4  31525      0t0  TCP *:6379 (LISTEN)
 docker-pr 2691 root    4u  IPv6  33606      0t0  TCP *:6379 (LISTEN)
@@ -640,19 +642,14 @@ docker-pr 2691 root    4u  IPv6  33606      0t0  TCP *:6379 (LISTEN)
 [root@ecs-1773-3 fes-stress-test]# netstat -tunlp|grep 6379
 tcp        0      0 0.0.0.0:6379            0.0.0.0:*               LISTEN      2683&#x2F;docker-proxy   
 tcp6       0      0 :::6379                 :::*                    LISTEN      2691&#x2F;docker-proxy   </code></pre>
-
-
-
-<h3 id="3、java项目部署jar指定JVM内存启动"><a href="#3、java项目部署jar指定JVM内存启动" class="headerlink" title="3、java项目部署jar指定JVM内存启动"></a>3、java项目部署jar指定JVM内存启动</h3><p>项目启动报错： **java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread **</p>
+<h3 id="3、java项目部署jar指定JVM内存启动">3、java项目部署jar指定JVM内存启动</h3>
+<p>项目启动报错： **java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread **</p>
 <pre class="language-java" data-language="java"><code class="language-java">异常名称 : 内存溢出异常
 在启动tomcat的时候或者运行过程中抛出以下异常
 
 Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread 
 Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread &quot;http-bio-80-exec-31&quot;
 </code></pre>
-
-
-
 <p><strong>解决办法：</strong></p>
 <p>项目启动时，指定JVM内存</p>
 <pre class="language-java" data-language="java"><code class="language-java">java -jar -Xms128M -Xmx256M -XX:PermSize&#x3D;128M -XX:MaxPermSize&#x3D;256M xxx.jar
@@ -662,7 +659,6 @@ Xms : 堆内存初始大小
 Xmx : 堆内存最大值
 PermSize : 永久内存初始大小
 MaxPermSize ： 永久内存最大值</code></pre>
-
 
                 
             </div>
@@ -1494,7 +1490,7 @@ MaxPermSize ： 永久内存最大值</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.9k</span>
+                        class="white-color">29.1k</span>
             
             
             

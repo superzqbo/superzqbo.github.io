@@ -628,9 +628,8 @@
                 <p>今天在跑定时任务时，发现程序崩溃了，在服务器上查看之后发现是内存满了，其他的服务占用的内存太多，所以想要限制服务所占的内存，做了如下的操作：</p>
 <p>所以在docker-componse当中指定服务所占的内存，这样在访问内存较大时，服务会变慢，以防止占用内存太多导致其他服务无法正常运行；注意这种方式的前提是其他服务很少用到，不会出现内存溢出情况。</p>
 <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220821190023076.png" alt="image-20220821190023076"></p>
-<p>注意加了deploy之后，启动时需要使用docker-compose –compatibility up指令来启动,否则会warn：use the ‘deploy’ key, which will be ignored. Compose does not support ‘deploy’ configuration - use <code>docker stack deploy</code> to deploy to a swarm.</p>
+<p>注意加了deploy之后，启动时需要使用docker-compose --compatibility up指令来启动,否则会warn：use the ‘deploy’ key, which will be ignored. Compose does not support ‘deploy’ configuration - use <code>docker stack deploy</code> to deploy to a swarm.</p>
 <pre class="language-java" data-language="java"><code class="language-java">docker-compose --compatibility up -d</code></pre>
-
 <p>效果如下：</p>
 <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220812215811472.png" alt="image-20220812215811472"></p>
 
@@ -1460,7 +1459,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.9k</span>
+                        class="white-color">29.1k</span>
             
             
             

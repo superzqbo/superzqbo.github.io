@@ -5,8 +5,10 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Hexo部署到服务器, 牧羊人">
-    <meta name="description" content="一、服务器配置1.1 新建用户作为git登陆用户[root@VM-12-10-centos superzqbo]# sudo adduser git
-[root@VM-12-10-centos superzqbo]# sudo passwd">
+    <meta name="description" content="一、服务器配置
+1.1 新建用户作为git登陆用户
+[root@VM-12-10-centos superzqbo]# sudo adduser git
+[root@VM-12-10-centos superzqbo]# sudo pass">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -625,34 +627,33 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、服务器配置"><a href="#一、服务器配置" class="headerlink" title="一、服务器配置"></a>一、服务器配置</h2><h3 id="1-1-新建用户作为git登陆用户"><a href="#1-1-新建用户作为git登陆用户" class="headerlink" title="1.1 新建用户作为git登陆用户"></a>1.1 新建用户作为git登陆用户</h3><pre class="language-markup" data-language="markup"><code class="language-markup">[root@VM-12-10-centos superzqbo]# sudo adduser git
+                <h2 id="一、服务器配置">一、服务器配置</h2>
+<h3 id="1-1-新建用户作为git登陆用户">1.1 新建用户作为git登陆用户</h3>
+<pre class="language-markup" data-language="markup"><code class="language-markup">[root@VM-12-10-centos superzqbo]# sudo adduser git
 [root@VM-12-10-centos superzqbo]# sudo passwd git
 更改用户 git 的密码 。
 新的 密码：
 重新输入新的 密码：
 passwd：所有的身份验证令牌已经成功更新。</code></pre>
-
-<h3 id="1-2-修改新建用户的权限为git权限"><a href="#1-2-修改新建用户的权限为git权限" class="headerlink" title="1.2 修改新建用户的权限为git权限"></a>1.2 修改新建用户的权限为git权限</h3><p>现在这个用户是具备 SSH 权限的，我们需将其切换为仅具有 git 权限。</p>
+<h3 id="1-2-修改新建用户的权限为git权限">1.2 修改新建用户的权限为git权限</h3>
+<p>现在这个用户是具备 SSH 权限的，我们需将其切换为仅具有 git 权限。</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup">$ vi /etc/passwd
 
 # git:x:1001:1001::/home/git:/bin/bash 修改为下面的
 $ git:x:1001:1001::/home/git:/bin/git-shell</code></pre>
-
-
-
 <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220707235803442.png" alt="image-20220707235803442"></p>
-<h3 id="1-3-安装git"><a href="#1-3-安装git" class="headerlink" title="1.3 安装git"></a>1.3 安装git</h3><pre class="language-markup" data-language="markup"><code class="language-markup">[root@VM-12-10-centos superzqbo]# sudo yum install -y git</code></pre>
-
+<h3 id="1-3-安装git">1.3 安装git</h3>
+<pre class="language-markup" data-language="markup"><code class="language-markup">[root@VM-12-10-centos superzqbo]# sudo yum install -y git</code></pre>
 <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220707210450899.png" alt="image-20220707210450899"></p>
-<h3 id="1-4-生成git密钥"><a href="#1-4-生成git密钥" class="headerlink" title="1.4 生成git密钥"></a>1.4 生成git密钥</h3><p><code>ssh</code>，简单来讲，就是一个秘钥，其中，<code>id_rsa</code>是你这台电脑的私人秘钥，不能给别人看的，<code>id_rsa.pub</code>是公共秘钥，可以随便给别人看。把这个公钥放在<code>git仓库</code>上，这样当你链接<code>git仓库</code>自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过<code>git</code>上传你的文件到<code>git仓库</code>上。</p>
-<p>如果有生成过git密钥，直接去~&#x2F;.ssh&#x2F;目录下查找即可，该目录下有两个文件</p>
+<h3 id="1-4-生成git密钥">1.4 生成git密钥</h3>
+<p><code>ssh</code>，简单来讲，就是一个秘钥，其中，<code>id_rsa</code>是你这台电脑的私人秘钥，不能给别人看的，<code>id_rsa.pub</code>是公共秘钥，可以随便给别人看。把这个公钥放在<code>git仓库</code>上，这样当你链接<code>git仓库</code>自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过<code>git</code>上传你的文件到<code>git仓库</code>上。</p>
+<p>如果有生成过git密钥，直接去~/.ssh/目录下查找即可，该目录下有两个文件</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup">公钥：id_rsa.pub
 私钥：id_rsa</code></pre>
-
 <p>如果之前没有生成过，就需要使用下面指令生成一个</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup">ssh-keygen -t rsa -C "superzqbo@163.com"</code></pre>
-
-<h3 id="1-5-将密钥保存在服务器"><a href="#1-5-将密钥保存在服务器" class="headerlink" title="1.5 将密钥保存在服务器"></a>1.5 将密钥保存在服务器</h3><pre class="language-markup" data-language="markup"><code class="language-markup">1、服务器运行下面命令，创建.ssh文件夹
+<h3 id="1-5-将密钥保存在服务器">1.5 将密钥保存在服务器</h3>
+<pre class="language-markup" data-language="markup"><code class="language-markup">1、服务器运行下面命令，创建.ssh文件夹
 $ su git
 $ mkdir ~/.ssh
 
@@ -666,9 +667,9 @@ $ chmod 600 ~/.ssh/authorized_keys
 
 4、测试本地连接服务器（git bash here）,连接成功表示本地和服务器连接时ok的
 $ ssh -v git@42.194.221.71</code></pre>
-
 <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220707214208446.png" alt="image-20220707214208446"></p>
-<h3 id="1-6-创建git仓库"><a href="#1-6-创建git仓库" class="headerlink" title="1.6 创建git仓库"></a>1.6 创建git仓库</h3><pre class="language-markup" data-language="markup"><code class="language-markup">1、切换到root用户，创建一个目录用于存储网站的根目录
+<h3 id="1-6-创建git仓库">1.6 创建git仓库</h3>
+<pre class="language-markup" data-language="markup"><code class="language-markup">1、切换到root用户，创建一个目录用于存储网站的根目录
 $ su root
 
 2、创建网站的根目录
@@ -691,31 +692,27 @@ git --work-tree=/home/superzqbo/hexo --git-dir=/home/superzqbo/git/hexo/hexo.git
 
 6、赋予这个文件可执行权限
 chmod +x /home/superzqbo/git/hexo/hexo.git/hooks/post-receive</code></pre>
-
 <p><strong>钩子函数解析</strong></p>
 <pre class="language-java" data-language="java"><code class="language-java">git --work-tree&#x3D;&#x2F;home&#x2F;superzqbo&#x2F;hexo --git-dir&#x3D;&#x2F;home&#x2F;superzqbo&#x2F;git&#x2F;hexo&#x2F;hexo.git checkout -f
 # --work-tree&#x3D;&#x2F;home&#x2F;superzqbo&#x2F;hexo 指定hexo文件的位置(ngnix的根目录)  
   
 # --git-dir&#x3D;&#x2F;home&#x2F;superzqbo&#x2F;git&#x2F;hexo&#x2F;hexo.git git仓库的地址</code></pre>
-
-
-
 <p>此时，使用客户端上传代码后，除了在仓库下还会在<code>/home/superzqbo/hexo</code>目录下生成上传的代码，Nginx当中指定地址是这个即可。</p>
-<h2 id="二、客户端配置"><a href="#二、客户端配置" class="headerlink" title="二、客户端配置"></a>二、客户端配置</h2><h3 id="2-1-配置"><a href="#2-1-配置" class="headerlink" title="2.1 配置"></a>2.1 配置</h3><p>博客根目录_config下增加</p>
+<h2 id="二、客户端配置">二、客户端配置</h2>
+<h3 id="2-1-配置">2.1 配置</h3>
+<p>博客根目录_config下增加</p>
 <pre class="language-java" data-language="java"><code class="language-java">root: &#x2F;
 deploy:
   type: git   
   # 用户@服务器地址:git仓库地址
   repository: git@42.194.221.71:&#x2F;home&#x2F;superzqbo&#x2F;git&#x2F;hexo&#x2F;hexo.git
   branch: master</code></pre>
-
-<h3 id="2-2-部署"><a href="#2-2-部署" class="headerlink" title="2.2 部署"></a>2.2 部署</h3><pre class="language-text" data-language="text"><code class="language-text">hexo clean
+<h3 id="2-2-部署">2.2 部署</h3>
+<pre class="language-text" data-language="text"><code class="language-text">hexo clean
 hexo g
 hexo d</code></pre>
-
-
-
-<h3 id="2-3-Nginx配置"><a href="#2-3-Nginx配置" class="headerlink" title="2.3 Nginx配置"></a>2.3 Nginx配置</h3><p>参考地址：<a target="_blank" rel="noopener" href="https://www.yyyzyyyz.cn/posts/45dafe31d273/">https://www.yyyzyyyz.cn/posts/45dafe31d273/</a></p>
+<h3 id="2-3-Nginx配置">2.3 Nginx配置</h3>
+<p>参考地址：<a target="_blank" rel="noopener" href="https://www.yyyzyyyz.cn/posts/45dafe31d273/">https://www.yyyzyyyz.cn/posts/45dafe31d273/</a></p>
 <pre class="language-java" data-language="java"><code class="language-java"># 安装
 $ yum install -y nginx
 
@@ -727,7 +724,6 @@ $ systemctl enable nginx.service
   
 # 检查配置文件
 $ nginx -t</code></pre>
-
 <p><strong>配置nginx为服务(Systemd服务)</strong></p>
 <pre class="language-java" data-language="java"><code class="language-java">vim &#x2F;lib&#x2F;systemd&#x2F;system&#x2F;nginx.service
 --------------------------------------------------------
@@ -758,7 +754,6 @@ ExecStop为停止命令
 PrivateTmp&#x3D;True表示给服务分配独立的临时空间
 注意：[Service]的启动、重启、停止命令全部要求使用绝对路径
 [Install]运行级别下服务安装的相关设置，可设置为多用户，即系统运行级别为3</code></pre>
-
 <p><strong>配置如下</strong></p>
 <pre class="language-markup" data-language="markup"><code class="language-markup">server &#123;
   listen       80 default_server;
@@ -807,10 +802,8 @@ PrivateTmp&#x3D;True表示给服务分配独立的临时空间
     #    deny  all;
     #&#125;
 &#125;</code></pre>
-
-
-
-<h2 id="三、Https配置"><a href="#三、Https配置" class="headerlink" title="三、Https配置"></a>三、Https配置</h2><p>参考地址： <a target="_blank" rel="noopener" href="https://www.freesion.com/article/16501347598/">https://www.freesion.com/article/16501347598/</a></p>
+<h2 id="三、Https配置">三、Https配置</h2>
+<p>参考地址： <a target="_blank" rel="noopener" href="https://www.freesion.com/article/16501347598/">https://www.freesion.com/article/16501347598/</a></p>
 <p>步奏如下</p>
 <pre class="language-java" data-language="java"><code class="language-java">1、首先我们要拥有一个域名。本文使用的是腾讯云注册的域名。接着申请免费的SSL域名证书。
   
@@ -821,9 +814,6 @@ PrivateTmp&#x3D;True表示给服务分配独立的临时空间
 4、在服务器Nginx配置文件同级目录创建一个conf目录，将Nginx证书上传到该目录下
   
 5、修改Nginx配置文件</code></pre>
-
-
-
 <pre class="language-markup" data-language="markup"><code class="language-markup"># HTTPS server
 #
 server &#123;
@@ -859,9 +849,6 @@ server &#123;
     #把http的域名请求转成https
     return 301 https://$host$request_uri;
 &#125;</code></pre>
-
-
-
 <p>注意，如果网站想要正常访问，还需要进行备案！</p>
 
                 
@@ -1690,7 +1677,7 @@ server &#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.9k</span>
+                        class="white-color">29.1k</span>
             
             
             
