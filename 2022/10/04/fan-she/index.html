@@ -4,10 +4,12 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Linux程序提示killed的原因, 牧羊人">
-    <meta name="description" content="运行程序时，Linux出现Killed,然后程序就被终止了
-当系统资源不足时，Linux 内核也可以决定终止一个或多个进程。 一个非常常见的例子是内存不足 (OOM) killer，会在系统的物理内存耗尽时触发。
-[root@ecs-177">
+    <meta name="keywords" content="反射, 牧羊人">
+    <meta name="description" content="一、反射
+1.1 创建运行时类的对象
+Class&amp;lt;Person&amp;gt; clazz &amp;#x3D; Person.class;
+Person obj &amp;#x3D; clazz.newInstance();
+System.out.prin">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +23,7 @@
 
     
 
-    <title>Linux程序提示killed的原因 | 牧羊人</title>
+    <title>反射 | 牧羊人</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -432,12 +434,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://superzqbo.oss-cn-hangzhou.aliyuncs.com/wallhaven-x8rw6o.jpeg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://superzqbo.oss-cn-hangzhou.aliyuncs.com/wallhaven-7pg1m9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Linux程序提示killed的原因</h1>
+                    <h1 class="description center-align post-title">反射</h1>
                 </div>
             </div>
         </div>
@@ -553,12 +555,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
-                            <a href="/tags/%E8%BF%9B%E7%A8%8B/">
-                                <span class="chip bg-color">进程</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -569,8 +567,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/categories/Java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -582,28 +580,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-30
+                    2022-10-04
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-08-01
+                    2022-10-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    239
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    9 分
                 </div>
                 
 
@@ -626,27 +624,262 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>运行程序时，Linux出现Killed,然后程序就被终止了</p>
-<p>当系统资源不足时，Linux 内核也可以决定终止一个或多个进程。 一个非常常见的例子是<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%86%85%E5%AD%98&amp;spm=1001.2101.3001.7020">内存</a>不足 (OOM) killer，会在系统的物理内存耗尽时触发。</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">[root@ecs-1773-3 fes-stress-test]# sudo dmesg | tail -7
-[6229228.008634] [98387]     0 98387    18062      182      39        0             0 sftp-server
-[6229228.012426] [99129]     0 99129    39329      351      79        0             0 sshd
-[6229228.015908] [99132]     0 99132    18062      204      38        0             0 sftp-server
-[6229228.019624] [101710]     0 101710  2759959   382547    4202        0             0 java
-[6229228.023244] [106758]     0 106758      807        1       4        0             0 zabbix_server
-[6229228.027147] Out of memory: Kill process 101710 (java) score 187 or sacrifice child
-[6229228.031308] Killed process 101710 (java), UID 0, total-vm:11039836kB, anon-rss:1530188kB, file-rss:0kB, shmem-rss:0kB
+                <h2 id="一、反射">一、反射</h2>
+<h3 id="1-1-创建运行时类的对象">1.1 创建运行时类的对象</h3>
+<pre class="language-java" data-language="java"><code class="language-java">Class&lt;Person&gt; clazz &#x3D; Person.class;
+Person obj &#x3D; clazz.newInstance();
+System.out.print(obj);
+
+注意：
+    要想clazz.newInstance()运行成功，需要满足以下的需求
+    1、运行时类必须提供无参构造器
+    2、无参构造器的访问权限必须是public
+    </code></pre>
+<blockquote>
+<p>在javaBean当中，一般要求提供一个public的无参构造器</p>
+<p>原因：</p>
+<p>​	1、便于通过反射，创建运行时类的对象</p>
+<p>​	2、便于子类集成父类时，通过super()调用父类构造器</p>
+</blockquote>
+<h3 id="1-2-获取运行时类的完整结构">1.2 获取运行时类的完整结构</h3>
+<p>我们可以通过反射，回去运行时类中所有的属性、方法、构造器、父类、接口、包、泛型、注解等</p>
+<pre class="language-java" data-language="java"><code class="language-java">public void test2()&#123;
+		Class clazz &#x3D; Person.class;
+		&#x2F;&#x2F; 获取属性结构:当前运行类及父类的的所有public访问权限的属性
+		Field[] fields &#x3D; clazz.getFields();
+		for (Field field : fields) &#123;
+			System.out.println(field);
+		&#125;
+
+		&#x2F;&#x2F; 获得当前运行类当中申明的所有属性(不包含父类的)
+		Field[] declaredFields &#x3D; clazz.getDeclaredFields();
+		for (Field declaredField : declaredFields) &#123;
+			System.out.println(declaredField);
+		&#125;
+	&#125;
+
+	public void test3()&#123;
+		Class clazz &#x3D; Person.class;
+		&#x2F;&#x2F; 当前运行类包名
+		Package pack &#x3D; clazz.getPackage();
+		System.out.println(pack);
+	&#125;
+
+	public void test4()&#123;
+		Class clazz &#x3D; Person.class;
+		&#x2F;&#x2F; 当前运行类注解
+		Annotation []  annotations &#x3D; clazz.getAnnotations();
+		for (Annotation annotation : annotations) &#123;
+			System.out.println(annotation);
+		&#125;
+	&#125;</code></pre>
+<h3 id="1-3-调用运行时类的指定结构">1.3 调用运行时类的指定结构</h3>
+<pre class="language-java" data-language="java"><code class="language-java">&#x2F;&#x2F; 属性
+public void test5()&#123;
+		Class clazz &#x3D; Person.class;
+
+		&#x2F;&#x2F; 创建运行时类对象
+		Person p &#x3D; (Person) clazz.newInstance();
+
+		&#x2F;&#x2F; 获取运行时类当中指定变量名的属性
+		Field name &#x3D;clazz.getDeclaredField(&quot;name&quot;);
+
+		&#x2F;&#x2F; 保证当前属性是可以访问的
+		name.setAccessible(true);
+
+		&#x2F;&#x2F; 设置、获取指定对象的此属性值
+		name.set(p,&quot;Tom&quot;);
+		System.out.println(name.get(p));
+	&#125;
+
+&#x2F;&#x2F; 方法
+public void test6()&#123;
+		Class clazz &#x3D; Person.class;
+
+		&#x2F;&#x2F; 创建运行时类对象
+		Person p &#x3D; (Person) clazz.newInstance();
+
+		&#x2F;&#x2F; 获取运行时类当中指定的某个方法：参数1--方法名,参数2--入参
+		Method method &#x3D;clazz.getDeclaredMethod(&quot;name&quot;,String.class);
+
+		&#x2F;&#x2F; 保证当前方法是可以访问的
+		method.setAccessible(true);
+
+		&#x2F;&#x2F; 调用方法: 返回值就是方法的返回值
+		Object object&#x3D; method.invoke(p,&quot;CHN&quot;);
+		System.out.println(object);
+	&#125;
+
+&#x2F;&#x2F; 构造器
+public void test8()&#123;
+		Class clazz &#x3D; Person.class;
+		
+		&#x2F;&#x2F; 获取运行时类当中有参构造器
+		Constructor constructor &#x3D;clazz.getDeclaredConstructor(String.class);
+
+		&#x2F;&#x2F; 保证当前构造器是可以访问的
+		constructor.setAccessible(true);
+
+		&#x2F;&#x2F; 调用次构造器创建运行时类对象
+		Person person &#x3D; constructor.newInstance(&quot;Toms&quot;);
+		System.out.println(person);
+	&#125;</code></pre>
+<h2 id="二、代理">二、代理</h2>
+<p>使用一个代理将对象包装起来，之后人后对原始对象的访问都要经过代理，代理决定是否以及何时去请求原始对象，代理分为动态代理和静态代理</p>
+<p>静态代理：代理类和目标类在编译期间就确定了，同时，没一个代理类只能为一个接口服务，这样会需要很多的代理</p>
+<p>动态里：使用一个代理完成所有的代理功能、在程序执行过程中，使用jdk的<strong>反射</strong>机制，创建代理类对象， 并动态的指定要代理目标类。</p>
+<h3 id="2-1-静态代理">2.1 静态代理</h3>
+<blockquote>
+<ol>
+<li>创建一个接口</li>
+<li>创建厂家类，实现1步骤的接口</li>
+<li>创建代理，也需要实现1步骤中的接口。</li>
+<li>创建客户端类，调用代理</li>
+</ol>
+</blockquote>
+<pre class="language-java" data-language="java"><code class="language-java">public interface Human &#123;
+    int eat(int count);
+&#125;
+
+
+&#x2F;&#x2F;目标类：
+public class AppleFactory implements Human &#123;
+    @Override
+    public int eat(int count) &#123;
+        System.out.println(&quot;目标类中的方法调用 , AppleFactory 中的eat &quot;);
+        return count;
+    &#125;
+&#125;
+
+
+public class JD implements Human &#123;
+    &#x2F;&#x2F;声明 被代理类
+    private Human factory &#x3D; new AppleFactory();
+
+    @Override
+    public int eat(int count) &#123;
+        &#x2F;&#x2F;调用被代理类
+        int count &#x3D; factory.eat(count);
+        &#x2F;&#x2F;代理增加。
+        count +&#x3D; 40;&#x2F;&#x2F;增强功能，代理类在完成目标类方法调用后，增强了功能。
+        System.out.println(&quot;吃了！&quot;);
+        return count;
+    &#125;
+&#125;
+
+
+
+public class Customer &#123;
+    public static void main(String[] args) &#123;
+        JD j &#x3D; new JD();
+        int count &#x3D; j.eat(1);
+        System.out.println(count);
+    &#125;
+&#125;</code></pre>
+<h3 id="2-2-动态代理">2.2 动态代理</h3>
+<pre class="language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F; 接口  &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;
+
+&#x2F;**
+ * @ClassName Human
+ * @description: 动态代理:接口
+ *&#x2F;
+public interface Human &#123;
+    String getBelief();
+    void eat(String food);
+&#125;
+
+&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F; 被代理类  &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;
+
+&#x2F;**
+ * @ClassName SuperMan
+ * @description: 被代理类
+ *&#x2F;
+public class SuperMan implements Human&#123;
+    @Override
+    public String getBelief() &#123;
+        return &quot;I believe I can fly&quot;;
+    &#125;
+
+    @Override
+    public void eat(String food) &#123;
+        System.out.println(&quot;I love eat &quot;+ food);
+    &#125;
+&#125;
+
+
+&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F; 动态代理类  &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;
+&#x2F;**
+ * @ClassName ProxyTest
+ * @description: 代理类
+ *               问题一：如何根据加载到内存当中的代理类，动态的创建一个代理类及其对象(动态创建代理类及对象)
+ *               问题二：当通过代理类的对象调用方法时，如何动态的去调用被代理类的同名方法(动态创建被代理类方法)
+ * @author: bozhiqiang
+ * @Version 1.0.0
+ * @createTime: 2022-10-04 18:00:49
+ *&#x2F;
+public class ProxyFactory &#123;
+
+    &#x2F;**
+     * obj:被代理类对象(需要知道被代理类是啥,才可以创建代理类)
+     * @return：返回一个代理类对象
+     *&#x2F;
+    public static Object getProxyInstance(Object obj)&#123;
+
+        MyInvocationHandler handler &#x3D; new MyInvocationHandler();
+        &#x2F;&#x2F; 被代理对象赋值
+        handler.bind(obj);
+        &#x2F;**
+         * 根据被代理类对象动态的创建代理类
+         * 参数1：被代理类由什么类加载器加载
+         * 参数2：被代理类实现了什么接口(代理类和被代理类必须实现相同的接口)
+         * 参数3：动态调用方法实现
+         *&#x2F;
+        return Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(),handler);
+    &#125;
+&#125;
+
+public class MyInvocationHandler implements InvocationHandler &#123;
+    &#x2F;&#x2F; 被代理类
+    private Object obj;
+    public void bind(Object obj)&#123;
+        this.obj &#x3D; obj;
+    &#125;
+
+    &#x2F;&#x2F; 当我们通过代理类的对象，调用该方法时，就会自动调用如下的invoke方法
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;
+        &#x2F;**
+         * 方法调用
+         * method：被代理对象方法
+         * obj:被代理对象
+         * args：被代理方法入参
+         *&#x2F;
+        Object returnValue &#x3D; method.invoke(obj,args);
+        return returnValue;
+    &#125;
+&#125;
+
+
+
+&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F; 测试  &#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;&#x2F;
+&#x2F;**
+ * @ClassName ProxyTest
+ * @description: 测试
+ *&#x2F;
+public class ProxyTest &#123;
+
+    public static void main(String[] args) &#123;
+        SuperMan superMan &#x3D; new SuperMan();
+        &#x2F;&#x2F; 代理类对象
+        Human human &#x3D; (Human) ProxyFactory.getProxyInstance(superMan);
+
+        &#x2F;&#x2F; 自动调用被代理类当中同名的方法---invoke
+        human.getBelief();
+        human.eat(&quot;apple&quot;);
+    &#125;
+&#125;
+
 </code></pre>
-<p>分析：</p>
-<ul>
-<li>Out of memory: Kill process 101710 (java) score 187 or sacrifice child，内存不够
-<ul>
-<li>total_vm：总共使用的虚拟内存 Virtual memory use (in 4 kB pages)  11039836/1024(得到MB)/1024(得到GB)=10.56GB</li>
-<li>rss：常驻内存使用Resident memory use (in 4 kB pages)，1530188/1024/1024=1.45GB</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220730135757686.png" alt="image-20220730135757686"></p>
 
                 
             </div>
@@ -673,7 +906,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://superzqbo.github.io/2022/07/30/linux-cheng-xu-ti-shi-killed-de-yuan-yin/">https://superzqbo.github.io/2022/07/30/linux-cheng-xu-ti-shi-killed-de-yuan-yin/</a>
+                    <a href="https://superzqbo.github.io/2022/10/04/fan-she/">https://superzqbo.github.io/2022/10/04/fan-she/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -711,12 +944,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
-                                <a href="/tags/%E8%BF%9B%E7%A8%8B/">
-                                    <span class="chip bg-color">进程</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -1156,16 +1385,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/07/30/java-bing-fa-bian-cheng-zhi-countdownlatch/">
+                <a href="/2022/10/04/fan-she/">
                     <div class="card-image">
                         
-                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/wallhaven-rdm6km.png" class="responsive-img" alt="Java并发编程之CountDownLatch">
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/wallhaven-7pg1m9.jpg" class="responsive-img" alt="反射">
                         
-                        <span class="card-title">Java并发编程之CountDownLatch</span>
+                        <span class="card-title">反射</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1175,30 +1405,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                    后端
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B9%B6%E5%8F%91/">
-                        <span class="chip bg-color">并发</span>
-                    </a>
-                    
-                    <a href="/tags/CountDownLatch/">
-                        <span class="chip bg-color">CountDownLatch</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1212,12 +1439,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/28/dian-biao-645-xie-yi-sheng-ji-liu-cheng-fen-xi/">
+                <a href="/2022/10/04/docker-xue-xi-bi-ji-san/">
                     <div class="card-image">
                         
-                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/wallhaven-2879mg.png" class="responsive-img" alt="电表645协议升级流程分析">
+                        <img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/wallhaven-o3km89.png" class="responsive-img" alt="Docker学习笔记(三)-Docker-componse使用">
                         
-                        <span class="card-title">电表645协议升级流程分析</span>
+                        <span class="card-title">Docker学习笔记(三)-Docker-componse使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1228,14 +1455,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%B5%E8%A1%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="post-category">
-                                    电表通信协议
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
@@ -1245,8 +1472,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/645%E5%8D%8F%E8%AE%AE/">
-                        <span class="chip bg-color">645协议</span>
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
                     </a>
                     
                 </div>
