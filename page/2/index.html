@@ -543,9 +543,12 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
-注意！！！！： 数据库迁移需要使用备份(mongodump)与恢复(mongorestore)语法，如果数据库没有开启权限验证，则直接使用命令即可；
-如果开启了验证登录，是无法直接备份和恢复数据库的，报如下错误：error reading
+                                一、数据导入与导出
+1.1 导出
+mongoexport -d watergas -c messageInfo -o &#x2F;data&#x2F;db&#x2F;messageInfo111.json
+  
+參数说明:
+-d 指明使用的
                             
                         </div>
                         <div class="publish-info">
@@ -1233,7 +1236,7 @@ import lombok.Ge
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">34.7k</span>
+                        class="white-color">35.1k</span>
             
             
             
