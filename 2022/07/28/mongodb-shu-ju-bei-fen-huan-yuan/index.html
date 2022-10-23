@@ -666,7 +666,7 @@ mongoexport -d watergas -c messageInfo -o &amp;#x2F;data&amp;#x2F;db&amp;#x2F;me
 –directoryperdb：备份数据所在位置，比如：&#x2F;data&#x2F;db&#x2F;watergas&#x2F;watergas库还原到。将watergas库还原到watergas1下
 –drop：恢复的时候，先删除当前数据。然后恢复备份的数据。就是说，恢复后。备份后加入改动的数据都会被删除</code></pre>
 <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20221023192110935.png" alt="image-20221023192110935"></p>
-<h3 id="3、权限认证相关">3、权限认证相关</h3>
+<h3 id="三、权限认证相关">三、权限认证相关</h3>
 <p><img src="https://superzqbo.oss-cn-hangzhou.aliyuncs.com/image-20220630093148047.png" alt="image-20220630093148047"></p>
 <pre class="language-java" data-language="java"><code class="language-java">注意！！！！： 数据库迁移需要使用备份(mongodump)与恢复(mongorestore)语法，如果数据库没有开启权限验证，则直接使用命令即可；
 如果开启了验证登录，是无法直接备份和恢复数据库的，报如下错误：error reading database: command listCollections requires authentication
